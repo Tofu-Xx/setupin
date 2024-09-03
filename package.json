@@ -1,0 +1,26 @@
+{
+  "name": "setupin",
+  "version": "0.0.0",
+  "access": "public",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tofu-Xx/setupin.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "release": "bumpp"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "tofu-xx <tofu-xx@foxmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "bumpp": "^9.5.2",
+    "vite": "^5.4.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}
