@@ -13,10 +13,18 @@ export function getExposedName(scriptContent: string) {
     });
 }
 /*  */
-
-export function transport(
+export interface FunPocket {
+  [key: string]: any[][];
+}
+export interface Portal {
+  funPocket: FunPocket;
+  truthCallThis: object;
+  proxyCallThis: object;
+}
+export function proxyCall(
   funNameList: string[],
-  pseudoCallThis: object = window,
+  truthCallThis: object,
+  proxyCallThis: object = window,
 ) {
   const funPocket: { [key: string]: any[][] } = {};
   function _transport(fnStr: string) {
@@ -24,6 +32,17 @@ export function transport(
     eval(`${fnStr} = (...args) => funPocket[fnStr].push(args)`);
     return eval(fnStr);
   }
-  funNameList.forEach((k) => pseudoCallThis[k] = _transport(k));
-  return funPocket;
+  funNameList.forEach((k) => proxyCallThis[k] = _transport(k));
+  return { funPocket, truthCallThis, proxyCallThis } as Portal;
+}
+
+export function truthCall(
+  { funPocket, truthCallThis, proxyCallThis }: Portal,
+) {
+  Object.entries(funPocket).forEach(([vueFnName, argsArr]) => {
+    argsArr.forEach((args) => {
+      truthCallThis[vueFnName](...args);
+    });
+    proxyCallThis[vueFnName] = truthCallThis[vueFnName];
+  });
 }
