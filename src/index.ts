@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const setupContent = scriptElement?.textContent || "";
   const exposedList = getExposedName(setupContent);
 
-  Vue.createApp({
+  Vue["createApp"]({
     setup() {
       truthCall(portal);
       return Object.fromEntries(
