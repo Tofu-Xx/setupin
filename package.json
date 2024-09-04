@@ -18,6 +18,7 @@
   "author": "tofu-xx <tofu-xx@foxmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^22.5.3",
     "bumpp": "^9.5.2",
     "vite": "^5.4.0"
   },

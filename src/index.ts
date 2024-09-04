@@ -1,17 +1,11 @@
-import {
-  type FunPocket,
-  getExposedName,
-  type Portal,
-  proxyCall,
-  truthCall,
-} from "./tools";
+import { getExposed, proxyCall, truthCall } from "./tools";
 import { Vue } from "./assets/vue.global.prod.js";
 
 window["Vue"] = Vue;
 Object.entries(Vue).forEach(([k, v]) => window[k] = v);
 
 /*  */
-const portal: Portal = proxyCall([
+const portal = proxyCall([
   "onMounted",
   "onUpdated",
   "onUnmounted",
@@ -32,16 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.innerHTML = templateStr;
   })();
 
-  const scriptElement = document.querySelector("script[setup]");
-  const setupContent = scriptElement?.textContent || "";
-  const exposedList = getExposedName(setupContent);
+  const setupContent = document.querySelector("script[setup]")?.textContent;
 
   Vue["createApp"]({
     setup() {
       truthCall(portal);
-      return Object.fromEntries(
-        exposedList.map((a) => [a, eval(a)]),
-      );
+      return getExposed(setupContent);
     },
   }).mount("body");
 });
