@@ -17,6 +17,7 @@
   ],
   "author": "tofu-xx <tofu-xx@foxmail.com>",
   "keywords": ["vue3","vue setup","html","vue sfc","vue cdn"],
+  "description": "sfc? html! <script setup> in html",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.5.3",
