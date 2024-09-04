@@ -1,12 +1,3 @@
-
-interface FunPocket {
-  [key: string]: any[][];
-}
-interface Portal {
-  funPocket: FunPocket;
-  truthCallThis: object;
-  proxyCallThis: object;
-}
 export function proxyCall(
   funNameList: string[],
   truthCallThis: object,
@@ -19,16 +10,18 @@ export function proxyCall(
     return eval(fnStr);
   }
   funNameList.forEach((k) => proxyCallThis[k] = _transport(k));
-  return { funPocket, truthCallThis, proxyCallThis } as Portal;
+  return {
+    truthCallThis,
+    proxyCallThis,
+    call() {
+      Object.entries(funPocket).forEach(([vueFnName, argsArr]) => {
+        argsArr.forEach((args) => {
+          truthCallThis[vueFnName](...args);
+        });
+        proxyCallThis[vueFnName] = truthCallThis[vueFnName];
+      });
+    },
+  };
 }
 
-export function truthCall(
-  { funPocket, truthCallThis, proxyCallThis }: Portal,
-) {
-  Object.entries(funPocket).forEach(([vueFnName, argsArr]) => {
-    argsArr.forEach((args) => {
-      truthCallThis[vueFnName](...args);
-    });
-    proxyCallThis[vueFnName] = truthCallThis[vueFnName];
-  });
-}
+
