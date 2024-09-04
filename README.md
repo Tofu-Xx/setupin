@@ -3,6 +3,8 @@
 ## 🤔 what is setupin
 setup in html.
 setupin lets you write vue's `<script setup>` in html.
+## 😝 playground
+[stackblitz](https://stackblitz.com/edit/stackblitz-starters-u6wftp?file=index.html)
 ## 🤯 setupin vs setup
 - setup.vue
 
