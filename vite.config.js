@@ -11,13 +11,5 @@ export default defineConfig({
       fileName: (format) => `main.${format}.js`,
     },
   },
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src'),
-      "@tools": resolve(__dirname, 'src/tools'),
-      "@mode": resolve(__dirname, "src/mode"),
-      "@Vue": resolve(__dirname,"@/assets/vue.global.prod.js")
-    }
-  },
 });
 

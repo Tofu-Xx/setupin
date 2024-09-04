@@ -1,4 +1,5 @@
-import { getExposed, proxyCall, truthCall } from "./tools";
+import { getExposed, getMode, proxyCall, truthCall } from "./tools";
+import { getScriptText } from "./mode";
 import { Vue } from "./assets/vue.global.prod.js";
 
 window["Vue"] = Vue;
@@ -16,6 +17,8 @@ const portal = proxyCall([
 /*  */
 /*  */
 document.addEventListener("DOMContentLoaded", () => {
+  const mode = getMode();
+  console.log(mode);
   (() => {
     const template = document.querySelector("template");
     if (!template) {
@@ -25,13 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
     template?.remove();
     document.body.innerHTML = templateStr;
   })();
-
-  const setupContent = document.querySelector("script[setup]")?.textContent;
-
+  
+  const scriptText = getScriptText(mode);
   Vue["createApp"]({
     setup() {
-      truthCall(portal);
-      return getExposed(setupContent);
+      mode === "in" ? eval(scriptText) : truthCall(portal);
+      return getExposed(scriptText);
     },
   }).mount("body");
 });
