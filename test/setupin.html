@@ -1,12 +1,22 @@
-<script src="https://unpkg.com/setupin/dist/main.umd.js">
-  const count = ref(0)
+<script src="https://unpkg.com/setupin/dist/main.umd.js"></script>
+
+<script setup>
+  const msg = ref('Hello World');
+  const iptRef = ref(null);
+  onMounted(() => {
+    iptRef.value.focus();
+  })
 </script>
 
-
 <template>
-  <button>{{ count }}</button>
+  <input ref="iptRef" v-model="msg">
+  <h1>{{ msg }}</h1>
 </template>
 
 <style>
-  @import "https://unpkg.com/tofukit/tools/reset.css";
+  input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 </style>
