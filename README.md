@@ -1,4 +1,4 @@
-# Setupin
+# setupin
 
 ## 🤔 what is setupin 
 > setupin lets you write vue's \<script **setup**>**in** html.

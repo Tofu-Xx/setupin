@@ -2,9 +2,15 @@
   "name": "setupin",
   "version": "0.0.4",
   "access": "public",
+  "keywords": ["vue3","setup-script","html","sfc","vue-cdn"],
+  "description": "sfc? html!!! <script setup> in html",
+  "homepage": "https://github.com/tofu-xx/setupin#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tofu-Xx/setupin.git"
+    "url": "git+https://github.com/tofu-xx/setupin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tofu-xx/setupin/issues"
   },
   "main": "index.js",
   "scripts": {
@@ -16,8 +22,6 @@
     "dist"
   ],
   "author": "tofu-xx <tofu-xx@foxmail.com>",
-  "keywords": ["vue3","vue setup","html","vue sfc","vue cdn"],
-  "description": "sfc? html! <script setup> in html",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.5.3",

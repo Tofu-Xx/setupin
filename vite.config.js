@@ -5,7 +5,6 @@ export default defineConfig({
   build: {
     lib: {
       entry: "src/index.ts",
-      // entry: "main.ts",
       formats: ["umd"],
       name: "Vue",
       fileName: (format) => `main.${format}.js`,

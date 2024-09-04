@@ -2,14 +2,10 @@
 
 <script setup>
   const msg = ref('Hello World');
-  const iptRef = ref(null);
-  onMounted(() => {
-    iptRef.value.focus();
-  })
+
 </script>
 
 <template>
-  <input ref="iptRef" v-model="msg">
   <h1>{{ msg }}</h1>
 </template>
 
