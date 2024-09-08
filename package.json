@@ -1,6 +1,6 @@
 {
   "name": "setupin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "access": "public",
   "keywords": ["vue3","setup-script","html","sfc","vue-cdn"],
   "description": "sfc? html!!! <script setup> in html",
