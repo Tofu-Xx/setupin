@@ -1,4 +1,4 @@
-export const parseTemplate = () => {
+export const parseTemplate = (): void => {
   const template = document.querySelector("template");
   if (!template) {
     console.warn("No template tag found.");

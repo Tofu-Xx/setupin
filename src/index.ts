@@ -19,7 +19,7 @@ const portal = proxyCall([
 document.addEventListener("DOMContentLoaded", () => {
   parseTemplate();
   const scriptText = getSetupScriptText();
-  if (!scriptText) return;
+  if (scriptText === void 0) return;
   const App = {
     setup() {
       portal.call();

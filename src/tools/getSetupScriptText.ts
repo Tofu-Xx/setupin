@@ -6,5 +6,5 @@ export const getSetupScriptText = () => {
     }
     return void 0;
   }
-  return setupScript.textContent;
+  return setupScript.textContent || "";
 };
