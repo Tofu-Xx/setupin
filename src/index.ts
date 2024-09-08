@@ -1,4 +1,9 @@
-import { getExposed, parseTemplate, proxyCall } from "./tools";
+import {
+  getExposed,
+  getSetupScriptText,
+  parseTemplate,
+  proxyCall,
+} from "./tools";
 import { Vue } from "./assets/vue.global.prod.js";
 
 window["Vue"] = Vue;
@@ -13,7 +18,8 @@ const portal = proxyCall([
 ], Vue);
 document.addEventListener("DOMContentLoaded", () => {
   parseTemplate();
-  const scriptText = document.querySelector("script[setup]")?.textContent || "";
+  const scriptText = getSetupScriptText();
+  if (!scriptText) return;
   const App = {
     setup() {
       portal.call();

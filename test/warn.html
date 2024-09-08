@@ -1,0 +1,24 @@
+<script src="../dist/main.umd.js"></script>
+<!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+<body>
+  <div id="app">
+    <button>{{ count }}</button>
+  </div>
+</body>
+<script>
+  const { createApp, ref } = Vue;
+
+  const count = ref(0);
+
+  const returned = { count };
+  createApp({ setup: () => returned }).mount('#app')
+</script>
+
+<style>
+  @import "https://unpkg.com/tofukit/dist/reset.css";
+</style>
+
+<!-- <template> -->
+
+
+<!-- </template> -->
