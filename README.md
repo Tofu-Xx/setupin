@@ -1,36 +1,33 @@
 # setupin
 
-## 🤔 what is setupin 
+## 🤔 what is setupin
+
 > setupin lets you write vue's \<script **setup**>**in** html.
+
 ## 😝 playground
+
 [stackblitz](https://stackblitz.com/edit/stackblitz-starters-u6wftp?file=index.html)
-## 🤯 setupin vs setup
+
+## 🤯 setupin.html vs setup.vue
+
 - setup.vue
 
 ```vue
 <script setup>
-  import { ref, onMounted } from 'vue';
-  const msg = ref('Hello World');
-  const iptRef = ref(null);
-  onMounted(() => {
-    iptRef.value.focus();
-  })
+  import { ref } from 'vue'
+  const msg = ref('Hello Setupin!')
 </script>
 
 <template>
-  <input ref="iptRef" v-model="msg">
   <h1>{{ msg }}</h1>
 </template>
 
-<style scoped>
-  input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+<style>
+  h1 {
+    color: pink;
   }
 </style>
 ```
-
 
 - setupin.html
 
@@ -38,23 +35,16 @@
 <script src="https://unpkg.com/setupin/dist/main.umd.js"></script>
 
 <script setup>
-  const msg = ref('Hello World');
-  const iptRef = ref(null);
-  onMounted(() => {
-    iptRef.value.focus();
-  })
+  const msg = ref('Hello Setupin!')
 </script>
 
 <template>
-  <input ref="iptRef" v-model="msg">
   <h1>{{ msg }}</h1>
 </template>
 
 <style>
-  input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  h1 {
+    color: pink;
   }
 </style>
 ```
