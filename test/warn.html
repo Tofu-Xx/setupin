@@ -2,12 +2,12 @@
 <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
 <body>
   <div id="app">
-    <button>{{ count }}</button>
+    <button @click="count++">{{ count }}</button>
   </div>
 </body>
 
 <script>
-  const { createApp, ref } = Vue;
+  // const { createApp, ref } = Vue;
   const count = ref(0);
   const returned = { count };
   createApp({ setup: () => returned }).mount('#app')
@@ -16,8 +16,3 @@
 <style>
   @import "https://unpkg.com/tofukit/dist/reset.css";
 </style>
-
-<!-- <template> -->
-
-
-<!-- </template> -->
