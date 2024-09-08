@@ -1,7 +1,6 @@
 {
   "name": "setupin",
   "version": "0.0.6",
-  "access": "public",
   "keywords": ["vue3","setup-script","html","sfc","vue-cdn"],
   "description": "sfc? html!!! <script setup> in html",
   "homepage": "https://github.com/tofu-xx/setupin#readme",
@@ -29,6 +28,7 @@
     "vite": "^5.4.0"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }
