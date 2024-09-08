@@ -13,8 +13,8 @@ function getExposedName(scriptContent: string) {
     });
 }
 
-export function getExposed(setupContent: string) {
+export function getExposed(scriptContent: string) {
   return Object.fromEntries(
-    getExposedName(setupContent || "").map((a) => [a, eval(a)]),
+    getExposedName(scriptContent).map((a) => [a, eval(a)]),
   );
 }

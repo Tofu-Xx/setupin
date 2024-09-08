@@ -1,0 +1,9 @@
+<script src="../dist/main.umd.js"></script>
+<script setup>
+  const iptRef = ref(null);
+  onMounted(() => iptRef.value.focus());
+</script>
+
+<template>
+  <input type="text" ref="iptRef" />
+</template>
