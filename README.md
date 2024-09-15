@@ -6,7 +6,7 @@
 
 ## 😝 playground
 
-[stackblitz](https://stackblitz.com/edit/stackblitz-starters-u6wftp?file=index.html)
+[stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
 
 ## 🤯 setupin.html vs setup.vue
 
