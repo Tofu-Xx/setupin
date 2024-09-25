@@ -4,7 +4,7 @@ export const parseTemplate = (): void => {
     console.warn("No template tag found.");
     return void 0;
   }
-  const templateStr = template.innerHTML;
+  const templateContent = template.content.cloneNode(true);
+  document.body.replaceChildren(templateContent);
   template.remove();
-  document.body.innerHTML = templateStr;
 };
