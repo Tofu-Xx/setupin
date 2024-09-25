@@ -1,15 +1,15 @@
 <script src="https://unpkg.com/setupin/dist/main.umd.js"></script>
 
 <script setup>
-  const msg = ref('Hello Setupin!')
+  const count = ref(0)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <button @click="count++">{{ count }}</button>
 </template>
 
 <style>
-  h1 {
-    color: pink;
+  button {
+    cursor: pointer;
   }
 </style>
