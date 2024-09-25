@@ -21,7 +21,8 @@
   "scripts": {
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
-    "release": "bumpp && pnpm publish"
+    "release": "bumpp && pnpm publish",
+    "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.prod.js; } > src/assets/vue.js\""
   },
   "files": [
     "dist"
