@@ -4,7 +4,7 @@ import {
   parseTemplate,
   proxyCall,
 } from "./tools";
-import { Vue } from "./assets/vue.global.prod.js";
+import { Vue } from "./assets/vue.js";
 
 window["Vue"] = Vue;
 Object.entries(Vue).forEach(([k, v]) => window[k] = v);
