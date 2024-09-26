@@ -9,12 +9,6 @@
 
 setupin 让你可以在 HTML 中编写 vue 的 \<script **setup**>**。
 
-## 😝 演练场
-
-在
-[stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
-上尝试一下吧！
-
 ## 🤯 setupin.html vs setup.vue
 
 <h1 align="center">
@@ -22,4 +16,10 @@ setupin 让你可以在 HTML 中编写 vue 的 \<script **setup**>**。
   <img src="/docs/svgs/setupin.html.svg" width="49%">
 </h1>
 
-> 怎么样, 它们很像吧
+ 怎么样, 它们很像吧
+
+## 😝 演练场
+
+在
+[stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
+上尝试一下吧！

@@ -9,12 +9,6 @@
 
 setupin allows you to write vue's \<script **setup**>**in** in HTML
 
-## 😝 playground
-
-try it on
-[stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
-!
-
 ## 🤯 setupin.html vs setup.vue
 
 <h1 align="center">
@@ -22,4 +16,10 @@ try it on
   <img src="/docs/svgs/setupin.html.svg" width="49%">
 </h1>
 
-> How about that? Aren't they similar
+ How about that? Aren't they similar
+
+## 😝 playground
+
+try it on
+[stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
+!
