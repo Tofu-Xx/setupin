@@ -10,10 +10,10 @@ setupin allows you to write vue's \<script **setup**>**in** in HTML
 
 ## 🤯 setupin.html vs setup.vue
 
-<h1 align="center">
+<p align="center">
   <img src="/docs/svgs/setup.vue.svg" width="49%">
   <img src="/docs/svgs/setupin.html.svg" width="49%">
-</h1>
+</p>
 
  How about that? Aren't they similar
 

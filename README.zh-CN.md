@@ -10,10 +10,10 @@ setupin 让你可以在 HTML 中编写 vue 的 \<script **setup**>**。
 
 ## 🤯 setupin.html vs setup.vue
 
-<h1 align="center">
+<p align="center">
   <img src="/docs/svgs/setup.vue.svg" width="49%">
   <img src="/docs/svgs/setupin.html.svg" width="49%">
-</h1>
+</p>
 
  怎么样, 它们很像吧
 
