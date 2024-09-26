@@ -34,5 +34,3 @@ try it on
   unpkg.com/setupin/dist/main.umd.js
 - **jsdelivr**\
   cdn.jsdelivr.net/npm/setupin/dist/main.umd.js
-- **cdnjs**\
-  cdnjs.cloudflare.com/ajax/libs/setupin/0.0.1/main.umd.js
