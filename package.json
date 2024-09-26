@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/tofu-xx/setupin/issues"
   },
-  "main": "index.js",
+  "main": "dist/main.umd.js",
   "scripts": {
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
