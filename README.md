@@ -2,7 +2,7 @@
   <b>English</b> | <a href="./README.zh-CN.md">简体中文</a>
 </p>
 
-<h1 align="center">setupin</h1>
+<p align="center"><img src="./docs/logo.png"></p>
 
 <p align="center">
 <a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin"></a>
