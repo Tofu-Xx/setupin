@@ -1,19 +1,19 @@
 <p align="right">
-  <b>English</b> | <a href="./README.zh-CN.md">简体中文</a>
+  <a href="./README.md">English</a> | <b>简体中文</b>
 </p>
 
 <h1 align="center">setupin</h1>
 ---
 
-## 🤔 why setupin
+## 🤔 为什么选择 setupin
 
-setupin allows you to write vue's \<script **setup**>**in** in HTML
+setupin 让你可以在 HTML 中编写 vue 的 \<script **setup**>**。
 
-## 😝 playground
+## 😝 演练场
 
-try it on
+在
 [stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
-!
+上尝试一下吧！
 
 ## 🤯 setupin.html vs setup.vue
 
@@ -22,4 +22,4 @@ try it on
   <img src="/docs/svgs/setupin.html.svg" width="49%">
 </h1>
 
-> How about that? Aren't they similar
+> 怎么样, 它们很像吧
