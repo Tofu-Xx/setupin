@@ -9,42 +9,9 @@
 [stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
 
 ## 🤯 setupin.html vs setup.vue
+<h1 align="center">
+  <img src="/docs/svgs/setup.vue.svg" width="49%">
+  <img src="/docs/svgs/setupin.html.svg" width="49%">
+</h1>
 
-- setup.vue
-
-```vue
-<script setup>
-  import { ref } from 'vue'
-  const msg = ref('Hello Setupin!')
-</script>
-
-<template>
-  <h1>{{ msg }}</h1>
-</template>
-
-<style>
-  h1 {
-    color: pink;
-  }
-</style>
-```
-
-- setupin.html
-
-```html
-<script src="https://unpkg.com/setupin/dist/main.umd.js"></script>
-
-<script setup>
-  const msg = ref('Hello Setupin!')
-</script>
-
-<template>
-  <h1>{{ msg }}</h1>
-</template>
-
-<style>
-  h1 {
-    color: pink;
-  }
-</style>
-```
+> How about that? Aren't they similar
