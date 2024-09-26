@@ -6,7 +6,7 @@
 
 ## 🤔 为什么选择 setupin
 
-setupin 让你可以在 HTML 中编写 vue 的 \<script **setup**>**。
+setupin 让你可以在 HTML 中编写 vue 的 \<script setup>。
 
 ## 🤯 setupin.html vs setup.vue
 
