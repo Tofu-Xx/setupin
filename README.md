@@ -11,7 +11,7 @@
 
 ## 🤔 why setupin
 
-setupin allows you to write vue's \<script **setup**>**in** in HTML
+setupin allows you to write vue's \<script **setup**>**in** HTML
 
 ## 🤯 setupin.html vs setup.vue
 
