@@ -3,7 +3,6 @@
 </p>
 
 <h1 align="center">setupin</h1>
----
 
 ## 🤔 为什么选择 setupin
 
