@@ -4,6 +4,11 @@
 
 <h1 align="center">setupin</h1>
 
+<p align="center">
+<a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin"></a>
+<a href="https://stackblitz.com/edit/setupin-sample?file=index.html"><img src="https://img.shields.io/badge/Open%20in%20StackBlitz-blue"></a>
+</p>
+
 ## 🤔 why setupin
 
 setupin allows you to write vue's \<script **setup**>**in** in HTML
@@ -22,3 +27,12 @@ setupin allows you to write vue's \<script **setup**>**in** in HTML
 try it on
 [stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
 !
+
+## 🥐 CDN
+
+- **unpkg**\
+  unpkg.com/setupin/dist/main.umd.js
+- **jsdelivr**\
+  cdn.jsdelivr.net/npm/setupin/dist/main.umd.js
+- **cdnjs**\
+  cdnjs.cloudflare.com/ajax/libs/setupin/0.0.1/main.umd.js
