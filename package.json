@@ -14,12 +14,11 @@
     "url": "https://github.com/tofu-xx/setupin/issues"
   },
   "keywords": ["vue3", "setup-script", "html", "sfc", "vue-cdn"],
-  "main": "dist/main.umd.js",
-  "files": ["dist/main.js"],
+  "files": ["main.js"],
   "scripts": {
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
-    "release": "bumpp && pnpm publish",
+    "release": "bumpp && cp dist/main.js main.js && npm publish && rm main.js",
     "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.prod.js; } > src/assets/vue.js\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
