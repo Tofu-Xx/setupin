@@ -7,7 +7,7 @@ export default defineConfig({
       entry: 'src/index.ts',
       formats: ['umd'],
       name: 'Vue',
-      fileName: 'main.js',
+      fileName: () => 'main.js',
     },
   },
 })
