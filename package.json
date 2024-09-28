@@ -15,7 +15,7 @@
   },
   "keywords": ["vue3", "setup-script", "html", "sfc", "vue-cdn"],
   "main": "dist/main.umd.js",
-  "files": ["dist"],
+  "files": ["dist/main.js"],
   "scripts": {
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
