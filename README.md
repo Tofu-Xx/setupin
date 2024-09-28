@@ -31,6 +31,6 @@ try it on
 ## 🥐 CDN
 
 - **unpkg**\
-  unpkg.com/setupin/dist/main.umd.js
+  unpkg.com/setupin/main.js
 - **jsdelivr**\
-  cdn.jsdelivr.net/npm/setupin/dist/main.umd.js
+  cdn.jsdelivr.net/npm/setupin/main.js
