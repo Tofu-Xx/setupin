@@ -1,14 +1,13 @@
-import { defineConfig } from "vite";
-import { resolve } from "path";
+import { defineConfig } from 'vite'
+
 export default defineConfig({
-  base: "/",
+  base: '/',
   build: {
     lib: {
-      entry: "src/index.ts",
-      formats: ["umd"],
-      name: "Vue",
-      fileName: (format) => `main.${format}.js`,
+      entry: 'src/index.ts',
+      formats: ['umd'],
+      name: 'Vue',
+      fileName: format => `main.${format}.js`,
     },
   },
-});
-
+})

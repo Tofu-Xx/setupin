@@ -1,14 +1,10 @@
 {
   "name": "setupin",
+  "type": "module",
   "version": "0.0.7",
-  "keywords": [
-    "vue3",
-    "setup-script",
-    "html",
-    "sfc",
-    "vue-cdn"
-  ],
   "description": "sfc? html!!! <script setup> in html",
+  "author": "tofu-xx <tofu-xx@foxmail.com>",
+  "license": "MIT",
   "homepage": "https://github.com/tofu-xx/setupin#readme",
   "repository": {
     "type": "git",
@@ -17,25 +13,27 @@
   "bugs": {
     "url": "https://github.com/tofu-xx/setupin/issues"
   },
+  "keywords": ["vue3", "setup-script", "html", "sfc", "vue-cdn"],
   "main": "dist/main.umd.js",
+  "files": ["dist"],
   "scripts": {
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
     "release": "bumpp && pnpm publish",
-    "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.prod.js; } > src/assets/vue.js\""
+    "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.prod.js; } > src/assets/vue.js\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
-  "files": [
-    "dist"
-  ],
-  "author": "tofu-xx <tofu-xx@foxmail.com>",
-  "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^3.7.3",
     "@types/node": "^22.5.3",
     "bumpp": "^9.5.2",
+    "eslint": "^9.11.1",
+    "eslint-plugin-format": "^0.1.2",
     "vite": "^5.4.0"
   }
 }

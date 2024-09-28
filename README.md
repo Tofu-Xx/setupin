@@ -20,7 +20,7 @@ setupin allows you to write vue's \<script **setup**>**in** HTML
   <img src="/docs/svgs/setupin.html.svg" width="49%">
 </p>
 
- How about that? Aren't they similar
+How about that? Aren't they similar
 
 ## 😝 playground
 
