@@ -1,4 +1,4 @@
-export function proxyCall(fnNameList: string[], truthThis: object, proxyThis: object = globalThis) {
+export function proxyCall(fnNameList: string[], truthThis: object, proxyThis: object = window) {
   const funPocket: { [key: string]: any[][] } = {}
   const _transport = (fnName: string) => {
     funPocket[fnName] = []
