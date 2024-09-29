@@ -30,13 +30,12 @@ try it on
 
 ## 🥐 CDN
 
-- **unpkg**
-
-  ```html
+**unpkg**
+```html
 <script src="https://unpkg.com/setupin/main.js"></script>
 ```
-- **jsdelivr**
 
-  ```html
+**jsdelivr**
+```html
 <script src="https://cdn.jsdelivr.net/npm/setupin/main.js"></script>
 ```
