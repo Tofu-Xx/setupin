@@ -32,7 +32,11 @@ try it on
 
 - **unpkg**
 
-  ```https://unpkg.com/setupin/main.js```
+  ```html
+<script src="https://unpkg.com/setupin/main.js"></script>
+```
 - **jsdelivr**
 
-  ```https://cdn.jsdelivr.net/npm/setupin/main.js```
+  ```html
+<script src="https://cdn.jsdelivr.net/npm/setupin/main.js"></script>
+```
