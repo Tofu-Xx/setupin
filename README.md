@@ -30,7 +30,9 @@ try it on
 
 ## 🥐 CDN
 
-- **unpkg**\
-  unpkg.com/setupin/main.js
-- **jsdelivr**\
-  cdn.jsdelivr.net/npm/setupin/main.js
+- **unpkg**
+
+  ```https://unpkg.com/setupin/main.js```
+- **jsdelivr**
+
+  ```https://cdn.jsdelivr.net/npm/setupin/main.js```
