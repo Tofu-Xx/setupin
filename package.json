@@ -13,13 +13,22 @@
   "bugs": {
     "url": "https://github.com/tofu-xx/setupin/issues"
   },
-  "keywords": ["vue3", "setup-script", "html", "sfc", "vue-cdn"],
-  "files": ["main.js"],
+  "keywords": [
+    "vue3",
+    "setup-script",
+    "html",
+    "sfc",
+    "vue-cdn"
+  ],
+  "files": [
+    "main.js"
+  ],
   "scripts": {
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
     "release": "bumpp && cp dist/main.js main.js && npm publish && rm main.js",
     "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.prod.js; } > src/assets/vue.js\"",
+    "up": "taze major -I",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -29,10 +38,11 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
-    "@types/node": "^22.5.3",
-    "bumpp": "^9.5.2",
+    "@types/node": "^22.7.4",
+    "bumpp": "^9.6.1",
     "eslint": "^9.11.1",
     "eslint-plugin-format": "^0.1.2",
-    "vite": "^5.4.0"
+    "taze": "^0.17.2",
+    "vite": "^5.4.8"
   }
 }
