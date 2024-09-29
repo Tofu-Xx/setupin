@@ -29,7 +29,12 @@ setupin 让你可以在 HTML 中编写 vue 的 \<script setup>。
 
 ## 🥐 CDN
 
-- **unpkg**\
-  unpkg.com/setupin/main.js
-- **jsdelivr**\
-  cdn.jsdelivr.net/npm/setupin/main.js
+**unpkg**
+```html
+<script src="https://unpkg.com/setupin/main.js"></script>
+```
+
+**jsdelivr**
+```html
+<script src="https://cdn.jsdelivr.net/npm/setupin/main.js"></script>
+```
