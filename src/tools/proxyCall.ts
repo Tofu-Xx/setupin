@@ -1,18 +1,21 @@
-export function proxyCall(fnNameList: string[], truthThis: object, proxyThis: object = window) {
+type FnName = string
+export function proxyCall(fnNameList: FnName[], truthThis: object, proxyThis: object = window) {
   const funPocket: { [key: string]: any[][] } = {}
   const _transport = (fnName: string) => {
     funPocket[fnName] = []
-    eval(`${fnName} = (...args) => funPocket[fnName].push(args)`)
-    return eval(fnName) as () => any
+    proxyThis[fnName] = (...args) => {
+      funPocket[fnName].push(args)
+    }
+    return proxyThis[fnName]
   }
   fnNameList.forEach(k => proxyThis[k] = _transport(k))
   return {
     call() {
-      Object.entries(funPocket).forEach(([vueFnName, argsArr]) => {
-        argsArr.forEach((args) => {
-          truthThis[vueFnName](...args)
+      Object.entries(funPocket).forEach(([fnName, calls]) => {
+        calls.forEach((args) => {
+          truthThis[fnName](...args)
         })
-        proxyThis[vueFnName] = truthThis[vueFnName]
+        proxyThis[fnName] = truthThis[fnName]
       })
     },
   }
