@@ -11,13 +11,13 @@ for (const k in Vue) {
   window[k] = Vue[k]
 }
 const portal = proxyCall([
+  'useTemplateRef',
   'onMounted',
   'onUpdated',
   'onUnmounted',
   'onBeforeMount',
   'onBeforeUpdate',
   'onBeforeUnmount',
-  'useTemplateRef',
 ], Vue)
 document.addEventListener('DOMContentLoaded', () => {
   parseTemplate()
