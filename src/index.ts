@@ -17,6 +17,7 @@ const portal = proxyCall([
   'onBeforeMount',
   'onBeforeUpdate',
   'onBeforeUnmount',
+  'useTemplateRef',
 ], Vue)
 document.addEventListener('DOMContentLoaded', () => {
   parseTemplate()

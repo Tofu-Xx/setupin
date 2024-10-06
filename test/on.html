@@ -1,8 +1,11 @@
 <script src="../dist/main.js"></script>
 <script setup>
   /* what? */
-  const ipt = useTemplateRef()
-  onMounted(() => ipt.value.focus())
+  const iptRef = useTemplateRef('ipt')
+  onMounted(() => {
+    const i = unref(iptRef)
+    i.value.focus()
+  })
 </script>
 
 <template>
