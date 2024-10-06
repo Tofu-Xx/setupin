@@ -12,7 +12,7 @@ export function proxyCall(fnNameList: FnName[], truthThis: object, proxyThis: ob
   const _transport = (fnName: string) => {
     funPocket[fnName] = []
     proxyThis[fnName] = (...args) => {
-      const count = funPocket[fnName].push({ args, ret: window.ref(void 0) })
+      const count = funPocket[fnName].push({ args, ret: void 0 })
       return funPocket[fnName][count - 1].ret
     }
     return proxyThis[fnName]
@@ -23,7 +23,7 @@ export function proxyCall(fnNameList: FnName[], truthThis: object, proxyThis: ob
     call() {
       Object.entries(funPocket).forEach(([fnName, calls]) => {
         calls.forEach((call) => {
-          call.ret.value = truthThis[fnName](...call.args)
+          call.ret = truthThis[fnName](...call.args)
         })
         proxyThis[fnName] = truthThis[fnName]
       })
