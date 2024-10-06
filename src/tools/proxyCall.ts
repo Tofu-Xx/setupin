@@ -13,7 +13,7 @@ export function proxyCall(fnNameList: FnName[], truthThis: object, proxyThis: ob
     funPocket[fnName] = []
     proxyThis[fnName] = (...args) => {
       const count = funPocket[fnName].push({ args, ret: void 0 })
-      return funPocket[fnName][count - 1].ret
+      return window.computed(() => funPocket[fnName][count - 1].ret)
     }
     return proxyThis[fnName]
   }
