@@ -20,13 +20,14 @@
     "sfc",
     "vue-cdn"
   ],
+  "main": "dist/main.js",
   "files": [
-    "main.js"
+    "dist"
   ],
   "scripts": {
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
-    "release": "bumpp && cp dist/main.js main.js && npm publish && rm main.js",
+    "release": "bumpp && npm publish",
     "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.prod.js; } > src/assets/vue.js\"",
     "up": "taze major -I",
     "lint": "eslint .",
