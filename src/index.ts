@@ -3,7 +3,7 @@ import { parseSetup } from './tools/parseSetup'
 import { parseTemplate } from './tools/parseTemplate'
 
 let setupText: string
-const callback = function (mutations: MutationRecord[]) {
+const callback = function (mutations: MutationRecord[], observer: MutationObserver) {
   for (const mutation of mutations) {
     const target = mutation.target as HTMLElement
     if (target.tagName === 'SCRIPT' && target.hasAttribute('setup')) {
@@ -14,6 +14,7 @@ const callback = function (mutations: MutationRecord[]) {
     if (target.tagName === 'HEAD' && template) {
       parseTemplate(template)
       window.createApp(parseSetup(setupText)).mount(document.body)
+      observer.disconnect()
     }
   }
 }
