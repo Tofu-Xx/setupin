@@ -5,15 +5,20 @@
 <p align="center"><img src="./public/svgs/logo.svg"></p>
 
 <p align="center">
-<a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin"></a>
-<a href="https://stackblitz.com/edit/setupin-sample?file=index.html"><img src="https://img.shields.io/badge/Open%20in%20StackBlitz-blue"></a>
+  <a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin"></a>
+  <a href="https://stackblitz.com/edit/setupin-sample?file=index.html"><img src="https://img.shields.io/badge/Open%20in%20StackBlitz-blue"></a>
 </p>
 
-## 🤔 why setupin
+## 😏 为什么选择 setupin
 
-setupin allows you to write vue's \<script **setup**>**in** HTML
+> **setupin** provides an experience similar to Vue Single File Components ([SFC](https://vuejs.org/api/sfc-spec.html#sfc-syntax-specification)),
+> allows you to write vue's \<script **setup**>**in** HTML.
 
-## 🤯 setupin.html vs setup.vue
+- **Quick Experience**: Allow users to quickly experiment with Vue's new features in HTML and feel its charm.
+- **Easy Development**: Provide a convenient way to rapidly develop small applications without complex configurations.
+- **Learning Support**: Offer a friendly environment for beginners to easily grasp the core concepts and usage of Vue.
+
+## 🤯 setupin.html _vs_ setup.vue
 
 <p align="center">
   <img src="./public/svgs/setup.vue.svg" width="49%">
@@ -21,6 +26,35 @@ setupin allows you to write vue's \<script **setup**>**in** HTML
 </p>
 
 How about that? Aren't they similar
+
+## 🤔 Usage
+
+The \<script\> of setupin supports two writing styles.
+
+### 1. Recommended
+
+```html
+<script src="https://unpkg.com/setupin">
+  //...
+</script>
+
+<template>
+  <!-- ... -->
+</template>
+```
+
+### 2. Closer to Vue SFC
+
+```html
+<script src="https://unpkg.com/setupin"></script>
+<script setup>
+  //...
+</script>
+
+<template>
+  <!-- ... -->
+</template>
+```
 
 ## 😝 playground
 

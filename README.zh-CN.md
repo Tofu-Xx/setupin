@@ -5,22 +5,56 @@
 <p align="center"><img src="./public/svgs/logo.svg"></p>
 
 <p align="center">
-<a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin"></a>
-<a href="https://stackblitz.com/edit/setupin-sample?file=index.html"><img src="https://img.shields.io/badge/Open%20in%20StackBlitz-blue"></a>
+  <a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin"></a>
+  <a href="https://stackblitz.com/edit/setupin-sample?file=index.html"><img src="https://img.shields.io/badge/Open%20in%20StackBlitz-blue"></a>
 </p>
 
-## 🤔 为什么选择 setupin
+## 😏 为什么选择 setupin
 
-setupin 让你可以在 HTML 中编写 vue 的 \<script setup>。
+> **setupin** 提供了类似于 Vue 单文件组件 ([SFC](https://vuejs.org/api/sfc-spec.html#sfc-syntax-specification)) 的体验，
+> 让你可以在 HTML 中编写 vue 的 \<script setup>。
 
-## 🤯 setupin.html vs setup.vue
+- **快速体验**：让用户可以快速在 HTML 中尝试 Vue 的新特性，感受其魅力。
+- **简易开发**：提供便捷的方式，助力快速开发小型应用，无需繁琐的配置。
+- **学习支持**：为初学者提供一个友好的环境，帮助他们轻松上手 Vue 的核心概念和用法。
+
+## 🤯 setupin.html _vs_ setup.vue
 
 <p align="center">
   <img src="./public/svgs/setup.vue.svg" width="49%">
   <img src="./public/svgs/setupin.html.svg" width="49%">
 </p>
 
-怎么样, 它们很像吧
+怎么样, 它们很像吧。
+
+## 🤔 用法
+
+setupin的 \<script\> 支持两种写法。
+
+### 1. 更推荐
+
+```html
+<script src="https://unpkg.com/setupin">
+  //...
+</script>
+
+<template>
+  <!-- ... -->
+</template>
+```
+
+### 2. 更接近Vue SFC
+
+```html
+<script src="https://unpkg.com/setupin"></script>
+<script setup>
+  //...
+</script>
+
+<template>
+  <!-- ... -->
+</template>
+```
 
 ## 😝 演练场
 
