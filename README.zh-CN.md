@@ -2,7 +2,7 @@
   <a href="./README.md">English</a> | <b>简体中文</b>
 </p>
 
-<p align="center"><img src="./docs/logo.png"></p>
+<p align="center"><img src="./public/svgs/logo.svg"></p>
 
 <p align="center">
 <a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin"></a>
@@ -16,8 +16,8 @@ setupin 让你可以在 HTML 中编写 vue 的 \<script setup>。
 ## 🤯 setupin.html vs setup.vue
 
 <p align="center">
-  <img src="/docs/svgs/setup.vue.svg" width="49%">
-  <img src="/docs/svgs/setupin.html.svg" width="49%">
+  <img src="./public/svgs/setup.vue.svg" width="49%">
+  <img src="./public/svgs/setupin.html.svg" width="49%">
 </p>
 
 怎么样, 它们很像吧
