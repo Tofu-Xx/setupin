@@ -1,7 +1,5 @@
-import { once } from './once'
-
-export const parseTemplate = once(() => {
-  const template = document.querySelector('template')
+document.addEventListener('DOMContentLoaded', () => {
+  const template = document.querySelector('head > template') as HTMLTemplateElement
   if (!template) {
     console.warn('No template found')
     return
