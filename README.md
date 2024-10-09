@@ -9,7 +9,7 @@
   <a href="https://stackblitz.com/edit/setupin-sample?file=index.html"><img src="https://img.shields.io/badge/Open%20in%20StackBlitz-blue"></a>
 </p>
 
-## 😏 为什么选择 setupin
+## 😏 why setupin
 
 > **setupin** provides an experience similar to Vue Single File Components ([SFC](https://vuejs.org/api/sfc-spec.html#sfc-syntax-specification)),
 > allows you to write vue's \<script **setup**>**in** HTML.
