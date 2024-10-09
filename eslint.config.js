@@ -8,5 +8,6 @@ export default antfu({
     'regexp/no-super-linear-backtracking': 'off',
     'no-new-func': 'off',
     'format/prettier': 'off',
+    'antfu/if-newline': 'off',
   },
 })
