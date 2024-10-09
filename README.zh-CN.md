@@ -27,41 +27,12 @@
 
 怎么样, 它们很像吧。
 
-## 🤔 用法
-
-setupin的 \<script\> 支持两种写法。
-
-### 1. 更推荐
-
-```html
-<script src="https://unpkg.com/setupin">
-  //...
-</script>
-
-<template>
-  <!-- ... -->
-</template>
-```
-
-### 2. 更接近Vue SFC
-
-```html
-<script src="https://unpkg.com/setupin"></script>
-<script setup>
-  //...
-</script>
-
-<template>
-  <!-- ... -->
-</template>
-```
-
 ## 😝 演练场
 
 在 [stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
 上尝试一下吧！
 
-## 🥐 CDN
+## 🥰 CDN
 
 **unpkg**
 

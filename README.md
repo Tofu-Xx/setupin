@@ -27,42 +27,13 @@
 
 How about that? Aren't they similar
 
-## 🤔 Usage
-
-The \<script\> of setupin supports two writing styles.
-
-### 1. Recommended
-
-```html
-<script src="https://unpkg.com/setupin">
-  //...
-</script>
-
-<template>
-  <!-- ... -->
-</template>
-```
-
-### 2. Closer to Vue SFC
-
-```html
-<script src="https://unpkg.com/setupin"></script>
-<script setup>
-  //...
-</script>
-
-<template>
-  <!-- ... -->
-</template>
-```
-
 ## 😝 playground
 
 try it on
 [stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
 !
 
-## 🥐 CDN
+## 🥰 CDN
 
 **unpkg**
 
