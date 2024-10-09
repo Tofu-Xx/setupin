@@ -1,11 +1,6 @@
 import { Vue } from './assets/vue.js'
 import { getExposed, getSetupScriptText, parseTemplate, proxyCall } from './tools'
 
-declare global {
-  interface Window {
-    [key: string]: any
-  }
-}
 window.Vue = Vue
 for (const k in Vue) {
   window[k] = Vue[k]
