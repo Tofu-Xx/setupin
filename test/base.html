@@ -1,5 +1,9 @@
 <script src="../dist/main.js"></script>
 
+<template>
+  <button @click="increment">{{ count }}</button>
+</template>
+
 <script setup>
   console.log('yes')
   const count = ref(0)
@@ -7,10 +11,6 @@
     count.value++
   }
 </script>
-
-<template>
-  <button @click="increment">{{ count }}</button>
-</template>
 
 <style>
   button {
