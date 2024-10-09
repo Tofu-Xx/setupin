@@ -5,7 +5,7 @@
 <p align="center"><img src="./public/svgs/logo.svg"></p>
 
 <p align="center">
-  <a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin"></a>
+  <a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin?color=orange"></a>
   <a href="https://stackblitz.com/edit/setupin-sample?file=index.html"><img src="https://img.shields.io/badge/Open%20in%20StackBlitz-blue"></a>
 </p>
 
