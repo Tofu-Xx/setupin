@@ -7,12 +7,12 @@ const callback = function (mutations: MutationRecord[]) {
   for (const mutation of mutations) {
     const target = mutation.target as HTMLElement
     if (target.tagName === 'SCRIPT' && target.hasAttribute('setup')) {
-      setupText = target.textContent || ''
-      target.setAttribute('src', '')
+      setupText = target.textContent!
+      target.remove()
     }
     const template = [...target.children].find(el => el.tagName === 'TEMPLATE')
     if (target.tagName === 'HEAD' && template) {
-      parseTemplate()
+      parseTemplate(template)
       window.createApp(parseSetup(setupText)).mount(document.body)
     }
   }
