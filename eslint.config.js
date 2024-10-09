@@ -6,7 +6,7 @@ export default antfu({
   formatters: true,
   rules: {
     'regexp/no-super-linear-backtracking': 'off',
-    'no-eval': 'off',
+    'no-new-func': 'off',
     'antfu/if-newline': 'off',
   },
 })

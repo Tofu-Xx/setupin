@@ -1,9 +1,7 @@
-<script src="../dist/main.js"></script>
-<script setup>
-  /* 不建议使用useTemplateRef */
-  const iptRef = useTemplateRef('ipt')
+<script setup src="../dist/main.js">
+  const iptRef = useTemplateRef('ipt');
   onMounted(() => {
-    iptRef.value.value.focus()
+    iptRef.value.focus();
   })
 </script>
 

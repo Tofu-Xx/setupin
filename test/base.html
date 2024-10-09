@@ -1,12 +1,14 @@
-<!-- <script src="https://unpkg.com/setupin/main.js"></script> -->
-<script src="https://unpkg.com/setupin"></script>
+<script src="../dist/main.js"></script>
 
 <script setup>
   const count = ref(0)
+  const increment = () => {
+    count.value++
+  }
 </script>
 
 <template>
-  <button @click="count++">{{ count }}</button>
+  <button @click="increment">{{ count }}</button>
 </template>
 
 <style>
