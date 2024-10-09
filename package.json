@@ -1,7 +1,7 @@
 {
   "name": "setupin",
   "type": "module",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "sfc? html!!! <script setup> in html",
   "author": "tofu-xx <tofu-xx@foxmail.com>",
   "license": "MIT",
