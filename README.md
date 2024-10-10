@@ -11,7 +11,8 @@
 
 ## 😏 Why setupin
 
-> **setupin** provides an experience similar to Vue Single File Components ([SFC](https://vuejs.org/api/sfc-spec.html#sfc-syntax-specification)),
+> **setupin** provides a writing experience similar to Vue Single File Components ([SFC](https://vuejs.org/api/sfc-spec.html#sfc-syntax-specification)),
+
 > allows you to write vue's \<script **setup**>**in** HTML.
 
 - **Quick Experience**: Allow users to quickly experiment with Vue's new features in HTML and feel its charm.
@@ -35,13 +36,13 @@ try it on
 
 ## 🥰 CDN
 
-**unpkg**
+- **unpkg**
 
 ```html
 <script src="https://unpkg.com/setupin"></script>
 ```
 
-**jsdelivr**
+- **jsdelivr**
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/setupin"></script>

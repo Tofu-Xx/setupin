@@ -11,7 +11,8 @@
 
 ## 😏 为什么选择 setupin
 
-> **setupin** 提供了类似于 Vue 单文件组件 ([SFC](https://vuejs.org/api/sfc-spec.html#sfc-syntax-specification)) 的体验，
+> **setupin** 提供类似于 Vue 单文件组件 ([SFC](https://vuejs.org/api/sfc-spec.html#sfc-syntax-specification)) 的书写体验，
+
 > 让你可以在 HTML 中编写 vue 的 \<script setup>。
 
 - **快速体验**：让用户可以快速在 HTML 中尝试 Vue 的新特性，感受其魅力。
@@ -34,13 +35,13 @@
 
 ## 🥰 CDN
 
-**unpkg**
+- **unpkg**
 
 ```html
 <script src="https://unpkg.com/setupin"></script>
 ```
 
-**jsdelivr**
+- **jsdelivr**
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/setupin"></script>
