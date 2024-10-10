@@ -1,6 +1,8 @@
+import { Vue } from './assets/vue.js'
 import { observe } from './observe'
 import { parse } from './parse'
-import './loadVue'
+
+window.Vue = Vue
 
 let App: any
 
@@ -17,5 +19,5 @@ observe('script[setup]', (script) => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-  window.createApp(App).mount('[data-setupin-template]')
+  (Vue as any).createApp(App).mount('[data-setupin-template]')
 })

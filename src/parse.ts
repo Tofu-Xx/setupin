@@ -6,6 +6,6 @@ export function parse(setupScript: HTMLScriptElement) {
   const setupglobalText = setupText.replace(localAreaRex, '').replace(commentsRex, '')
   const retNames = Array.from(setupglobalText.matchAll(varRex), ([_, v]) => v).join(',')
   return {
-    setup: new Function(`${setupText} return { ${retNames} }`),
+    setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${retNames} }`),
   }
 }
