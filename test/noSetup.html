@@ -1,12 +1,14 @@
 <script src="../dist/main.js"></script>
 
-<script setup>
+<template>
+  <input type="text" ref="ipt" v-model="msg" />
+  <h1>{{ msg }}</h1>
+</template>
+
+<script>
+  const msg = ref('input');
   const iptRef = useTemplateRef('ipt');
   onMounted(() => {
     iptRef.value.focus();
   })
 </script>
-
-<template>
-  <input type="text" ref="ipt" />
-</template>

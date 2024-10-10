@@ -1,0 +1,18 @@
+<script src="../dist/main.js"></script>
+
+<body>
+  <input type="text" ref="ipt" />
+</body>
+
+<script setup>
+  const iptRef = useTemplateRef('ipt');
+  onMounted(() => {
+    iptRef.value.focus();
+  })
+</script>
+
+<style>
+  input {
+    width: 100%;
+  }
+</style>
