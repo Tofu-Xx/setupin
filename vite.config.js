@@ -5,7 +5,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/index.ts',
-      formats: ['umd'],
+      formats: ['iife'],
       name: 'Vue',
       fileName: () => 'main.js',
     },
