@@ -20,5 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const retNames = [...setupText.replace(localArea, '').matchAll(globalVarRegex)].flatMap(match => match[1].split(',').map(v => v.trim()))
   window.createApp({
     setup: new Function(`${setupText} return { ${retNames.join(',')} }`),
-  }).mount(document.body)
+  }).mount('[data-setupin-template]')
 })

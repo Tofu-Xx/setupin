@@ -6,5 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const templateContent = template.content.cloneNode(true)
   document.body.replaceChildren(templateContent)
+  document.body.setAttribute('data-setupin-template', '')
   template.remove()
 })
