@@ -28,7 +28,7 @@
   "scripts": {
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
-    "release": "bumpp && npm publish",
+    "release": "bumpp --no-push && npm publish",
     "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.js; } > src/assets/vue.js\"",
     "up": "taze major -I",
     "lint": "eslint .",
