@@ -7,11 +7,12 @@ window.Vue = Vue
 let App: any
 
 observe('template', (template) => {
+  if (!document.body) return true
   const templateContent = template.content.cloneNode(true)
   document.body.replaceChildren(templateContent)
   document.body.setAttribute('data-setupin-template', '')
   template.remove()
-}, () => !!document.body)
+})
 
 observe('script[setup]', (script) => {
   App = parse(script)

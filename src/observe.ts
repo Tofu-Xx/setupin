@@ -1,9 +1,8 @@
-export function observe(selector: string, backcall: (target: any) => void, premise: () => boolean = () => true) {
+export function observe(selector: string, backcall: (target: any) => boolean | void) {
   new MutationObserver((mutations, observer) => {
     for (const mutation of mutations) {
       const target = (mutation.target as HTMLElement).querySelector(selector)
-      if (target && premise()) {
-        backcall(target)
+      if (target && !backcall(target)) {
         observer.disconnect()
         break
       }
