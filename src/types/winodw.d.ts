@@ -1,7 +1,3 @@
-declare global {
-  export interface Window {
-    [key: string]: any
-  }
+interface Window {
+  [key: string]: any
 }
-
-export {}
