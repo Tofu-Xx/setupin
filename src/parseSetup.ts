@@ -1,4 +1,8 @@
+const varRex = /(?:let|const|function|var)\s+\[?\{?\s*([a-zA-Z_$][\w$,\s]*)\b/g
+const localAreaRex = /\{[^{}]*\b(?:let|const|var|function)\b[^{}]*\}/g
+const commentsRex = /\/\*([^*]|\*[^/])*\*\/|\/\/.*/g
 let setupText = ''
+let retNames = ''
 
 new MutationObserver((mutations, observer) => {
   for (const mutation of mutations) {
@@ -6,6 +10,7 @@ new MutationObserver((mutations, observer) => {
     if (el.tagName === 'SCRIPT' && el.hasAttribute('setup')) {
       setupText = el.textContent!
       el.remove()
+      retNames = [...setupText.replace(localAreaRex, '').replace(commentsRex, '').matchAll(varRex)].flatMap(match => match[1].split(',').map(v => v.trim())).join(',')
       observer.disconnect()
     }
   }
@@ -15,10 +20,7 @@ new MutationObserver((mutations, observer) => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-  const globalVarRegex = /(?:let|const|function)\s+\[?\{?\s*([a-zA-Z_$][\w$,\s]*)\b/g
-  const localArea = /\{([^}]*)\}/g
-  const retNames = [...setupText.replace(localArea, '').matchAll(globalVarRegex)].flatMap(match => match[1].split(',').map(v => v.trim()))
   window.createApp({
-    setup: new Function(`${setupText} return { ${retNames.join(',')} }`),
+    setup: new Function(`${setupText} return { ${retNames} }`),
   }).mount('[data-setupin-template]')
 })
