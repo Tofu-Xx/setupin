@@ -11,8 +11,7 @@
 
 ## 😏 为什么选择 setupin
 
- **setupin** 提供类似于 Vue 单文件组件 ([SFC](https://vuejs.org/api/sfc-spec.html#sfc-syntax-specification)) 的书写体验，
- 让你可以在 HTML 中编写 Vue 的 \<script setup>。
+**setupin** 允许你在 HTML 中编写 Vue 的 [\<script setup\>](https://vuejs.org/api/sfc-script-setup.html)。
 
 - **快速体验**：让用户可以快速在 HTML 中尝试 Vue 的新特性，感受其魅力。
 - **简易开发**：提供便捷的方式，助力快速开发小型应用，无需繁琐的配置。

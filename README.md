@@ -11,8 +11,7 @@
 
 ## 😏 Why setupin
 
- **setupin** provides a writing experience similar to Vue Single File Components ([SFC](https://vuejs.org/api/sfc-spec.html#sfc-syntax-specification)),
- allows you to write Vue's \<script **setup**>**in** HTML.
+**setupin** allows you to write Vue's [\<script **setup**\>](https://vuejs.org/api/sfc-script-setup.html)**in** HTML.
 
 - **Quick Experience**: Allow users to quickly experiment with Vue's new features in HTML and feel its charm.
 - **Easy Development**: Provide a convenient way to rapidly develop small applications without complex configurations.
