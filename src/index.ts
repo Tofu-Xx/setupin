@@ -6,7 +6,7 @@ window.Vue = Vue
 
 let App: any
 
-observe('template', (template) => {
+observe('head>template', (template) => {
   if (!document.body) return true
   const templateContent = template.content.cloneNode(true)
   document.body.replaceChildren(templateContent)

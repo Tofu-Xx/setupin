@@ -1,0 +1,19 @@
+<head>
+  <script src="../dist/main.js"></script>
+    <!-- <script src="https://unpkg.com/setupin"></script> -->
+</head>
+
+<script setup>
+  const strobe = ref(false)
+</script>
+
+<body>
+
+<template>
+  <button @click="strobe =!strobe">{{ strobe? 'ON' : 'OFF' }}</button>
+</template>
+</body>
+
+<style>
+  @import "https://unpkg.com/tofukit/dist/reset.css";
+</style>
