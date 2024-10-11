@@ -2,7 +2,7 @@ import { Vue } from './assets/vue.js'
 import { observe } from './observe'
 import { parse } from './parse'
 
-window.Vue = Vue
+(window as any).Vue = Vue
 
 let App: any
 
