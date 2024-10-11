@@ -20,8 +20,8 @@
 ## 🤯 setupin.html _vs_ setup.vue
 
 <p align="center">
-  <img src="./public/svgs/setup.vue.svg" width="49%">
   <img src="./public/svgs/setupin.html.svg" width="49%">
+  <img src="./public/svgs/setup.vue.svg" width="49%">
 </p>
 
 怎么样, 它们很像吧。
@@ -33,14 +33,10 @@
 
 ## 🥰 CDN
 
-- **unpkg**
-
 ```html
 <script src="https://unpkg.com/setupin"></script>
 ```
-
-- **jsdelivr**
-
+**or**
 ```html
 <script src="https://cdn.jsdelivr.net/npm/setupin"></script>
 ```
