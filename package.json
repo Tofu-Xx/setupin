@@ -20,6 +20,11 @@
     "sfc",
     "vue-cdn"
   ],
+  "exports": {
+    ".": {
+      "import": "./main.js"
+    }
+  },
   "main": "dist/main.js",
   "files": [
     "dist",
