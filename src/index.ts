@@ -8,13 +8,6 @@ import { parseTemplate } from './parseTemplate';
 let App: any
 let Template: any
 
-// observe('head>template', (template) => {
-//   if (!document.body) return true
-//   const templateContent = template.content.cloneNode(true)
-//   document.body.replaceChildren(templateContent)
-//   document.body.setAttribute('data-setupin-template', '')
-//   template.remove()
-// })
 observe('body', (body) => {
   Template = parseTemplate(body)
 })
