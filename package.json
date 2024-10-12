@@ -29,7 +29,7 @@
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
     "release": "bumpp --no-push && npm publish",
-    "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.js; } > src/assets/vue.js\"",
+    "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.prod.js; } > src/assets/vue.js\"",
     "up": "taze major -I",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
