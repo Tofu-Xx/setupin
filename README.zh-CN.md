@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin?color=orange"></a>
-  <a href="https://stackblitz.com/edit/setupin-sample?file=index.html"><img src="https://img.shields.io/badge/Open%20in%20StackBlitz-blue"></a>
+  <a href="https://stackblitz.com/edit/setupin?file=index.html"><img src="https://img.shields.io/badge/Open%20in%20StackBlitz-blue"></a>
 </p>
 
 ## 😏 为什么选择 setupin
@@ -28,7 +28,7 @@
 
 ## 😝 演练场
 
-在 [stackblitz](https://stackblitz.com/edit/setupin-sample?file=index.html)
+在 [stackblitz](https://stackblitz.com/edit/setupin?file=index.html)
 上尝试一下吧！
 
 ## 🥰 CDN
