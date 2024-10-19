@@ -34,7 +34,7 @@
   "scripts": {
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
-    "release": "bumpp --no-push && pnpm publish",
+    "release": "bumpp --no-push && nr build && pnpm publish",
     "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.prod.js; } > src/assets/vue.js\"",
     "up": "taze major -I",
     "lint": "eslint .",
@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
+    "@antfu/ni": "^0.23.0",
     "@types/node": "^22.7.7",
     "bumpp": "^9.7.1",
     "eslint": "^9.13.0",
