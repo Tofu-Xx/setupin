@@ -2,6 +2,7 @@
   "name": "setupin",
   "type": "module",
   "version": "2.1.6",
+  "packageManager": "pnpm@9.12.2",
   "description": "Vue SFC? HTML! <script setup> in html",
   "author": "tofu-xx <tofu-xx@foxmail.com>",
   "license": "MIT",
@@ -33,7 +34,7 @@
   "scripts": {
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
-    "release": "bumpp --no-push && npm publish",
+    "release": "bumpp --no-push && pnpm publish",
     "upvue": "bash -c \"{ echo export; curl -L https://unpkg.com/vue@3/dist/vue.global.prod.js; } > src/assets/vue.js\"",
     "up": "taze major -I",
     "lint": "eslint .",
