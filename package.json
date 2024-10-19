@@ -44,10 +44,10 @@
     "access": "public"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.7.3",
-    "@types/node": "^22.7.5",
+    "@antfu/eslint-config": "^3.8.0",
+    "@types/node": "^22.7.7",
     "bumpp": "^9.7.1",
-    "eslint": "^9.12.0",
+    "eslint": "^9.13.0",
     "eslint-plugin-format": "^0.1.2",
     "taze": "^0.17.2",
     "vite": "^5.4.9"
