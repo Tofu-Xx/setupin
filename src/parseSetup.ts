@@ -3,14 +3,14 @@ export function parseSetup(setupScript: HTMLScriptElement) {
   const localAreaRex = /\{[^{}]*\b(?:let|const|var|function)\b[^{}]*\}/g
   const commentsRex = /\/\*([^*]|\*[^/])*\*\/|\/\/.*/g
   const importsRex = /import[^(].+/g
-  let setupText = setupScript.textContent!
+  const setupText = setupScript.textContent!
   setupScript.remove()
-  setupText = setupText.replace(localAreaRex, '').replace(commentsRex, '')
-  if (importsRex.test(setupText)) {
-    setupText = setupText.replace(importsRex, '')
+  let globalAreasText = setupText.replace(localAreaRex, '').replace(commentsRex, '')
+  if (importsRex.test(globalAreasText)) {
+    globalAreasText = globalAreasText.replace(importsRex, '')
     console.warn('Cannot use import statement outside a module.')
   }
-  const retNames = Array.from(setupText.matchAll(varRex), ([_, v]) => v).join(',')
+  const retNames = Array.from(globalAreasText.matchAll(varRex), ([_, v]) => v).join(',')
   return {
     setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${retNames} }`),
   }
