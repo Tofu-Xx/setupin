@@ -1,0 +1,31 @@
+<head>
+  <!-- <script src="https://unpkg.com/setupin"></script> -->
+  <script src="../dist/main.js"></script>
+</head>
+
+<script setup>
+  /* { a, b } Not local definition */
+  const { a, b } = { a: 1, b: 2 }
+  const msg = ref('')
+  const setMsg = () => {
+    const p = prompt('请输入')
+    msg.value = p
+  }
+  const showMsg = () => {
+    const p = 'is'
+    alert(`${p} ${msg.value}`)
+  }
+</script>
+
+<template>
+  <button @click="setMsg">click me</button>
+  <button @click="showMsg">show message</button>
+</template>
+
+<style>
+  @import 'https://unpkg.com/@tofukit/resetcss';
+  body {
+    display: grid;
+    place-content: center;
+  }
+</style>
