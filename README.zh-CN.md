@@ -36,7 +36,9 @@
 ```html
 <script src="https://unpkg.com/setupin"></script>
 ```
+
 **or**
+
 ```html
 <script src="https://cdn.jsdelivr.net/npm/setupin"></script>
 ```

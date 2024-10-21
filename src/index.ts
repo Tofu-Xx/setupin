@@ -17,6 +17,6 @@ observe('script[setup]', (script) => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (!App) console.warn('No setup found')
+  App || console.warn('No setup found')
   ;(Vue as any).createApp(App).mount(Template)
 })
