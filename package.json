@@ -23,7 +23,7 @@
   ],
   "exports": {
     ".": {
-      "import": "./main.js"
+      "import": "./dist/main.js"
     }
   },
   "main": "dist/main.js",
