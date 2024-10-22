@@ -1,23 +1,17 @@
-function getNested(text: string): string[] {
+function getNested(code: string): string[] {
+  let block = ''
   let level = 0
-  const result: string[] = []
-  let current = ''
-
-  for (const char of text) {
-    if (char === '{' && level++)
-      current += level > 1 ? char : ''
-    else if (char === '}' && --level)
-      current += level ? char : ''
-    else if (level)
-      current += char
-
-    if (level === 0 && current) {
-      result.push(current)
-      current = ''
-    }
+  const actions = {
+    '{': () => level++,
+    '}': () => level--,
   }
-
-  return result
+  return [...code].reduce((blocks, char) => {
+    actions[char]?.()
+    block = level > 0
+      ? block + char
+      : block && (blocks.push(block.slice(1)), '')
+    return blocks
+  }, [] as string[])
 }
 
 export function parseSetup(setupScript: HTMLScriptElement) {
@@ -26,9 +20,7 @@ export function parseSetup(setupScript: HTMLScriptElement) {
   const importsRex = /import[^(].+/g
   const setupText = setupScript.textContent!.replace(commentsRex, '')
   setupScript.remove()
-  let globalAreasText = getNested(setupText).filter(text => /let|const|var|function/.test(text)).reduce((prev, curr) => {
-    return prev.replace(curr, '')
-  }, setupText)
+  let globalAreasText = getNested(setupText).filter(text => /let|const|var|function/.test(text)).reduce((prev, curr) => prev.replace(curr, ''), setupText)
   if (importsRex.test(globalAreasText)) {
     globalAreasText = globalAreasText.replace(importsRex, '')
     console.warn('Cannot use import statement outside a module.')

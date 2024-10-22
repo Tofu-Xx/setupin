@@ -7,5 +7,6 @@ export default antfu({
   markdown: true,
   rules: {
     'no-new-func': 'off',
+    'style/max-statements-per-line': 'off',
   },
 })
