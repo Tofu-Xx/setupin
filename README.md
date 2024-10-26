@@ -13,9 +13,12 @@
 
 **setupin** allows you to write Vue's [\<script **setup**\>](https://vuejs.org/api/sfc-script-setup.html)**in** HTML.
 
-- **Easy to learn**: Offer a friendly environment for beginners to easily grasp the core usage of Vue.
-- **Simple development**: Provide a convenient way to rapidly develop small webpage without complex configurations.
-- **Quick experience**: Allow users to quickly experiment with Vue's new features in HTML and feel its charm.
+1. **Easy to learn**
+   > Offer a friendly environment for beginners to easily grasp the core usage of Vue.
+2. **Simple development**
+   > Provide a convenient way to rapidly develop small webpage without complex configurations.
+3. **Quick experience**
+   > Allow users to quickly experiment with Vue's new features in HTML and feel its charm.
 
 ## 🤯 setupin.html _vs_ setup.vue
 
