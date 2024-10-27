@@ -7,13 +7,6 @@ import { parseTemplate } from './parseTemplate'
 
 let App: any
 
-// observe('body', (body) => {
-//   Template = parseTemplate(body)
-// })
-
-// observe('script[setup]', (script) => {
-//   App = parseSetup(script)
-// })
 observe({
   'body': parseTemplate,
   'script[setup]': (script) => {
