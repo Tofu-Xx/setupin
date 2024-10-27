@@ -14,19 +14,24 @@ function getNested(code: string): string[] {
   }, [] as string[])
 }
 
-export function parseSetup(setupScript: HTMLScriptElement) {
-  const varRex = /(?:let|const|function|var)(\s+|\s+(\[|\{)\s*)([a-zA-Z_$][\w$,\s]*)\b/g
+function paresSetupText(setupText: string) {
   const commentsRex = /\/\*([^*]|\*[^/])*\*\/|\/\/.*/g
-  const importsRex = /import[^(].+/g
-  const setupText = setupScript.textContent!.replace(commentsRex, '')
-  setupScript.remove()
+  const stringRex = /(['"`])(?:(?!\1)[^\\]|\\.)*?\1/g
+  const varRex = /(?:let|const|function|var)(\s+|\s+(\[|\{)\s*)([a-zA-Z_$][\w$,\s]*)\b/g
+  /* 获取顶层域 */
   let globalAreasText = getNested(setupText).filter(text => /let|const|var|function/.test(text)).reduce((prev, curr) => prev.replace(curr, ''), setupText)
-  if (importsRex.test(globalAreasText)) {
-    globalAreasText = globalAreasText.replace(importsRex, '')
-    console.warn('Cannot use import statement outside a module.')
+  if (/import[^(].+/.test(globalAreasText)) {
+    throw new Error('Cannot use import statement outside a module.')
   }
-  const retNames = Array.from(globalAreasText.matchAll(varRex), el => el[3]).join(',')
+  /* 排除注释和字符串 */
+  globalAreasText = globalAreasText.replace(commentsRex, '').replace(stringRex, '')
+  return Array.from(globalAreasText.matchAll(varRex), el => el[3]).join(',')
+}
+
+export function parseSetup(setupScript: HTMLScriptElement) {
+  const setupText = setupScript.textContent || ''
+  setupScript.remove()
   return {
-    setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${retNames} }`),
+    setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${paresSetupText(setupText)} }`),
   }
 }

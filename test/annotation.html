@@ -1,0 +1,22 @@
+<head>
+  <!-- <script src="https://unpkg.com/setupin"></script> -->
+  <script src="../dist/main.js"></script>
+</head>
+
+<script setup>
+  /* const count = ref() */
+  const data = ref({})
+  const getEn = async () => {
+    data.value = (await (await fetch('https://api.vvhan.com/api/dailyEnglish?type=sj')).json()).data
+  }
+  getEn()
+</script>
+
+<template>
+  <p @dblclick="getEn">{{ data.en }}</p>
+  <p @dblclick="getEn">{{ data.zh }}</p>
+</template>
+
+<style>
+  @import 'https://unpkg.com/@tofukit/resetcss';
+</style>
