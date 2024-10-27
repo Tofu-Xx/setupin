@@ -1,17 +1,9 @@
-function getNested(code: string): string[] {
-  let block = ''
-  let level = 0
-  const actions = {
-    '{': () => level++,
-    '}': () => level--,
+export function parseSetup(setupScript: HTMLScriptElement) {
+  const setupText = setupScript.textContent || ''
+  setupScript.remove()
+  return {
+    setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${paresSetupText(setupText)} }`),
   }
-  return [...code].reduce((blocks, char) => {
-    actions[char]?.()
-    block = level > 0
-      ? block + char
-      : block && (blocks.push(block.slice(1)), '')
-    return blocks
-  }, [] as string[])
 }
 
 function paresSetupText(setupText: string) {
@@ -28,10 +20,18 @@ function paresSetupText(setupText: string) {
   return Array.from(globalAreasText.matchAll(varRex), el => el[3]).join(',')
 }
 
-export function parseSetup(setupScript: HTMLScriptElement) {
-  const setupText = setupScript.textContent || ''
-  setupScript.remove()
-  return {
-    setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${paresSetupText(setupText)} }`),
+function getNested(code: string): string[] {
+  let block = ''
+  let level = 0
+  const actions = {
+    '{': () => level++,
+    '}': () => level--,
   }
+  return [...code].reduce((blocks, char) => {
+    actions[char]?.()
+    block = level > 0
+      ? block + char
+      : block && (blocks.push(block.slice(1)), '')
+    return blocks
+  }, [] as string[])
 }
