@@ -6,17 +6,22 @@ import { parseTemplate } from './parseTemplate'
 (window as any).Vue = Vue
 
 let App: any
-let Template: any
 
-observe('body', (body) => {
-  Template = parseTemplate(body)
-})
+// observe('body', (body) => {
+//   Template = parseTemplate(body)
+// })
 
-observe('script[setup]', (script) => {
-  App = parseSetup(script)
+// observe('script[setup]', (script) => {
+//   App = parseSetup(script)
+// })
+observe({
+  'body': parseTemplate,
+  'script[setup]': (script) => {
+    App = parseSetup(script)
+  },
 })
 
 document.addEventListener('DOMContentLoaded', () => {
   App || console.warn('No setup found')
-  ;(Vue as any).createApp(App).mount(Template)
+  ;(Vue as any).createApp(App).mount(document.body)
 })
