@@ -10,17 +10,7 @@ export function parseSetup(setupScript: HTMLScriptElement) {
 }
 
 function getGlobalVars(code: string): string[] {
-  const ast = parse(code, {
-    sourceType: 'script',
-    plugins: ['typescript'],
-  })
-
-  // 检查是否存在 import 语句
-  const hasImport = ast.program.body.some(node => node.type === 'ImportDeclaration')
-  if (hasImport) {
-    throw new Error('Cannot use import statement outside a module.')
-  }
-
+  const ast = parse(code, { sourceType: 'script' })
   // 通用的模式处理函数
   function patterner(pattern: any, vars: string[]) {
     when(pattern?.type)({
@@ -43,6 +33,7 @@ function getGlobalVars(code: string): string[] {
 
   return ast.program.body.reduce((prev: string[], node: any) => {
     when(node.type)({
+      ImportDeclaration() { throw new Error('Cannot use import statement outside a module.') },
       FunctionDeclaration() { prev.push(node.id.name) },
       VariableDeclaration() {
         for (const { id } of node.declarations) {
