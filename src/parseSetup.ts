@@ -23,17 +23,22 @@ function getGlobalVars(code: string): string[] {
   // 辅助函数：处理对象解构模式
   function objectPatterner(pattern: any, variables: string[]) {
     pattern.properties.forEach((prop: any) => {
-      // 如果值是嵌套的对象解构
-      if (prop.value.type === 'ObjectPattern') {
-        objectPatterner(prop.value, variables)
+      const value = prop.value
+      // 处理嵌套的数组解构
+      if (value.type === 'ArrayPattern') {
+        arrayPatterner(value, variables)
       }
-      // 如果是带默认值的解构
-      else if (prop.value.type === 'AssignmentPattern') {
-        variables.push(prop.value.left.name)
+      // 处理嵌套的对象解构
+      else if (value.type === 'ObjectPattern') {
+        objectPatterner(value, variables)
+      }
+      // 处理带默认值的解构
+      else if (value.type === 'AssignmentPattern') {
+        variables.push(value.left.name)
       }
       // 普通解构
-      else {
-        variables.push(prop.value.name)
+      else if (value.type === 'Identifier') {
+        variables.push(value.name)
       }
     })
   }
@@ -44,15 +49,23 @@ function getGlobalVars(code: string): string[] {
       if (!element)
         return // 跳过空元素
 
-      if (element.type === 'Identifier') {
-        variables.push(element.name)
+      // 处理嵌套的对象解构
+      if (element.type === 'ObjectPattern') {
+        objectPatterner(element, variables)
       }
+      // 处理嵌套的数组解构
       else if (element.type === 'ArrayPattern') {
         arrayPatterner(element, variables)
       }
-      // 可以在这里添加其他类型的处理，比如对象解构
-      else if (element.type === 'ObjectPattern') {
-        objectPatterner(element, variables)
+      // 处理标识符
+      else if (element.type === 'Identifier') {
+        variables.push(element.name)
+      }
+      // 处理带默认值的解构
+      else if (element.type === 'AssignmentPattern') {
+        if (element.left.type === 'Identifier') {
+          variables.push(element.left.name)
+        }
       }
     })
   }

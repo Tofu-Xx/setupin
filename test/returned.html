@@ -1,22 +1,60 @@
 <head>
-  <script src="../dist/main.js"></script>
   <!-- <script src="https://unpkg.com/setupin"></script> -->
+  <script src="../dist/main.js"></script>
 </head>
 
 <script setup>
-  const count = ref(0)
-  const increment = () => {
-    const a = 2
-    count.value++
+  /* { a, b } Not local definition */
+  const {
+    a = 'a',
+    b: asB = 'b',
+    c: { nest },
+  } = {
+    a: 1,
+    b: 2,
+    c: {
+      nest: 'nest',
+    },
   }
+  let msg = ref('')
+  function setMsg() {
+    const p1 = prompt('请输入')
+    msg.value = p1
+  }
+  var [one, [two, [three, [four]]]] = [1, [2, [3, [4]]]]
+  const showMsg = () => {
+    let [o, [w, r]] = [1, [2, 3]]
+    const p2 = 'is'
+    alert(`${p2} ${msg.value}`)
+  }
+  /* 混 */
+  const {
+    A: [{ AO }, [AA]],
+    O: {
+      OA: [OA],
+      OO: { OO },
+    },
+  } = {
+    A: [{ AO: 'AO' }, ['AA']],
+    O: { OA: ['OA'], OO: { OO: 'OO' } },
+  }
+  console.log(AO, AA, OA, OO)
 </script>
 
 <template>
-  <button @click="increment">{{ count }}</button>
+  <button @click="setMsg">click me</button>
+  <button @click="showMsg">show message</button>
+  <nav>
+    <li>{{ one }}</li>
+    <li>{{ two }}</li>
+    <li>{{ three }}</li>
+    <li>{{ four }}</li>
+  </nav>
 </template>
 
 <style>
-  button {
-    cursor: pointer;
+  body {
+    display: grid;
+    place-content: center;
   }
 </style>
