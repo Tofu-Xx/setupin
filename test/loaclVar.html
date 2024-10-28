@@ -5,15 +5,27 @@
 
 <script setup>
   /* { a, b } Not local definition */
-  const { a, b } = { a: 1, b: 2 }
-  const msg = ref('')
-  const setMsg = () => {
-    const p = prompt('请输入')
-    msg.value = p
+  const {
+    a = 'a',
+    b: asB = 'b',
+    c: { nest },
+  } = {
+    a: 1,
+    b: 2,
+    c: {
+      nest: 'nest',
+    },
   }
+  let msg = ref('')
+  function setMsg() {
+    const p1 = prompt('请输入')
+    msg.value = p1
+  }
+  var [one, [two, three]] = [1, [2, 3]]
   const showMsg = () => {
-    const p = 'is'
-    alert(`${p} ${msg.value}`)
+    let [o, [w, r]] = [1, [2, 3]]
+    const p2 = 'is'
+    alert(`${p2} ${msg.value}`)
   }
 </script>
 
