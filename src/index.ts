@@ -6,12 +6,11 @@ import { parseTemplate } from './parseTemplate'
 (window as any).Vue = Vue
 
 const observed = observe({
-  'body': parseTemplate,
   'script[setup]': parseSetup,
+  'body': parseTemplate,
 })
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const App = await observed['script[setup]']
-  const Template = await observed.body
+  const [App, Template] = await Promise.all(Object.values(observed))
   ;(Vue as any).createApp(App).mount(Template)
 })
