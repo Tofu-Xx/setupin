@@ -1,11 +1,13 @@
+import { when } from './tools'
+
 export function observe(selector: string, callback: (target: any) => any): any
 export function observe(map: Record<string, (target: any) => any>): any
-export function observe(selectorOrMap: string | Record<string, (target: any) => any>, callback?: (target: any) => any) {
-  return typify(selectorOrMap)({
-    string: selector => new Promise((resolve, reject) => {
+export function observe(SorM: string | Record<string, (target: any) => any>, callback?: (target: any) => any) {
+  return when(typeof SorM)({
+    string: () => new Promise((resolve, reject) => {
       new MutationObserver((mutations, observer) => {
         for (const mutation of mutations) {
-          const target = (mutation.target as HTMLElement)?.querySelector(selector)
+          const target = (mutation.target as HTMLElement)?.querySelector(SorM as string)
           if (target && callback) {
             observer.disconnect()
             const result = callback(target)
@@ -17,20 +19,16 @@ export function observe(selectorOrMap: string | Record<string, (target: any) => 
         }
         document.addEventListener('DOMContentLoaded', () => {
           observer.disconnect()
-          reject(new Error(`No ${selector} found`))
+          reject(new Error(`No ${SorM} found`))
         })
       }).observe(document, {
         childList: true,
         subtree: true,
       })
     }),
-    object: map => Object.keys(map).reduce((prev, key) => ({
+    object: () => Object.keys(SorM).reduce((prev, key) => ({
       ...prev,
-      [key]: observe(key, map[key]),
+      [key]: observe(key, SorM[key]),
     }), Object.create(null)),
   })
-}
-
-function typify(unknow: any) {
-  return (types: Record<string, (unknow: any) => any>) => types[typeof unknow](unknow)
 }

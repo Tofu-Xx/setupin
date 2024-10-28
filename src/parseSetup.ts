@@ -1,4 +1,5 @@
 import { parse } from '@babel/parser'
+import { when } from './tools.ts'
 
 export function parseSetup(setupScript: HTMLScriptElement) {
   const setupText = setupScript.textContent ?? ''
@@ -22,32 +23,52 @@ function getGlobalVars(code: string): string[] {
 
   // 通用的模式处理函数
   function patterner(pattern: any, variables: string[]) {
-    if (!pattern)
-      return
+    // if (!pattern)
+    //   return
 
-    switch (pattern.type) {
-      case 'ObjectPattern':
-        pattern.properties.forEach((prop: any) => {
+    // switch (pattern.type) {
+    //   case 'ObjectPattern':
+    //     pattern.properties.forEach((prop: any) => {
+    //       patterner(prop.value, variables)
+    //     })
+    //     break
+
+    //   case 'ArrayPattern':
+    //     pattern.elements.forEach((element: any) => {
+    //       patterner(element, variables)
+    //     })
+    //     break
+
+    //   case 'Identifier':
+    //     variables.push(pattern.name)
+    //     break
+
+    //   case 'AssignmentPattern':
+    //     if (pattern.left.type === 'Identifier') {
+    //       variables.push(pattern.left.name)
+    //     }
+    //     break
+    // }
+    when(pattern?.type)({
+      ObjectPattern() {
+        //     pattern.properties.forEach((prop: any) => {
+        //     })
+        for (const prop of pattern.properties)
           patterner(prop.value, variables)
-        })
-        break
-
-      case 'ArrayPattern':
-        pattern.elements.forEach((element: any) => {
+      },
+      ArrayPattern() {
+        for (const element of pattern.elements)
           patterner(element, variables)
-        })
-        break
-
-      case 'Identifier':
+      },
+      Identifier() {
         variables.push(pattern.name)
-        break
-
-      case 'AssignmentPattern':
+      },
+      AssignmentPattern() {
         if (pattern.left.type === 'Identifier') {
           variables.push(pattern.left.name)
         }
-        break
-    }
+      },
+    })
   }
 
   return ast.program.body.reduce((variables: string[], node: any) => {
