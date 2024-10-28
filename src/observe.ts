@@ -24,10 +24,10 @@ export function observe(selectorOrMap: string | Record<string, (target: any) => 
         subtree: true,
       })
     }),
-    object: map => Object.keys(map).reduce((result, key) => {
-      result[key] = observe(key, map[key])
-      return result
-    }, Object.create(null)),
+    object: map => Object.keys(map).reduce((prev, key) => ({
+      ...prev,
+      [key]: observe(key, map[key]),
+    }), Object.create(null)),
   })
 }
 
