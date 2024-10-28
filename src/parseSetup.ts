@@ -22,38 +22,38 @@ function getGlobalVars(code: string): string[] {
   }
 
   // 通用的模式处理函数
-  function patterner(pattern: any, variables: string[]) {
+  function patterner(pattern: any, vars: string[]) {
     when(pattern?.type)({
       ObjectPattern() {
         for (const { value } of pattern.properties)
-          patterner(value, variables)
+          patterner(value, vars)
       },
       ArrayPattern() {
         for (const element of pattern.elements)
-          patterner(element, variables)
+          patterner(element, vars)
       },
       Identifier() {
-        variables.push(pattern.name)
+        vars.push(pattern.name)
       },
       AssignmentPattern() {
-        pattern.left.type === 'Identifier' && variables.push(pattern.left.name)
+        pattern.left.type === 'Identifier' && vars.push(pattern.left.name)
       },
     })
   }
 
-  return ast.program.body.reduce((variables: string[], node: any) => {
+  return ast.program.body.reduce((prev: string[], node: any) => {
     when(node.type)({
-      FunctionDeclaration() { variables.push(node.id.name) },
+      FunctionDeclaration() { prev.push(node.id.name) },
       VariableDeclaration() {
         for (const { id } of node.declarations) {
           when(id.type)({
-            ObjectPattern() { patterner(id, variables) },
-            ArrayPattern() { patterner(id, variables) },
-            Identifier() { variables.push(id.name) },
+            ObjectPattern() { patterner(id, prev) },
+            ArrayPattern() { patterner(id, prev) },
+            Identifier() { prev.push(id.name) },
           })
         }
       },
     })
-    return variables
+    return prev
   }, [])
 }
