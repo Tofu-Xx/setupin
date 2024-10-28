@@ -1,9 +1,6 @@
 import { parse } from '@babel/parser'
 
-let hasSetup = false
-
 export function parseSetup(setupScript: HTMLScriptElement) {
-  hasSetup = true
   const setupText = setupScript.textContent || ''
   setupScript.remove()
   const retNames = getGlobalVars(setupText)
@@ -11,10 +8,6 @@ export function parseSetup(setupScript: HTMLScriptElement) {
     setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${retNames} }`),
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  hasSetup || console.warn('No setup found')
-})
 
 function getGlobalVars(code: string): string[] {
   const ast = parse(code, {

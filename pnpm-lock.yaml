@@ -17,9 +17,6 @@ importers:
       '@babel/parser':
         specifier: ^7.26.1
         version: 7.26.1
-      '@babel/types':
-        specifier: ^7.26.0
-        version: 7.26.0
       '@types/node':
         specifier: ^22.8.0
         version: 22.8.0
