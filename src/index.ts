@@ -5,18 +5,13 @@ import { parseTemplate } from './parseTemplate'
 
 (window as any).Vue = Vue
 
-let App: any
-let hasSetup = false
-
-observe({
+const observed = observe({
   'body': parseTemplate,
-  'script[setup]': (script) => {
-    hasSetup = true
-    App = parseSetup(script)
-  },
+  'script[setup]': parseSetup,
 })
 
-document.addEventListener('DOMContentLoaded', () => {
-  (Vue as any).createApp(App).mount(document.body)
-  hasSetup || console.warn('No setup found')
+document.addEventListener('DOMContentLoaded', async () => {
+  const App = await observed['script[setup]']
+  const Template = await observed.body
+  (Vue as any).createApp(App).mount(Template)
 })
