@@ -1,4 +1,4 @@
-import { when } from './tools'
+import { loaded, when } from './tools'
 
 export function observe(selector: string, callback: (target: any) => any): any
 export function observe(map: Record<string, (target: any) => any>): any
@@ -17,7 +17,7 @@ export function observe(SorM: string | Record<string, (target: any) => any>, cal
             break
           }
         }
-        document.addEventListener('DOMContentLoaded', () => {
+        loaded(() => {
           observer.disconnect()
           reject(new Error(`No ${SorM} found`))
         })

@@ -2,6 +2,7 @@ import { Vue } from './assets/vue.js'
 import { observe } from './observe'
 import { parseSetup } from './parseSetup'
 import { parseTemplate } from './parseTemplate'
+import { loaded } from './tools.ts';
 
 (window as any).Vue = Vue
 
@@ -10,7 +11,7 @@ const observed = observe({
   'body': parseTemplate,
 })
 
-document.addEventListener('DOMContentLoaded', async () => {
+loaded(async () => {
   const [App, Template] = await Promise.all(Object.values(observed))
   ;(Vue as any).createApp(App).mount(Template)
 })
