@@ -5,9 +5,6 @@ let hasSetup = false
 export function parseSetup(setupScript: HTMLScriptElement) {
   hasSetup = true
   const setupText = setupScript.textContent || ''
-  if (/import[^(].+/.test(setupText)) {
-    throw new Error('Cannot use import statement outside a module.')
-  }
   setupScript.remove()
   const retNames = getGlobalVars(setupText)
   return {
@@ -24,6 +21,12 @@ function getGlobalVars(code: string): string[] {
     sourceType: 'script',
     plugins: ['typescript'],
   })
+
+  // 检查是否存在 import 语句
+  const hasImport = ast.program.body.some(node => node.type === 'ImportDeclaration')
+  if (hasImport) {
+    throw new Error('Cannot use import statement outside a module.')
+  }
 
   // 辅助函数：处理对象解构模式
   function processObjectPattern(pattern: any, variables: string[]) {
