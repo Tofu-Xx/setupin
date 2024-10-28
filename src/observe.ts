@@ -7,9 +7,11 @@ export function observe(selectorOrMap: string | Record<string, (target: any) => 
         for (const mutation of mutations) {
           const target = (mutation.target as HTMLElement)?.querySelector(selector)
           if (target && callback) {
-            const result = callback(target)
             observer.disconnect()
-            resolve(result)
+            const result = callback(target)
+            result instanceof Error
+              ? reject(result)
+              : resolve(result)
             break
           }
         }
