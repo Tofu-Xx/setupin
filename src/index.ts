@@ -13,5 +13,5 @@ const observed = observe({
 document.addEventListener('DOMContentLoaded', async () => {
   const App = await observed['script[setup]']
   const Template = await observed.body
-  (Vue as any).createApp(App).mount(Template)
+  ;(Vue as any).createApp(App).mount(Template)
 })
