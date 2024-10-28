@@ -1,5 +1,5 @@
 import { parse } from '@babel/parser'
-import { when } from './tools.ts'
+import { when } from './tools'
 
 export function parseSetup(setupScript: HTMLScriptElement) {
   const setupText = setupScript.textContent ?? ''
