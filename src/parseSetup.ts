@@ -25,8 +25,8 @@ function getGlobalVars(code: string): string[] {
   function patterner(pattern: any, variables: string[]) {
     when(pattern?.type)({
       ObjectPattern() {
-        for (const prop of pattern.properties)
-          patterner(prop.value, variables)
+        for (const { value } of pattern.properties)
+          patterner(value, variables)
       },
       ArrayPattern() {
         for (const element of pattern.elements)
@@ -36,37 +36,21 @@ function getGlobalVars(code: string): string[] {
         variables.push(pattern.name)
       },
       AssignmentPattern() {
-        if (pattern.left.type === 'Identifier') {
-          variables.push(pattern.left.name)
-        }
+        pattern.left.type === 'Identifier' && variables.push(pattern.left.name)
       },
     })
   }
 
   return ast.program.body.reduce((variables: string[], node: any) => {
-    // 处理变量声明
-    // if (node.type === 'VariableDeclaration') {
-
-    // }
-    // 处理函数声明
-    // else if (node.type === 'FunctionDeclaration' && node.id) {
-    //   variables.push(node.id.name)
-    // }
     when(node.type)({
-      FunctionDeclaration: () => variables.push(node.id.name),
-      VariableDeclaration: () => {
-        for (const declaration of node.declarations) {
-          if (declaration.id.type === 'ObjectPattern') {
-            patterner(declaration.id, variables)
-          }
-          // 处理数组解构赋值
-          else if (declaration.id.type === 'ArrayPattern') {
-            patterner(declaration.id, variables)
-          }
-          // 处理普通变量声明
-          else if (declaration.id.type === 'Identifier') {
-            variables.push(declaration.id.name)
-          }
+      FunctionDeclaration() { variables.push(node.id.name) },
+      VariableDeclaration() {
+        for (const { id } of node.declarations) {
+          when(id.type)({
+            ObjectPattern() { patterner(id, variables) },
+            ArrayPattern() { patterner(id, variables) },
+            Identifier() { variables.push(id.name) },
+          })
         }
       },
     })
