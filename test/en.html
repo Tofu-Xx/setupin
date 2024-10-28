@@ -1,0 +1,87 @@
+<head>
+  <meta charset="UTF-8" />
+  <title>每日英语</title>
+  <script src="https://unpkg.com/style-plus"></script>
+  <!-- <script src="https://unpkg.com/setupin"></script> -->
+  <script src="../dist/main.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" />
+  <link rel="stylesheet" href="https://unpkg.com/@tofukit/resetcss" />
+</head>
+
+<script setup>
+  // “"”
+  const src = ref('https://muroiwataru.net/wp-content/uploads/2018/04/Wallpaper-Engine4-compressor.gif')
+  const getWp = async () => {
+    // src.value = 'https://muroiwataru.net/wp-content/uploads/2018/04/Wallpaper-Engine4-compressor.gif'
+    // src.value = URL.createObjectURL(await (await fetch('https://picsum.photos/3840/2160')).blob())
+  }
+  // ‘"’
+  // getWp()
+  const wpLoad = () => {
+    URL.revokeObjectURL(src.value)
+  }
+
+  const data = ref({
+    // en: Don't put all your eggs in one basket.,
+    en: 'Every cloud has a silver lining.',
+    zh: '每个乌云都有一线希望',
+  })
+  const getEn = async () => {
+    // data.value = (await (await fetch('https://api.vvhan.com/api/dailyEnglish?type=sj')).json()).data;
+  }
+  getEn()
+  /*  */
+  setInterval(async () => await getWp(), 1000 * 60 * 60 * 2)
+</script>
+
+<template>
+  <img
+    :src="src"
+    @load="wpLoad"
+    @contextmenu.prevent="getWp"
+    style="
+      & {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+    "
+  />
+  <div
+    @contextmenu.prevent="getEn"
+    style="
+      & {
+        display: grid;
+        place-items: center;
+        gap: 10px;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: fit-content;
+        height: fit-content;
+        padding: 10px;
+        border-radius: 4px;
+        &::before {
+          content: '';
+          position: absolute;
+          inset: -40px;
+          backdrop-filter: blur(8px);
+          mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+        }
+        p {
+          text-align: center;
+          line-height: 1;
+          color: white;
+          filter: drop-shadow(0px 0px 10px #0006);
+          margin: 0;
+          width: max-content;
+          max-width: 80vw;
+          font-size: 1.5rem;
+        }
+      }
+    "
+  >
+    <p style="font-family: 'Exo 2'">{{ data.en }}</p>
+    <p style="font-family: SimSun">{{ data.zh }}</p>
+  </div>
+</template>
