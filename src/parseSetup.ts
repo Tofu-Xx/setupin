@@ -1,11 +1,10 @@
 import { parse } from '@babel/parser'
 
 export function parseSetup(setupScript: HTMLScriptElement) {
-  const setupText = setupScript.textContent || ''
+  const setupText = setupScript.textContent ?? ''
   setupScript.remove()
-  const retNames = getGlobalVars(setupText)
   return {
-    setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${retNames} }`),
+    setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${getGlobalVars(setupText)} }`),
   }
 }
 
