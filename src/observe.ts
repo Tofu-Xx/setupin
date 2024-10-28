@@ -28,7 +28,7 @@ export function observe(SorM: string | Record<string, (target: any) => any>, cal
     }),
     object: () => Object.keys(SorM).reduce((prev, key) => ({
       ...prev,
-      [key]: observe(key, SorM[key]),
+      [key]: observe(key, (SorM as Record<string, (target: any) => any>)[key]),
     }), Object.create(null)),
   })
 }

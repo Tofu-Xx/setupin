@@ -2,7 +2,7 @@ import { Vue } from './assets/vue.js'
 import { observe } from './observe'
 import { parseSetup } from './parseSetup'
 import { parseTemplate } from './parseTemplate'
-import { loaded } from './tools';
+import { loaded } from './tools'
 
 (window as any).Vue = Vue
 
