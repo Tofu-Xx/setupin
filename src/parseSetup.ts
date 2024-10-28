@@ -1,10 +1,17 @@
+let hasSetup = false
+
 export function parseSetup(setupScript: HTMLScriptElement) {
+  hasSetup = true
   const setupText = setupScript.textContent || ''
   setupScript.remove()
   return {
     setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${paresSetupText(setupText)} }`),
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  hasSetup || console.warn('No setup found')
+})
 
 function paresSetupText(setupText: string) {
   const commentsRex = /\/\*([^*]|\*[^/])*\*\/|\/\/.*/g

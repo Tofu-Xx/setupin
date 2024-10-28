@@ -15,6 +15,5 @@ observe({
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-  App || console.warn('No setup found')
-  ;(Vue as any).createApp(App).mount(document.body)
+  (Vue as any).createApp(App).mount(document.body)
 })
