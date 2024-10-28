@@ -20,54 +20,34 @@ function getGlobalVars(code: string): string[] {
     throw new Error('Cannot use import statement outside a module.')
   }
 
-  // 辅助函数：处理对象解构模式
-  function objectPatterner(pattern: any, variables: string[]) {
-    pattern.properties.forEach((prop: any) => {
-      const value = prop.value
-      // 处理嵌套的数组解构
-      if (value.type === 'ArrayPattern') {
-        arrayPatterner(value, variables)
-      }
-      // 处理嵌套的对象解构
-      else if (value.type === 'ObjectPattern') {
-        objectPatterner(value, variables)
-      }
-      // 处理带默认值的解构
-      else if (value.type === 'AssignmentPattern') {
-        variables.push(value.left.name)
-      }
-      // 普通解构
-      else if (value.type === 'Identifier') {
-        variables.push(value.name)
-      }
-    })
-  }
+  // 通用的模式处理函数
+  function patterner(pattern: any, variables: string[]) {
+    if (!pattern)
+      return
 
-  // 辅助函数：处理数组解构模式
-  function arrayPatterner(pattern: any, variables: string[]) {
-    pattern.elements.forEach((element: any) => {
-      if (!element)
-        return // 跳过空元素
+    switch (pattern.type) {
+      case 'ObjectPattern':
+        pattern.properties.forEach((prop: any) => {
+          patterner(prop.value, variables)
+        })
+        break
 
-      // 处理嵌套的对象解构
-      if (element.type === 'ObjectPattern') {
-        objectPatterner(element, variables)
-      }
-      // 处理嵌套的数组解构
-      else if (element.type === 'ArrayPattern') {
-        arrayPatterner(element, variables)
-      }
-      // 处理标识符
-      else if (element.type === 'Identifier') {
-        variables.push(element.name)
-      }
-      // 处理带默认值的解构
-      else if (element.type === 'AssignmentPattern') {
-        if (element.left.type === 'Identifier') {
-          variables.push(element.left.name)
+      case 'ArrayPattern':
+        pattern.elements.forEach((element: any) => {
+          patterner(element, variables)
+        })
+        break
+
+      case 'Identifier':
+        variables.push(pattern.name)
+        break
+
+      case 'AssignmentPattern':
+        if (pattern.left.type === 'Identifier') {
+          variables.push(pattern.left.name)
         }
-      }
-    })
+        break
+    }
   }
 
   return ast.program.body.reduce((variables: string[], node: any) => {
@@ -76,11 +56,11 @@ function getGlobalVars(code: string): string[] {
       node.declarations.forEach((declaration: any) => {
         // 处理对象解构赋值
         if (declaration.id.type === 'ObjectPattern') {
-          objectPatterner(declaration.id, variables)
+          patterner(declaration.id, variables)
         }
         // 处理数组解构赋值
         else if (declaration.id.type === 'ArrayPattern') {
-          arrayPatterner(declaration.id, variables)
+          patterner(declaration.id, variables)
         }
         // 处理普通变量声明
         else if (declaration.id.type === 'Identifier') {
