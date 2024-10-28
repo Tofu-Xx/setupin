@@ -53,8 +53,7 @@ function getGlobalVars(code: string): string[] {
   return ast.program.body.reduce((variables: string[], node: any) => {
     // 处理变量声明
     if (node.type === 'VariableDeclaration') {
-      node.declarations.forEach((declaration: any) => {
-        // 处理对象解构赋值
+      for (const declaration of node.declarations) {
         if (declaration.id.type === 'ObjectPattern') {
           patterner(declaration.id, variables)
         }
@@ -66,7 +65,7 @@ function getGlobalVars(code: string): string[] {
         else if (declaration.id.type === 'Identifier') {
           variables.push(declaration.id.name)
         }
-      })
+      }
     }
     // 处理函数声明
     else if (node.type === 'FunctionDeclaration' && node.id) {
