@@ -1,4 +1,4 @@
-import { Vue } from './assets/vue.js'
+import { Vue } from './assets/vue'
 import { observe } from './observe'
 import { parseSetup } from './parseSetup'
 import { parseTemplate } from './parseTemplate'
