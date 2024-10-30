@@ -19,22 +19,26 @@ function getGlobalVars(code: string): string[] {
     when(pattern, pattern?.type)({
       ObjectPattern(p: ObjectPattern) {
         for (const prop of p.properties) {
-          if (prop.type === 'ObjectProperty') {
-            patterner(prop.value as Pattern, vars)
-          }
-          else if (prop.type === 'RestElement') {
-            patterner(prop.argument as Pattern, vars)
-          }
+          when(prop, prop.type)({
+            ObjectProperty(p: ObjectProperty) {
+              patterner(p.value as LVal, vars)
+            },
+            RestElement(p: RestElement) {
+              patterner(p.argument, vars)
+            },
+          })
         }
       },
       ArrayPattern(p: ArrayPattern) {
         for (const element of p.elements) {
-          if (element?.type === 'RestElement') {
-            patterner(element.argument as Pattern, vars)
-          }
-          else if (element) {
-            patterner(element, vars)
-          }
+          element && when(element, element?.type)({
+            RestElement(p: RestElement) {
+              patterner(p.argument, vars)
+            },
+            [Symbol('default')](el: Pattern) {
+              patterner(el, vars)
+            },
+          })
         }
       },
       Identifier(p: Identifier) {
