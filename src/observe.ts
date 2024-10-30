@@ -41,10 +41,3 @@ export function observe(SorM: string | Record<string, (target: any) => any>, cal
     }), Object.create(null)),
   })
 }
-
-// const o = observe({
-//   a: () => 0,
-//   b: () => 'b',
-// })
-// const a = await o.a
-// console.log(a)
