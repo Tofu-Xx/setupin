@@ -3,14 +3,80 @@
   <script src="../dist/main.js"></script>
 </head>
 
+<!-- <script setup type="module"> -->
 <script setup>
-  import 'https://unpkg.com/@tofukit/resetcss'
-  console.log('@tofukit/resetcss')
-  // import 'https://unpkg.com/setupin'
-  // import 'jquery'
+  import dayjs from 'https://cdn.skypack.dev/dayjs'
+  import 'https://unpkg.com/jquery'
+  console.log($('p').text(dayjs().format('YYYY-MM-DD')).text())
   // import 'vue'
+  import confetti from 'https://esm.sh/canvas-confetti'
+  confetti()
+  import rough from 'https://esm.sh/roughjs'
+
+  // 创建 RoughCanvas 实例
+  const canvas = document.querySelector('canvas')
+  canvas.width = 400
+  canvas.height = 300
+  const rc = rough.canvas(canvas)
+
+  // 画一个简单的房子
+  function drawHouse() {
+    // 房子主体 (矩形)
+    rc.rectangle(100, 100, 200, 150, {
+      fill: '#ffd700',
+      fillStyle: 'zigzag',
+      roughness: 2,
+    })
+
+    // 屋顶 (三角形)
+    rc.polygon(
+      [
+        [100, 100],
+        [200, 30],
+        [300, 100],
+      ],
+      {
+        fill: '#ff6b6b',
+        fillStyle: 'cross-hatch',
+        roughness: 1.5,
+      },
+    )
+
+    // 门
+    rc.rectangle(180, 170, 40, 80, {
+      fill: '#8b4513',
+      fillStyle: 'solid',
+    })
+
+    // 窗户
+    rc.circle(150, 150, 30, {
+      fill: '#87ceeb',
+      fillStyle: 'dots',
+    })
+    rc.circle(250, 150, 30, {
+      fill: '#87ceeb',
+      fillStyle: 'dots',
+    })
+  }
+
+  drawHouse()
 </script>
 
+<!-- <body> -->
 <template>
-  <button @click="console.log('Hello, World!')">Click me!</button>
+  <canvas></canvas>
+  <p
+    :style="{
+      textAlign: 'center',
+      fontSize: '10rem',
+    }"
+  ></p>
 </template>
+<!-- </body> -->
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+</style>

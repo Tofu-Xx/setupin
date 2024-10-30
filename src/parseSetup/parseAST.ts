@@ -32,7 +32,7 @@ export function getGlobalVars(astBody: Statement[]): string[] {
   }
 }
 
-export function splitImport(code: string, astBody: Statement[]) {
+export function splitImport(code: string, astBody: Statement[]): [string, string] {
   const index = astBody.findLast(node => node.type === 'ImportDeclaration')?.end ?? 0
   return [code.slice(0, index), code.slice(index)]
 }
