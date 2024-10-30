@@ -1,17 +1,8 @@
 import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, LVal, ObjectPattern, ObjectProperty, Pattern, RestElement, VariableDeclaration } from '@babel/types'
 import { parse } from '@babel/parser'
-import { Vue } from './assets/vue'
-import { when } from './tools'
+import { when } from '../tools'
 
-export function parseSetup(setupScript: HTMLScriptElement) {
-  const setupText = setupScript.textContent ?? ''
-  setupScript.remove()
-  return {
-    setup: new Function(`const { ${Object.keys(Vue)} } = Vue; ${setupText} return { ${getGlobalVars(setupText)} }`),
-  }
-}
-
-function getGlobalVars(code: string): string[] {
+export function getGlobalVars(code: string): string[] {
   const ast = parse(code, { sourceType: 'script' })
 
   return ast.program.body.flatMap(node => when(node, node.type)({
