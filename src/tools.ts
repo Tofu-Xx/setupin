@@ -1,14 +1,13 @@
-type Fn<T> = (arg: T) => any
-type Classify<K extends string | number | symbol> = Partial<Record<K, Fn<any>>> & Record<symbol, Fn<any>>
-export function when<V extends string | number | symbol>(gist: V): Fn<Classify<V>>
-export function when<V extends string | number | symbol>(gist: any, verifyer: V): Fn<Classify<V>>
-export function when<V extends string | number | symbol>(gist: any, verifyer: V = gist) {
+type Classify<K extends Key> = Partial<Record<K, Fn<[any]>>> & Record<symbol, Fn<[any]>>
+export function when<V extends Key>(gist: V): Fn<[Classify<V>]>
+export function when<V extends Key>(gist: any, verifyer: V): Fn<[Classify<V>]>
+export function when<V extends Key>(gist: any, verifyer: V = gist) {
   return function (classify: Classify<V>) {
     const sym = Object.getOwnPropertySymbols(classify).find(sym => sym.description === 'default')
     const handler = classify[verifyer] ?? (sym && classify[sym])
     return handler?.(gist)
   }
 }
-export function loaded(callback: () => void) {
+export function loaded(callback: Fn<[], void>) {
   document.addEventListener('DOMContentLoaded', callback)
 }

@@ -1,6 +1,6 @@
 import { getASTBody, getGlobalVars, splitImport } from './parseAST'
 
-export async function parseSetup(setupScript: HTMLScriptElement) {
+export async function parseSetup(setupScript: Tag['script']) {
   const setupText = setupScript.textContent ?? ''
   const astBody = getASTBody(setupText)
   /* const rawImports = */ splitImport(setupText, astBody)

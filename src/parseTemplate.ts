@@ -1,5 +1,5 @@
-export function parseTemplate(body: HTMLBodyElement) {
-  const template = document.querySelector('head>template') as HTMLTemplateElement | undefined
+export function parseTemplate(body: Tag['body']) {
+  const template = document.querySelector('head>template') as Tag['template'] | null
   const templateContent = template?.content.cloneNode(true)
   template?.remove()
   body.replaceChildren(templateContent ?? '')
