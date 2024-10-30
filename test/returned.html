@@ -14,10 +14,33 @@
     name: rename,
     ...objrest
   } = { obj: 'obj', oa: ['oa'], oo: { oo: 'oo' }, name: 'rename', a: 'a', b: 'b' }
-  var varfn = (v) => {}
-  let letfn = (l) => {}
-  const constfn = (c) => {}
-  function fn(f) {}
+  function fn(f) {
+    return 'fn'
+  }
+  var varfn = (v) => 'varfn'
+  let letfn = (l) => 'letfn'
+  const constfn = (c) => 'constfn'
+  var varfn2 = function (v) {
+    return 'varfn2'
+  }
+  let letfn2 = function (l) {
+    return 'letfn2'
+  }
+  const constfn2 = function (c) {
+    return 'constfn2'
+  }
+
+  ;(() => {
+    const locala = 'locala'
+    let localb = 'localb'
+    var localc = 'localc'
+    function localfn() {
+      return 'localfn'
+    }
+    var localfn2 = function () {
+      return 'localfn2'
+    }
+  })()
 </script>
 
 <template>
@@ -33,11 +56,19 @@
     <li>{{ oo }}</li>
     <li>{{ rename }}</li>
     <li>{{ objrest }}</li>
-    <li>{{ varfn }}</li>
-    <li>{{ letfn }}</li>
-    <li>{{ constfn }}</li>
-    <li>{{ fn }}</li>
+    <li>{{ fn() }}</li>
+    <li>{{ varfn() }}</li>
+    <li>{{ letfn() }}</li>
+    <li>{{ constfn() }}</li>
+    <li>{{ varfn2() }}</li>
+    <li>{{ letfn2() }}</li>
+    <li>{{ constfn2() }}</li>
   </nav>
+  <p>{{ locala }}</p>
+  <p>{{ localb }}</p>
+  <p>{{ localc }}</p>
+  <!-- <p>{{ localfn() }}</p> -->
+  <!-- <p>{{ localfn2() }}</p> -->
 </template>
 
 <style>
