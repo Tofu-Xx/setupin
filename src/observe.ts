@@ -1,17 +1,15 @@
 import { loaded, when } from './tools'
 
-// 首先定义一个辅助类型来处理回调函数的返回值
-type ObserveResult<R extends (...args: any) => any> = Promise<ReturnType<R>>
-
-// 添加新的类型定义来处理 map 情况
-type ObserveMap = Record<string, (target: any) => any>
-type InferObserveResult<T extends ObserveMap> = {
-  [K in keyof T]: Promise<ReturnType<T[K]>>
+type Fn = (...args: any) => any
+type FnMap = Record<string, Fn>
+type Ret<R extends Fn> = Promise<Exclude<ReturnType<R>, Error>>
+type InferRet<T extends FnMap> = {
+  [K in keyof T]: Ret<T[K]>
 }
 
-export function observe<R extends (...args: any) => any>(selector: string, callback: R): ObserveResult<R>
-export function observe<T extends ObserveMap>(map: T): InferObserveResult<T>
-export function observe(SorM: string | Record<string, (target: any) => any>, callback?: (target: any) => any) {
+export function observe<R extends Fn>(selector: string, callback: R): Ret<R>
+export function observe<T extends FnMap>(map: T): InferRet<T>
+export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
   return when(SorM, typeof SorM)({
     string: selector => new Promise((resolve, reject) => {
       new MutationObserver((mutations, observer) => {
