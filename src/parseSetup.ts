@@ -6,8 +6,7 @@ export function parseSetup(setupScript: HTMLScriptElement) {
   const setupText = setupScript.textContent ?? ''
   setupScript.remove()
   return {
-    setup: new Function(`const { ${Object.keys(Vue).join(', ')} } = Vue; ${setupText} return { ${getGlobalVars(setupText)} }`),
-    // setup: new Function(`for (const k in Vue) window[k] = Vue[k]; ${setupText} return { ${getGlobalVars(setupText)} }`),
+    setup: new Function(`const { ${Object.keys(Vue).join(',')} } = Vue; ${setupText} return { ${getGlobalVars(setupText)} }`),
   }
 }
 
