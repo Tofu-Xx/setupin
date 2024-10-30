@@ -32,10 +32,7 @@ export function getGlobalVars(astBody: Statement[]): string[] {
   }
 }
 
-export function doImport(astBody: Statement[]) {
-  astBody.filter(node => node.type === 'ImportDeclaration').forEach((node) => {
-    console.log(node)
-    // const vars = specifiers.map(({ imported }) => imported.name)
-    // const module = source.value
-  })
+export function splitImport(code: string, astBody: Statement[]) {
+  const index = astBody.findLast(node => node.type === 'ImportDeclaration')?.end ?? 0
+  return [code.slice(0, index), code.slice(index)]
 }
