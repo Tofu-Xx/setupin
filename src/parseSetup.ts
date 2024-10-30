@@ -17,7 +17,7 @@ function getGlobalVars(code: string): string[] {
   return ast.program.body.flatMap(node => when(node, node.type)({
     ImportDeclaration() { throw new Error('Cannot use import statement outside a module.') },
     FunctionDeclaration: ({ id }: FunctionDeclaration) => [id?.name ?? ''],
-    VariableDeclaration: (n: VariableDeclaration) => n.declarations.map(({ id }) => patterner(id)),
+    VariableDeclaration: (n: VariableDeclaration) => n.declarations.flatMap(({ id }) => patterner(id)),
   }))
 
   function patterner(pattern: LVal): string[] {
