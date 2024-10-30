@@ -12,7 +12,7 @@ loaded(async () => {
   const [{ setupText, retNames }, Template] = await Promise.all([observed['script[setup]'], observed.body])
   const Vue = await import('https://unpkg.com/vue/dist/vue.esm-browser.prod.js')
   ;(window as any).Vue = Vue
-  ;(Vue as any).createApp({
+  Vue.createApp({
     setup: new Function(`const { ${Object.keys(Vue)} } = Vue; ${setupText} return { ${retNames} }`),
   }).mount(Template)
 })
