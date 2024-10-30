@@ -23,46 +23,45 @@ function getGlobalVars(code: string): string[] {
       },
       VariableDeclaration(n: VariableDeclaration) {
         for (const { id } of n.declarations)
-          // patterner(id, prev)
           prev.push(...patterner(id))
       },
     })
     return prev
   }, [])
+
   function patterner(pattern: LVal): string[] {
-    const vars: string[] = []
-    when(pattern, pattern?.type)({
+    return when(pattern, pattern?.type)({
       ObjectPattern(p: ObjectPattern) {
-        for (const prop of p.properties) {
-          when(prop, prop.type)({
+        return p.properties.reduce((prev: string[], prop) => {
+          return when(prop, prop.type)({
             ObjectProperty(p: ObjectProperty) {
-              vars.push(...patterner(p.value as LVal))
+              return prev.concat(patterner(p.value as LVal))
             },
             RestElement(p: RestElement) {
-              vars.push(...patterner(p.argument))
+              return prev.concat(patterner(p.argument))
             },
           })
-        }
+        }, [])
       },
       ArrayPattern(p: ArrayPattern) {
-        for (const element of p.elements) {
-          element && when(element, element?.type)({
+        return p.elements.reduce((prev: string[], element) => {
+          return when(element, element?.type ?? 0)({
+            0: () => prev,
             RestElement(p: RestElement) {
-              vars.push(...patterner(p.argument))
+              return prev.concat(patterner(p.argument))
             },
             [Symbol('default')](el: Pattern) {
-              vars.push(...patterner(el))
+              return prev.concat(patterner(el))
             },
           })
-        }
+        }, [])
       },
       Identifier(p: Identifier) {
-        vars.push(p.name)
+        return [p.name]
       },
       AssignmentPattern(p: AssignmentPattern) {
-        vars.push(...patterner(p.left))
+        return patterner(p.left)
       },
     })
-    return vars
   }
 }
