@@ -1,7 +1,16 @@
 import { loaded, when } from './tools'
 
-export function observe(selector: string, callback: (target: any) => any): any
-export function observe(map: Record<string, (target: any) => any>): any
+// 首先定义一个辅助类型来处理回调函数的返回值
+type ObserveResult<R extends (...args: any) => any> = Promise<ReturnType<R>>
+
+// 添加新的类型定义来处理 map 情况
+type ObserveMap = Record<string, (target: any) => any>
+type InferObserveResult<T extends ObserveMap> = {
+  [K in keyof T]: Promise<ReturnType<T[K]>>
+}
+
+export function observe<R extends (...args: any) => any>(selector: string, callback: R): ObserveResult<R>
+export function observe<T extends ObserveMap>(map: T): InferObserveResult<T>
 export function observe(SorM: string | Record<string, (target: any) => any>, callback?: (target: any) => any) {
   return when(SorM, typeof SorM)({
     string: selector => new Promise((resolve, reject) => {
@@ -32,3 +41,10 @@ export function observe(SorM: string | Record<string, (target: any) => any>, cal
     }), Object.create(null)),
   })
 }
+
+// const o = observe({
+//   a: () => 0,
+//   b: () => 'b',
+// })
+// const a = await o.a
+// console.log(a)

@@ -9,7 +9,9 @@ const observed = observe({
 })
 
 loaded(async () => {
-  const [{ setupText, retNames }, Template] = await Promise.all(Object.values(observed))
+  // const [{ setupText, retNames }, Template] = await Promise.all(Object.values(observed))
+  const { setupText, retNames } = await observed['script[setup]']
+  const Template = await observed.body
   const Vue = await import('https://unpkg.com/vue/dist/vue.esm-browser.prod.js')
   ;(window as any).Vue = Vue
   ;(Vue as any).createApp({
