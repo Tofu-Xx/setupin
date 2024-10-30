@@ -4,51 +4,39 @@
 </head>
 
 <script setup>
-  /* { a, b } Not local definition */
-  const {
-    a = 'a',
-    b: asB = 'b',
-    c: { nest },
-  } = {
-    a: 1,
-    b: 2,
-    c: {
-      nest: 'nest',
-    },
-  }
-  let msg = ref('')
-  function setMsg() {
-    const p1 = prompt('请输入')
-    msg.value = p1
-  }
-  var [one, [two, [three, [four]]]] = [1, [2, [3, [4]]]]
-  const showMsg = () => {
-    let [o, [w, r]] = [1, [2, 3]]
-    const p2 = 'is'
-    alert(`${p2} ${msg.value}`)
-  }
-  /* 混 */
-  const {
-    A: [{ AO }, [AA]],
-    O: {
-      OA: [OA],
-      OO: { OO },
-    },
-  } = {
-    A: [{ AO: 'AO' }, ['AA']],
-    O: { OA: ['OA'], OO: { OO: 'OO' } },
-  }
-  console.log(AO, AA, OA, OO)
+  const [arr, [aa], { ao }, ...arest] = ['arr', ['aa'], { ao: 'ao' }, 'a', 'b']
+  const [arrdflt = '$arrdflt'] = []
+  let {
+    obj,
+    objdflt = '$objdflt',
+    oa: [oa],
+    oo: { oo },
+    name: rename,
+    ...objrest
+  } = { obj: 'obj', oa: ['oa'], oo: { oo: 'oo' }, name: 'rename', a: 'a', b: 'b' }
+  var varfn = (v) => {}
+  let letfn = (l) => {}
+  const constfn = (c) => {}
+  function fn(f) {}
 </script>
 
 <template>
-  <button @click="setMsg">click me</button>
-  <button @click="showMsg">show message</button>
   <nav>
-    <li>{{ one }}</li>
-    <li>{{ two }}</li>
-    <li>{{ three }}</li>
-    <li>{{ four }}</li>
+    <li>{{ arr }}</li>
+    <li>{{ aa }}</li>
+    <li>{{ ao }}</li>
+    <li>{{ arest }}</li>
+    <li>{{ arrdflt }}</li>
+    <li>{{ obj }}</li>
+    <li>{{ objdflt }}</li>
+    <li>{{ oa }}</li>
+    <li>{{ oo }}</li>
+    <li>{{ rename }}</li>
+    <li>{{ objrest }}</li>
+    <li>{{ varfn }}</li>
+    <li>{{ letfn }}</li>
+    <li>{{ constfn }}</li>
+    <li>{{ fn }}</li>
   </nav>
 </template>
 
