@@ -4,11 +4,11 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   // plugins: [
-  // babel({
-  //   babelConfig: {
-  //     presets: ['@babel/preset-env'],
-  //   },
-  // })
+  //   babel({
+  //     babelConfig: {
+  //       presets: ['@babel/preset-env'],
+  //     },
+  //   }),
   // ],
   build: {
     lib: {
