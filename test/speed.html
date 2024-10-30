@@ -1,0 +1,26 @@
+<script>
+  window.now = performance.now()
+  window.onload = () => {
+    console.log(performance.now() - window.now)
+  }
+</script>
+
+<head>
+  <script src="https://unpkg.com/setupin"></script>
+</head>
+
+<script setup>
+  const hRef = useTemplateRef('h')
+  onMounted(() => {
+    console.log(hRef.value)
+  })
+  const msg = ref('setupin')
+</script>
+
+<template>
+  <h1 ref="h">{{ msg }}</h1>
+</template>
+
+<style>
+  @import 'https://unpkg.com/@tofukit/resetcss';
+</style>
