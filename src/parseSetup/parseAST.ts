@@ -1,11 +1,9 @@
-import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, LVal, ObjectPattern, ObjectProperty, Pattern, RestElement, VariableDeclaration } from '@babel/types'
+import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, LVal, ObjectPattern, ObjectProperty, Pattern, RestElement, Statement, VariableDeclaration } from '@babel/types'
 import { parse } from '@babel/parser'
 import { when } from '../tools'
 
-export function getGlobalVars(code: string): string[] {
-  const ast = parse(code, { sourceType: 'script' })
-
-  return ast.program.body.flatMap(node => when(node, node.type)({
+export function getGlobalVars(astBody: Statement[]): string[] {
+  return astBody.flatMap(node => when(node, node.type)({
     FunctionDeclaration: ({ id }: FunctionDeclaration) => [id?.name ?? ''],
     VariableDeclaration: (n: VariableDeclaration) => n.declarations.flatMap(({ id }) => _patterner(id)),
   }))
@@ -28,4 +26,8 @@ export function getGlobalVars(code: string): string[] {
         })),
     })
   }
+}
+
+export function getASTBody(code: string) {
+  return parse(code, { sourceType: 'script' }).program.body
 }
