@@ -6,15 +6,14 @@ import { when } from './tools'
 export function parseSetup(setupScript: HTMLScriptElement) {
   const setupText = setupScript.textContent ?? ''
   setupScript.remove()
-  const vars = getGlobalVars(setupText)
   return {
-    setup: new Function(`const { ${Object.keys(Vue).join(',')} } = Vue; ${setupText} return { ${vars} }`),
+    setup: new Function(`const { ${Object.keys(Vue)} } = Vue; ${setupText} return { ${getGlobalVars(setupText)} }`),
   }
 }
 
 function getGlobalVars(code: string): string[] {
   const ast = parse(code, { sourceType: 'script' })
-  // 通用的模式处理函数
+
   return ast.program.body.reduce((prev: string[], node) => {
     when(node, node.type)({
       ImportDeclaration() { throw new Error('Cannot use import statement outside a module.') },
@@ -30,16 +29,15 @@ function getGlobalVars(code: string): string[] {
   }, [])
 
   function patterner(pattern: LVal): string[] {
+    const rest = (vars: string[]) => ({ RestElement: (p: RestElement) => vars.concat(patterner(p.argument)) })
     return when(pattern, pattern?.type)({
+      Identifier: (p: Identifier) => [p.name],
+      AssignmentPattern: (p: AssignmentPattern) => patterner(p.left),
       ObjectPattern(p: ObjectPattern) {
         return p.properties.reduce((prev: string[], prop) => {
           return when(prop, prop.type)({
-            ObjectProperty(p: ObjectProperty) {
-              return prev.concat(patterner(p.value as LVal))
-            },
-            RestElement(p: RestElement) {
-              return prev.concat(patterner(p.argument))
-            },
+            ObjectProperty: (p: ObjectProperty) => prev.concat(patterner(p.value as LVal)),
+            ...rest(prev),
           })
         }, [])
       },
@@ -47,20 +45,10 @@ function getGlobalVars(code: string): string[] {
         return p.elements.reduce((prev: string[], element) => {
           return when(element, element?.type ?? 0)({
             0: () => prev,
-            RestElement(p: RestElement) {
-              return prev.concat(patterner(p.argument))
-            },
-            [Symbol('default')](el: Pattern) {
-              return prev.concat(patterner(el))
-            },
+            ...rest(prev),
+            [Symbol('default')]: (el: Pattern) => prev.concat(patterner(el)),
           })
         }, [])
-      },
-      Identifier(p: Identifier) {
-        return [p.name]
-      },
-      AssignmentPattern(p: AssignmentPattern) {
-        return patterner(p.left)
       },
     })
   }
