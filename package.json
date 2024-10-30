@@ -47,13 +47,16 @@
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
     "@antfu/ni": "^0.23.0",
+    "@babel/core": "^7.26.0",
     "@babel/parser": "^7.26.1",
+    "@babel/preset-env": "^7.26.0",
     "@babel/types": "^7.26.0",
     "@types/node": "^22.8.4",
     "bumpp": "^9.8.0",
     "eslint": "^9.13.0",
     "eslint-plugin-format": "^0.1.2",
     "taze": "^0.17.2",
-    "vite": "^5.4.10"
+    "vite": "^5.4.10",
+    "vite-plugin-babel": "^1.2.0"
   }
 }
