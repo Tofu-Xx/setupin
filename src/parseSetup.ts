@@ -1,4 +1,4 @@
-import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, ObjectPattern, ObjectProperty, Pattern, RestElement, VariableDeclaration } from '@babel/types'
+import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, LVal, ObjectPattern, ObjectProperty, Pattern, RestElement, VariableDeclaration } from '@babel/types'
 import { parse } from '@babel/parser'
 import { Vue } from './assets/vue'
 import { when } from './tools'
@@ -15,7 +15,7 @@ export function parseSetup(setupScript: HTMLScriptElement) {
 function getGlobalVars(code: string): string[] {
   const ast = parse(code, { sourceType: 'script' })
   // 通用的模式处理函数
-  function patterner(pattern: Pattern | Identifier, vars: string[]) {
+  function patterner(pattern: LVal, vars: string[]) {
     when(pattern, pattern?.type)({
       ObjectPattern(p: ObjectPattern) {
         for (const prop of p.properties) {
@@ -41,7 +41,6 @@ function getGlobalVars(code: string): string[] {
         vars.push(p.name)
       },
       AssignmentPattern(p: AssignmentPattern) {
-        // p.left.type === 'Identifier' && vars.push(p.left.name)
         patterner(p.left, vars)
       },
     })
@@ -49,18 +48,12 @@ function getGlobalVars(code: string): string[] {
   return ast.program.body.reduce((prev: string[], node) => {
     when(node, node.type)({
       ImportDeclaration() { throw new Error('Cannot use import statement outside a module.') },
-      FunctionDeclaration(n: FunctionDeclaration) {
-        prev.push(n.id?.name ?? '')
+      FunctionDeclaration({ id }: FunctionDeclaration) {
+        prev.push(id?.name ?? '')
       },
       VariableDeclaration(n: VariableDeclaration) {
-        for (const { id } of n.declarations) {
+        for (const { id } of n.declarations)
           patterner(id, prev)
-          // when(id, id.type)({
-          //   ObjectPattern(id: ObjectPattern) { patterner(id, prev) },
-          //   ArrayPattern(id: ArrayPattern) { patterner(id, prev) },
-          //   Identifier(id: Identifier) { prev.push(id.name) },
-          // })
-        }
       },
     })
     return prev
