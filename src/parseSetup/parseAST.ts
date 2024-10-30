@@ -2,6 +2,10 @@ import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, 
 import { parse } from '@babel/parser'
 import { when } from '../tools'
 
+export function getASTBody(code: string) {
+  return parse(code, { sourceType: 'module' }).program.body
+}
+
 export function getGlobalVars(astBody: Statement[]): string[] {
   return astBody.flatMap(node => when(node, node.type)({
     FunctionDeclaration: ({ id }: FunctionDeclaration) => [id?.name ?? ''],
@@ -28,6 +32,10 @@ export function getGlobalVars(astBody: Statement[]): string[] {
   }
 }
 
-export function getASTBody(code: string) {
-  return parse(code, { sourceType: 'script' }).program.body
+export function doImport(astBody: Statement[]) {
+  astBody.filter(node => node.type === 'ImportDeclaration').forEach((node) => {
+    console.log(node)
+    // const vars = specifiers.map(({ imported }) => imported.name)
+    // const module = source.value
+  })
 }
