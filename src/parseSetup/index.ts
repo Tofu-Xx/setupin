@@ -1,5 +1,5 @@
 import { Vue } from '../assets/vue'
-import { getGlobalVars } from './parseast'
+import { getGlobalVars } from './parseAST'
 
 export function parseSetup(setupScript: HTMLScriptElement) {
   const setupText = setupScript.textContent ?? ''
