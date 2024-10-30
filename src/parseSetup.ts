@@ -15,40 +15,6 @@ export function parseSetup(setupScript: HTMLScriptElement) {
 function getGlobalVars(code: string): string[] {
   const ast = parse(code, { sourceType: 'script' })
   // 通用的模式处理函数
-  function patterner(pattern: LVal, vars: string[]) {
-    when(pattern, pattern?.type)({
-      ObjectPattern(p: ObjectPattern) {
-        for (const prop of p.properties) {
-          when(prop, prop.type)({
-            ObjectProperty(p: ObjectProperty) {
-              patterner(p.value as LVal, vars)
-            },
-            RestElement(p: RestElement) {
-              patterner(p.argument, vars)
-            },
-          })
-        }
-      },
-      ArrayPattern(p: ArrayPattern) {
-        for (const element of p.elements) {
-          element && when(element, element?.type)({
-            RestElement(p: RestElement) {
-              patterner(p.argument, vars)
-            },
-            [Symbol('default')](el: Pattern) {
-              patterner(el, vars)
-            },
-          })
-        }
-      },
-      Identifier(p: Identifier) {
-        vars.push(p.name)
-      },
-      AssignmentPattern(p: AssignmentPattern) {
-        patterner(p.left, vars)
-      },
-    })
-  }
   return ast.program.body.reduce((prev: string[], node) => {
     when(node, node.type)({
       ImportDeclaration() { throw new Error('Cannot use import statement outside a module.') },
@@ -57,9 +23,46 @@ function getGlobalVars(code: string): string[] {
       },
       VariableDeclaration(n: VariableDeclaration) {
         for (const { id } of n.declarations)
-          patterner(id, prev)
+          // patterner(id, prev)
+          prev.push(...patterner(id))
       },
     })
     return prev
   }, [])
+  function patterner(pattern: LVal): string[] {
+    const vars: string[] = []
+    when(pattern, pattern?.type)({
+      ObjectPattern(p: ObjectPattern) {
+        for (const prop of p.properties) {
+          when(prop, prop.type)({
+            ObjectProperty(p: ObjectProperty) {
+              vars.push(...patterner(p.value as LVal))
+            },
+            RestElement(p: RestElement) {
+              vars.push(...patterner(p.argument))
+            },
+          })
+        }
+      },
+      ArrayPattern(p: ArrayPattern) {
+        for (const element of p.elements) {
+          element && when(element, element?.type)({
+            RestElement(p: RestElement) {
+              vars.push(...patterner(p.argument))
+            },
+            [Symbol('default')](el: Pattern) {
+              vars.push(...patterner(el))
+            },
+          })
+        }
+      },
+      Identifier(p: Identifier) {
+        vars.push(p.name)
+      },
+      AssignmentPattern(p: AssignmentPattern) {
+        vars.push(...patterner(p.left))
+      },
+    })
+    return vars
+  }
 }
