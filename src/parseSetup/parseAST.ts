@@ -8,8 +8,9 @@ export function getASTBody(code: string) {
 
 export function getGlobalVars(astBody: Statement[]): string[] {
   return astBody.flatMap(node => when(node, node.type)({
-    FunctionDeclaration: ({ id }: FunctionDeclaration) => [id?.name ?? ''],
+    FunctionDeclaration: ({ id }: FunctionDeclaration) => id ? [id.name] : [],
     VariableDeclaration: (n: VariableDeclaration) => n.declarations.flatMap(({ id }) => _patterner(id)),
+    [Symbol('default')]: () => [],
   }))
 
   function _patterner(pattern: LVal): string[] {
@@ -28,6 +29,7 @@ export function getGlobalVars(astBody: Statement[]): string[] {
           RestElement,
           [Symbol('default')]: (el: Pattern) => _patterner(el),
         })),
+      [Symbol('default')]: () => [],
     })
   }
 }
