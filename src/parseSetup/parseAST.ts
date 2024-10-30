@@ -7,27 +7,25 @@ export function getGlobalVars(code: string): string[] {
 
   return ast.program.body.flatMap(node => when(node, node.type)({
     FunctionDeclaration: ({ id }: FunctionDeclaration) => [id?.name ?? ''],
-    VariableDeclaration: (n: VariableDeclaration) => n.declarations.flatMap(({ id }) => patterner(id)),
+    VariableDeclaration: (n: VariableDeclaration) => n.declarations.flatMap(({ id }) => _patterner(id)),
   }))
 
-  function patterner(pattern: LVal): string[] {
-    return when(pattern, pattern?.type)(() => {
-      const RestElement = (p: RestElement) => patterner(p.argument)
-      return {
-        Identifier: (p: Identifier) => [p.name],
-        AssignmentPattern: (p: AssignmentPattern) => patterner(p.left),
-        ObjectPattern: (p: ObjectPattern) =>
-          p.properties.flatMap(prop => when(prop, prop.type)({
-            ObjectProperty: (p: ObjectProperty) => patterner(p.value as LVal),
-            RestElement,
-          }), []),
-        ArrayPattern: (p: ArrayPattern) =>
-          p.elements.flatMap(element => when(element, element?.type ?? 0)({
-            0: () => [],
-            RestElement,
-            [Symbol('default')]: (el: Pattern) => patterner(el),
-          })),
-      }
+  function _patterner(pattern: LVal): string[] {
+    const RestElement = (p: RestElement) => _patterner(p.argument)
+    return when(pattern, pattern?.type)({
+      Identifier: (p: Identifier) => [p.name],
+      AssignmentPattern: (p: AssignmentPattern) => _patterner(p.left),
+      ObjectPattern: (p: ObjectPattern) =>
+        p.properties.flatMap(prop => when(prop, prop.type)({
+          ObjectProperty: (p: ObjectProperty) => _patterner(p.value as LVal),
+          RestElement,
+        }), []),
+      ArrayPattern: (p: ArrayPattern) =>
+        p.elements.flatMap(element => when(element, element?.type ?? 0)({
+          0: () => [],
+          RestElement,
+          [Symbol('default')]: (el: Pattern) => _patterner(el),
+        })),
     })
   }
 }
