@@ -13,7 +13,7 @@ export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
           const target = (mutation.target as HTMLElement)?.querySelector(selector)
           if (target) {
             observer.disconnect()
-            const result = callback!(target)
+            const result = callback?.(target)
             result instanceof Error
               ? reject(result)
               : resolve(result)
@@ -22,7 +22,7 @@ export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
         }
         loaded(() => {
           observer.disconnect()
-          resolve(callback!(void 0))
+          resolve(callback?.(void 0))
           console.warn(`No ${selector} found`)
         })
       }).observe(document, {
