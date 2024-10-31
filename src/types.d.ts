@@ -1,9 +1,11 @@
-declare module 'https://unpkg.com/vue/dist/vue.esm-browser.prod.js' {
+declare module './assets/vue.esm' {
   export * from 'vue'
 }
-declare type Vue = typeof import('https://unpkg.com/vue/dist/vue.esm-browser.prod.js')
+declare module './assets/vue.esm.prod' {
+  export * from 'vue'
+}
 declare interface Window {
-  Vue: any
+  Vue: typeof import('./assets/vue.esm') | typeof import('./assets/vue.esm.prod')
 }
 /* tool types */
 declare type Fn<T extends any[] = [any], R = any> = (...args: T) => R
