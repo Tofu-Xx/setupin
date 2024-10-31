@@ -1,19 +1,27 @@
 import { extractImport, getASTBody, getGlobalVars } from './parseAST'
 
 export function parseSetup(scriptEl: Tag['script'] | undefined) {
-  const scriptText = scriptEl?.textContent ?? ''
+  if (!scriptEl)
+    return
+  const scriptText = scriptEl.textContent ?? ''
   const astBody = getASTBody(scriptText)
   const [importText, setupText] = extractImport(scriptText, astBody)
-  if (scriptEl && importText) {
-    scriptEl.type = 'module'
-    scriptEl.textContent = importText
-    // 等待scriptEl加载
+  const retNames = getGlobalVars(astBody)
+  scriptEl.type = 'module'
+
+  scriptEl.textContent = `
+  import * as Vue from 'https://unpkg.com/vue/dist/vue.esm-browser.prod.js'
+  ${importText}
+  for (const k in Vue) {
+    window[k] = Vue[k]
   }
-  else {
-    scriptEl?.remove()
-  }
-  return {
-    setupText,
-    retNames: getGlobalVars(astBody),
-  }
+  Vue.createApp({
+    setup(){
+      ${setupText}
+      return {
+        ${retNames}
+      }
+    }
+  }).mount(document.body)
+  `
 }

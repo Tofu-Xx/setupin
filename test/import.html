@@ -3,25 +3,23 @@
   <script src="../dist/main.js"></script>
 </head>
 
-<!-- <script setup type="module"> -->
 <script setup>
   import dayjs from 'https://cdn.skypack.dev/dayjs'
   import 'https://unpkg.com/jquery'
-  console.log($('p').text(dayjs().format('YYYY-MM-DD')).text())
+  onMounted(() => {
+    $('p').text(dayjs().format('YYYY-MM-DD')).text()
+  })
   // import 'vue'
   import confetti from 'https://esm.sh/canvas-confetti'
   confetti()
   import rough from 'https://esm.sh/roughjs'
 
   // 创建 RoughCanvas 实例
-  const canvas = document.querySelector('canvas')
-  canvas.width = 400
-  canvas.height = 300
-  const rc = rough.canvas(canvas)
-
-  // 画一个简单的房子
-  function drawHouse() {
-    // 房子主体 (矩形)
+  const canvasEl = useTemplateRef('canvas')
+  onMounted(() => {
+    canvasEl.value.width = 400
+    canvasEl.value.height = 300
+    const rc = rough.canvas(canvasEl.value)
     rc.rectangle(100, 100, 200, 150, {
       fill: '#ffd700',
       fillStyle: 'zigzag',
@@ -57,18 +55,16 @@
       fill: '#87ceeb',
       fillStyle: 'dots',
     })
-  }
-
-  drawHouse()
+  })
 </script>
 
 <!-- <body> -->
 <template>
-  <canvas></canvas>
+  <canvas ref="canvas"></canvas>
   <p
     :style="{
       textAlign: 'center',
-      fontSize: '10rem',
+      fontSize: '4rem',
     }"
   ></p>
 </template>
@@ -78,5 +74,10 @@
   body {
     display: flex;
     flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    inset: 0;
+    margin: auto;
   }
 </style>

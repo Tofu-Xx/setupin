@@ -4,41 +4,41 @@
 </head>
 
 <script setup>
-  const [arr, [aa], { ao }, , ...arest] = ['arr', ['aa'], { ao: 'ao' }, 'a', 'b', 'c']
-  const [arrdflt = '$arrdflt'] = []
+  const [arr, [aa], { ao }, , ...arest] = ['🎉arr', ['🎉aa'], { ao: '🎉ao' }, '🎉a', '🎉b', '🎉c']
+  const [arrdflt = '🎉$arrdflt'] = []
   let {
     obj,
-    objdflt = '$objdflt',
+    objdflt = '🎉$objdflt',
     oa: [oa],
     oo: { oo },
     name: rename,
     ...objrest
-  } = { obj: 'obj', oa: ['oa'], oo: { oo: 'oo' }, name: 'rename', a: 'a', b: 'b' }
+  } = { obj: '🎉obj', oa: ['🎉oa'], oo: { oo: '🎉oo' }, name: '🎉rename', a: '🎉a', b: '🎉b' }
   function fn(f) {
-    return 'fn'
+    return '🎉fn'
   }
-  var varfn = (v) => 'varfn'
-  let letfn = (l) => 'letfn'
-  const constfn = (c) => 'constfn'
+  var varfn = (v) => '🎉varfn'
+  let letfn = (l) => '🎉letfn'
+  const constfn = (c) => '🎉constfn'
   var varfn2 = function (v) {
-    return 'varfn2'
+    return '🎉varfn2'
   }
   let letfn2 = function (l) {
-    return 'letfn2'
+    return '🎉letfn2'
   }
   const constfn2 = function (c) {
-    return 'constfn2'
+    return '🎉constfn2'
   }
 
   ;(() => {
-    const locala = 'locala'
-    let localb = 'localb'
-    var localc = 'localc'
+    const locala = '❗locala'
+    let localb = '❗localb'
+    var localc = '❗localc'
     function localfn() {
-      return 'localfn'
+      return '❗localfn'
     }
     var localfn2 = function () {
-      return 'localfn2'
+      return '❗localfn2'
     }
   })()
 </script>
@@ -67,8 +67,6 @@
   <p>{{ locala }}</p>
   <p>{{ localb }}</p>
   <p>{{ localc }}</p>
-  <!-- <p>{{ localfn() }}</p> -->
-  <!-- <p>{{ localfn2() }}</p> -->
 </template>
 
 <style>
