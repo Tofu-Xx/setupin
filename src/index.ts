@@ -8,6 +8,7 @@ const oSetup = observe('script[setup]', parseSetup)
 ;(async () => {
   const template = await oTemplate
   const { setupEl, importText, setupText, retNames } = await oSetup
+
   setupEl.textContent = `
   import * as Vue from 'https://unpkg.com/vue/dist/vue.esm-browser.prod.js'
   ${importText}
