@@ -1,14 +1,22 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  envPrefix: 'VUE_',
   build: {
     lib: {
-      entry: 'src/index.ts',
+      entry: {
+        'main': 'src/index.ts',
+        'main.prod': 'src/index.ts',
+      },
       formats: ['iife'],
       name: 'Vue',
-      fileName: () => 'main.js',
     },
     target: 'esnext',
     minify: false,
+    rollupOptions: {
+      output: {
+        entryFileNames: '[name].js',
+      },
+    },
   },
 })
