@@ -1,10 +1,5 @@
-import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, ImportDeclaration, LVal, ObjectPattern, ObjectProperty, Pattern, RestElement, Statement, VariableDeclaration } from '@babel/types'
-import { parse } from '@babel/parser'
+import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, LVal, ObjectPattern, ObjectProperty, Pattern, RestElement, Statement, VariableDeclaration } from '@babel/types'
 import { when } from '../tools'
-
-export function getASTBody(code: string) {
-  return parse(code, { sourceType: 'module' }).program.body
-}
 
 export function getGlobalVars(astBody: Statement[]): string[] {
   return astBody.flatMap(node => when(node, node.type)({
@@ -32,9 +27,4 @@ export function getGlobalVars(astBody: Statement[]): string[] {
       [Symbol('default')]: () => [],
     })
   }
-}
-
-export function extractImport(code: string, astBody: Statement[]): [string, string] {
-  const imports = astBody.filter(({ type }) => type === 'ImportDeclaration').map(node => code.slice(node.start!, node.end!))
-  return [imports.join('\n'), code.replace(new RegExp(imports.join('|'), 'g'), '')]
 }

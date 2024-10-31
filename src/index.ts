@@ -1,6 +1,6 @@
-import { observe } from './observe'
 import { parseSetup } from './parseSetup'
 import { parseTemplate } from './parseTemplate'
+import { observe } from './tools'
 
 const oTemplate = observe('head>template', parseTemplate)
 const oSetup = observe('script[setup]', parseSetup)

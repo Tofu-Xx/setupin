@@ -1,4 +1,4 @@
-import { extractImport, getASTBody, getGlobalVars } from './parseAST'
+import { ast } from './ast'
 
 export function parseSetup(setupEl: Tag['script'] | undefined) {
   const scriptContent = setupEl?.textContent ?? ''
@@ -11,13 +11,10 @@ export function parseSetup(setupEl: Tag['script'] | undefined) {
     setupEl.type = 'module'
     document.head.appendChild(setupEl)
   }
-  const astBody = getASTBody(scriptContent)
-  const [importText, setupText] = extractImport(scriptContent, astBody)
-  const retNames = getGlobalVars(astBody)
+  const { extractImport, getGlobalVars } = ast(scriptContent)
   return {
+    ...extractImport(),
+    retNames: getGlobalVars(),
     setupEl,
-    importText,
-    setupText,
-    retNames,
   }
 }
