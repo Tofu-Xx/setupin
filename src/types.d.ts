@@ -11,7 +11,7 @@ declare type Tag = HTMLElementTagNameMap
 /* types */
 declare interface Context {
   template: string
-  importCode: string
+  importsCode: string
   setupCode: string
   retNames: string[]
   isAsync: boolean

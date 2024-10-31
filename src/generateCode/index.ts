@@ -1,30 +1,13 @@
-export function generateCode(
-  template: string,
-  {
-    importCode,
-    setupCode,
-    retNames,
-    isAsync,
-  }: Context,
-) {
-  const suspense = `{
-    components: { AsyncComp },
-    template: \`<Suspense><AsyncComp /></Suspense>\`,
-  }`
-  const app = `{
+export function generateCode(template: string, ctx: Context) {
+  const { importsCode, setupCode, retNames, isAsync } = ctx
+  const appComp = `{
     template: \`${template}\`,
-    ${isAsync ? 'async' : ''} setup() {
-      ${setupCode}
-      return {
-        ${retNames}
-      }
-    },
+    ${isAsync ? 'async' : ''} setup() {${setupCode}return {${retNames}}},
   }`
-  const statementAsync = isAsync ? `const AsyncComp = ${app}` : ''
-  return `
-  ${importCode}
-  const { ${Object.keys(window.Vue)} } = Vue;
-  ${statementAsync}
-  createApp(${isAsync ? suspense : app}).mount(document.body);
-  `
+  const suspenseComp = `{components:{c:${appComp}},template:'<Suspense><c/></Suspense>'}`
+  const createApp = `createApp(${isAsync ? suspenseComp : appComp}).mount(document.body);`
+  const autoImport = `const { ${Object.keys(window.Vue)} } = Vue;`
+  return importsCode
+    + autoImport
+    + createApp
 }
