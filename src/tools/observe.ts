@@ -1,4 +1,5 @@
-type Ret<R extends Fn> = Promise<Exclude<ReturnType<R>, Error>>
+type UnwrapFn<T> = T extends Fn ? ReturnType<T> : T
+type Ret<R extends Fn> = Promise<UnwrapFn<ReturnType<R>>>
 export function observe<R extends Fn>(selector: string, callback: R): Ret<R> {
   return new Promise((resolve, reject) => {
     let isFound = false
@@ -13,17 +14,16 @@ export function observe<R extends Fn>(selector: string, callback: R): Ret<R> {
         }
       }
     })
-    observer.observe(document, {
+    observer.observe(document.head, {
       childList: true,
-      subtree: true,
     })
     document.addEventListener('DOMContentLoaded', () => {
       if (isFound)
         return
       observer.disconnect()
-      const result = callback?.(void 0)
-      if (result instanceof Error) {
-        reject(result)
+      const result = callback(void 0)
+      if (typeof result === 'function') {
+        reject(result())
       }
       else {
         resolve(result)

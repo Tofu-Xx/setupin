@@ -9,6 +9,9 @@ const oTemplate = observe('head>template', parseTemplate)
 const oSetup = observe('script[setup]', parseSetup)
 
 ;(async () => {
-  const [{ setupEl, context }, template] = await Promise.all([oSetup, oTemplate])
-  setupEl.textContent = generateCode(template, context)
+  try {
+    const [{ setupEl, context }, template] = await Promise.all([oSetup, oTemplate])
+    setupEl.textContent = generateCode(template, context)
+  }
+  catch {}
 })()
