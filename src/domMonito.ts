@@ -12,11 +12,15 @@ export function domMonito() {
               node.textContent = '/* Resolved to the wrong location */'
             }
             else {
+              if (sign.script)
+                return
               sign.script = true
               /* parseScript */
             }
           }
           if (node.tagName === 'TEMPLATE' && node.parentNode === document.head) {
+            if (sign.template)
+              return
             sign.template = true
             /* parseTemplate */
           }
