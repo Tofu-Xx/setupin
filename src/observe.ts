@@ -11,9 +11,9 @@ export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
       new MutationObserver((mutations, observer) => {
         for (const mutation of mutations) {
           const target = (mutation.target as HTMLElement)?.querySelector(selector)
-          if (target && callback) {
+          if (target) {
             observer.disconnect()
-            const result = callback(target)
+            const result = callback!(target)
             result instanceof Error
               ? reject(result)
               : resolve(result)
@@ -22,7 +22,8 @@ export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
         }
         loaded(() => {
           observer.disconnect()
-          reject(new Error(`No ${selector} found`))
+          resolve(callback!(void 0))
+          console.warn(`No ${selector} found`)
         })
       }).observe(document, {
         childList: true,
