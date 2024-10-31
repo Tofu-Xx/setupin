@@ -6,11 +6,13 @@
 <script setup>
   await import('https://unpkg.com/jquery')
   const { default: dayjs } = await import('https://esm.sh/dayjs');
-  console.log(dayjs().format('YYYY-MM-DD HH:mm:ss'))
+  const now = dayjs().format('YYYY-MM-DD HH:mm:ss')
+  console.log(now)
 </script>
 
 <template>
-  <h1 :style="{ color: 'darkblue' }">Hello</h1>
+  <h1 :style="{ color: 'darkblue' }">成功了！！！</h1>
+  {{ now }}
 </template>
 
 <style>
