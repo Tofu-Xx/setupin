@@ -7,14 +7,14 @@ const oSetup = observe('script[setup]', parseSetup)
 
 ;(async () => {
   const template = await oTemplate
-  const { setupEl, importText, setupText, retNames } = await oSetup
+  const { setupEl, importText, setupText, retNames, isAsync } = await oSetup
   window.Vue = await import('https://unpkg.com/vue/dist/vue.esm-browser.prod.js')
   setupEl.textContent = `
   ${importText}
   const { ${Object.keys(window.Vue)} } = Vue
   createApp({
     template: \`${template}\`,
-    async setup(){
+    ${isAsync ? 'async' : ''} setup(){
       ${setupText}
       return {
         ${retNames}

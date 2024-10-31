@@ -11,10 +11,10 @@ export function parseSetup(setupEl: Tag['script'] | undefined) {
   }
   setupEl.type = 'module'
   const { extractImport, getGlobalVars, isAsyncModule } = ast(scriptContent)
-  console.log(isAsyncModule())
   return {
-    ...extractImport(),
-    retNames: getGlobalVars(),
     setupEl,
+    retNames: getGlobalVars(),
+    isAsync: isAsyncModule(),
+    ...extractImport(),
   }
 }

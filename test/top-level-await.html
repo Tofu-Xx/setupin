@@ -4,7 +4,8 @@
 </head>
 
 <script setup>
-  const { default: dayjs } = await import('https://esm.sh/dayjs')
+  await import('https://unpkg.com/jquery')
+  const { default: dayjs } = await import('https://esm.sh/dayjs');
   console.log(dayjs().format('YYYY-MM-DD HH:mm:ss'))
 </script>
 

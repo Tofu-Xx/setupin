@@ -1,8 +1,9 @@
-import type { Statement } from '@babel/types'
+import type { ExpressionStatement, Statement, VariableDeclaration } from '@babel/types'
+import { when } from '../tools'
 
-/* 检查是否是否有顶层 await */
 export function isAsyncModule(astBody: Statement[]) {
-  return astBody
-  // console.log(astBody)
-  // return astBody.some(node => node.type === 'AwaitExpression')
+  return astBody.some(node => when(node, node.type)({
+    ExpressionStatement: (n: ExpressionStatement) => n.expression.type === 'AwaitExpression',
+    VariableDeclaration: (n: VariableDeclaration) => n.declarations.some(declaration => declaration.init?.type === 'AwaitExpression'),
+  }))
 }
