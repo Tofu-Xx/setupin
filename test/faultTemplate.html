@@ -5,8 +5,12 @@
 
 <script setup>
   const strobe = ref(false)
+  const color = ref('white')
   watchEffect(() => {
-    console.log(strobe.value)
+    color.value = strobe.value ? 'black' : 'white'
+  })
+  watch(color, (v) => {
+    document.body.style.backgroundColor = v
   })
 </script>
 

@@ -1,7 +1,6 @@
-type UnwrapFn<T> = T extends Fn ? ReturnType<T> : T
-type Ret<R extends Fn> = Promise<UnwrapFn<ReturnType<R>>>
+type Ret<R extends Fn> = Promise<ReturnType<R>>
 export function observe<R extends Fn>(selector: string, callback: R): Ret<R> {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     let isFound = false
     const observer = new MutationObserver((mutations, observer) => {
       for (const mutation of mutations) {
@@ -23,11 +22,10 @@ export function observe<R extends Fn>(selector: string, callback: R): Ret<R> {
       observer.disconnect()
       const result = callback(void 0)
       if (typeof result === 'function') {
-        reject(result())
+        resolve(result())
       }
       else {
         resolve(result)
-        console.warn(`No ${selector} found`)
       }
     })
   })
