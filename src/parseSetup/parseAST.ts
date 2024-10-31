@@ -1,4 +1,4 @@
-import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, LVal, ObjectPattern, ObjectProperty, Pattern, RestElement, Statement, VariableDeclaration } from '@babel/types'
+import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, ImportDeclaration, LVal, ObjectPattern, ObjectProperty, Pattern, RestElement, Statement, VariableDeclaration } from '@babel/types'
 import { parse } from '@babel/parser'
 import { when } from '../tools'
 
@@ -34,7 +34,7 @@ export function getGlobalVars(astBody: Statement[]): string[] {
   }
 }
 
-export function splitImport(code: string, astBody: Statement[]): [string, string] {
-  const index = astBody.findLast(node => node.type === 'ImportDeclaration')?.end ?? 0
-  return [code.slice(0, index), code.slice(index)]
+export function extractImport(code: string, astBody: Statement[]): [string, string] {
+  const imports = astBody.filter(({ type }) => type === 'ImportDeclaration').map(node => code.slice(node.start!, node.end!))
+  return [imports.join('\n'), code.replace(new RegExp(imports.join('|'), 'g'), '')]
 }
