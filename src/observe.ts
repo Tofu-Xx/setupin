@@ -8,10 +8,12 @@ export function observe<T extends FnMap>(map: T): MapRet<T>
 export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
   return when(SorM, typeof SorM)({
     string: (selector: string) => new Promise((resolve, reject) => {
+      let isFound = false
       new MutationObserver((mutations, observer) => {
         for (const mutation of mutations) {
           const target = (mutation.target as HTMLElement)?.querySelector(selector)
           if (target) {
+            isFound = true
             observer.disconnect()
             const result = callback?.(target)
             result instanceof Error
@@ -21,6 +23,8 @@ export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
           }
         }
         loaded(() => {
+          if (isFound)
+            return
           observer.disconnect()
           resolve(callback?.(void 0))
           console.warn(`No ${selector} found`)
