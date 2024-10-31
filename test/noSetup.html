@@ -4,14 +4,12 @@
   <div
     ref="div"
     :style="{
-    width: '100px',
-    height: '100px',
-    background: '#87ceeb',
-  }"
+      width: '100px',
+      height: '100px',
+      background: '#87ceeb',
+    }"
   ></div>
-  <!-- <input type="text" :value="$refs.div.style.background" /> -->
   <button @click="$refs.div.style.background = `\#${Math.floor(Math.random() * 0xffffff).toString(16)}`">click</button>
-  <!-- <h1>{{ msg }}</h1> -->
 </template>
 
 <!-- <script>
