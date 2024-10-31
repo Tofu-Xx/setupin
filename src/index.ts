@@ -6,7 +6,7 @@ import { observe } from './tools'
 
 window.Vue = Vue as Vue
 const oTemplate = observe('head>template', parseTemplate)
-const oSetup = observe('script[setup]', parseSetup)
+const oSetup = observe('head>script[setup]', parseSetup)
 
 ;(async () => {
   const [{ setupEl, context }, template] = await Promise.all([oSetup, oTemplate])

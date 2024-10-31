@@ -5,6 +5,9 @@
 
 <script setup>
   const strobe = ref(false)
+  watchEffect(() => {
+    console.log(strobe.value)
+  })
 </script>
 
 <body>
@@ -13,6 +16,4 @@
   </template>
 </body>
 
-<style>
-  @import 'https://unpkg.com/@tofukit/resetcss';
-</style>
+<style></style>
