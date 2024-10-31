@@ -1,5 +1,5 @@
-export function generate(template: string, ctx: Context) {
-  const { importsCode, setupCode, retNames, isAsync } = ctx
+export function generate(template: string, context: Context) {
+  const { importsCode, setupCode, retNames, isAsync } = context
   const appComp = `{
     template: \`${template}\`,
     ${isAsync ? 'async' : ''} setup() {${setupCode}return {${retNames}}},
