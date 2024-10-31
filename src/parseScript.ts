@@ -1,6 +1,6 @@
 import { ast } from './ast'
 
-export function parseSetup(setupEl: Tag['script'] | undefined) {
+export function parseScript(setupEl: Tag['script'] | undefined) {
   const scriptContent = setupEl?.textContent ?? ''
   if (setupEl) {
     setupEl.textContent = ''
