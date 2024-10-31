@@ -1,16 +1,16 @@
 <body></body>
 <script type="module">
-  import { createApp, ref } from 'https://unpkg.com/vue/dist/vue.esm-browser.js'
+  import { createApp, ref, onMounted } from 'https://unpkg.com/vue/dist/vue.esm-browser.js'
 
   const AsyncComp = {
-    template: '<button @click="count++">{{ count }}</button>',
+    template: '<button> 0 </button>',
     async setup() {
-      const count = ref(0)
+      onMounted(() => {
+        console.log('yes')
+      })
       const { default: confetti } = await import('https://esm.sh/canvas-confetti')
       confetti()
-      return {
-        count,
-      }
+      return {}
     },
   }
 
