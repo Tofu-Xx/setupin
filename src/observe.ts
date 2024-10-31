@@ -2,9 +2,7 @@ import { loaded, when } from './tools'
 
 type FnMap = Record<string, Fn>
 type Ret<R extends Fn> = Promise<Exclude<ReturnType<R>, Error>>
-type MapRet<T extends FnMap> = {
-  [K in keyof T]: Ret<T[K]>
-}
+type MapRet<T extends FnMap> = { [K in keyof T]: Ret<T[K]> }
 export function observe<R extends Fn>(selector: string, callback: R): Ret<R>
 export function observe<T extends FnMap>(map: T): MapRet<T>
 export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
@@ -31,9 +29,8 @@ export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
         subtree: true,
       })
     }),
-    object: map => Object.keys(map).reduce((prev, key) => ({
-      ...prev,
-      [key]: observe(key, map[key]),
-    }), Object.create(null)),
+    object: (map: FnMap) => Object.fromEntries(
+      Object.entries(map).map(([key, fn]) => [key, observe(key, fn)]),
+    ),
   })
 }
