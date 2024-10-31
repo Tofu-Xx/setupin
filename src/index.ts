@@ -14,7 +14,7 @@ const oSetup = observe('script[setup]', parseSetup)
   const { ${Object.keys(window.Vue)} } = Vue
   createApp({
     template: \`${template}\`,
-    setup(){
+    async setup(){
       ${setupText}
       return {
         ${retNames}

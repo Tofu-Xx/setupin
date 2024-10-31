@@ -1,0 +1,17 @@
+<head>
+  <!-- <script src="https://unpkg.com/setupin"></script> -->
+  <script src="../dist/main.js"></script>
+</head>
+
+<script setup>
+  const { default: dayjs } = await import('https://esm.sh/dayjs')
+  console.log(dayjs().format('YYYY-MM-DD HH:mm:ss'))
+</script>
+
+<template>
+  <h1 :style="{ color: 'darkblue' }">Hello</h1>
+</template>
+
+<style>
+  /* @import 'https://unpkg.com/@tofukit/resetcss'; */
+</style>
