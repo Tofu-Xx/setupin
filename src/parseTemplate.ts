@@ -7,6 +7,7 @@
 // }
 
 export function parseTemplate(templateEl: Tag['template'] | undefined) {
+  console.log(templateEl)
   if (!templateEl)
     return new Error('No template found')
   const templateContent = templateEl.innerHTML

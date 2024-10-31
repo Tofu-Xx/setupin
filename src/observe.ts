@@ -26,8 +26,14 @@ export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
           if (isFound)
             return
           observer.disconnect()
-          resolve(callback?.(void 0))
-          console.warn(`No ${selector} found`)
+          const result = callback?.(void 0)
+          if (result instanceof Error) {
+            reject(result)
+          }
+          else {
+            resolve(result)
+            console.warn(`No ${selector} found`)
+          }
         })
       }).observe(document, {
         childList: true,

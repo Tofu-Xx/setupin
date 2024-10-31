@@ -6,8 +6,8 @@ import { parseTemplate } from './parseTemplate'
 //   'head>template': parseTemplate,
 //   'script[setup]': parseSetup,
 // })
-const oTemplate = observe('head>template', parseTemplate)
 const oSetup = observe('script[setup]', parseSetup)
+const oTemplate = observe('head>template', parseTemplate)
 
 ;(async () => {
   const template = await oTemplate
