@@ -9,12 +9,9 @@
   onMounted(() => {
     $('p').text(dayjs().format('YYYY-MM-DD')).text()
   })
-  // import 'vue'
   import confetti from 'https://esm.sh/canvas-confetti'
   confetti()
   import rough from 'https://esm.sh/roughjs'
-
-  // 创建 RoughCanvas 实例
   const canvasEl = useTemplateRef('canvas')
   onMounted(() => {
     canvasEl.value.width = 400
