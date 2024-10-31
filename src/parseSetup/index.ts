@@ -1,14 +1,19 @@
 import { extractImport, getASTBody, getGlobalVars } from './parseAST'
 
-export async function parseSetup(setupScript: Tag['script'] | undefined) {
-  const scriptText = setupScript?.textContent ?? ''
+export function parseSetup(scriptEl: Tag['script'] | undefined) {
+  const scriptText = scriptEl?.textContent ?? ''
   const astBody = getASTBody(scriptText)
   const [importText, setupText] = extractImport(scriptText, astBody)
-  console.log('importText:', importText)
-  console.log('setupText:', setupText)
-  setupScript?.remove()
+  if (scriptEl && importText) {
+    scriptEl.type = 'module'
+    scriptEl.textContent = importText
+    // 等待scriptEl加载
+  }
+  else {
+    scriptEl?.remove()
+  }
   return {
-    setupText: scriptText,
+    setupText,
     retNames: getGlobalVars(astBody),
   }
 }
