@@ -1,4 +1,4 @@
-export function generateCode(template: string, ctx: Context) {
+export function generate(template: string, ctx: Context) {
   const { importsCode, setupCode, retNames, isAsync } = ctx
   const appComp = `{
     template: \`${template}\`,

@@ -4,15 +4,18 @@
 </head>
 
 <script setup>
-  await import('https://unpkg.com/jquery')
+  await import('https://unpkg.com/jquery');
+  console.log($)
   const { default: dayjs } = await import('https://esm.sh/dayjs');
-  const now = dayjs().format('YYYY-MM-DD HH:mm:ss')
-  console.log(now)
+  const date = dayjs().format('YYYY-MM-DD HH:mm:ss')
+  onMounted(() => {
+    console.log('yes')
+  })
 </script>
 
 <template>
   <h1 :style="{ color: 'darkblue' }">成功了！！！</h1>
-  {{ now }}
+  <p>{{ date }}</p>
 </template>
 
 <style>
