@@ -3,5 +3,5 @@ export function parseTemplate(templateEl: Tag['template'] | undefined) {
     return new Error('No template found')
   const templateContent = templateEl.innerHTML
   templateEl.remove()
-  return templateContent
+  return templateContent.replace(/[`"'$\\]/g, s => `\\${s}`)
 }
