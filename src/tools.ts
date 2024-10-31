@@ -8,6 +8,3 @@ export function when<V extends Key>(gist: any, verifyer: V = gist) {
     return handler?.(gist)
   }
 }
-export function loaded(callback: Fn<[], void>) {
-  document.addEventListener('DOMContentLoaded', callback)
-}

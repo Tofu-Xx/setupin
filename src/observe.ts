@@ -1,4 +1,4 @@
-import { loaded, when } from './tools'
+import { when } from './tools'
 
 type FnMap = Record<string, Fn>
 type Ret<R extends Fn> = Promise<Exclude<ReturnType<R>, Error>>
@@ -22,7 +22,7 @@ export function observe(SorM: string | Record<string, Fn>, callback?: Fn) {
             break
           }
         }
-        loaded(() => {
+        document.addEventListener('DOMContentLoaded', () => {
           if (isFound)
             return
           observer.disconnect()
