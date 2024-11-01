@@ -1,8 +1,16 @@
 class Result<O, E> {
-  constructor(
+  private constructor(
     private readonly tag: 'Ok' | 'Err',
     private readonly val: O | E,
   ) {}
+
+  public static Ok<O>(val: O) {
+    return new Result<O, never>('Ok', val)
+  }
+
+  public static Err<E>(val: E) {
+    return new Result<never, E>('Err', val)
+  }
 
   public is_ok() {
     return this.tag === 'Ok'
@@ -29,10 +37,5 @@ class Result<O, E> {
   }
 }
 
-export function Ok<O, E>(val: O) {
-  return new Result<O, E>('Ok', val)
-}
-
-export function Err<O, E>(val: E) {
-  return new Result<O, E>('Err', val)
-}
+export const { Ok, Err } = Result
+export type { Result }
