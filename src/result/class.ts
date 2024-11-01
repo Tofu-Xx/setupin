@@ -1,15 +1,15 @@
-class Result<T, E> {
+class Result<O, E> {
   constructor(
     private readonly tag: 'Ok' | 'Err',
-    private readonly val: T | E,
+    private readonly val: O | E,
   ) {}
 
   public is_ok() {
     return this.tag === 'Ok'
   }
 
-  public is_ok_and(f: (val: T) => boolean) {
-    return this.tag === 'Ok' && f(this.val as T)
+  public is_ok_and(f: (val: O) => boolean) {
+    return this.tag === 'Ok' && f(this.val as O)
   }
 
   public is_err() {
@@ -21,7 +21,7 @@ class Result<T, E> {
   }
 
   public ok() {
-    return this.is_ok() ? this.val as T : null
+    return this.is_ok() ? this.val as O : null
   }
 
   public err() {
@@ -29,10 +29,10 @@ class Result<T, E> {
   }
 }
 
-export function Ok<T, E>(val: T) {
-  return new Result<T, E>('Ok', val)
+export function Ok<O, E>(val: O) {
+  return new Result<O, E>('Ok', val)
 }
 
-export function Err<T, E>(val: E) {
-  return new Result<T, E>('Err', val)
+export function Err<O, E>(val: E) {
+  return new Result<O, E>('Err', val)
 }
