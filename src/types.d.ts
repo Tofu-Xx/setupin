@@ -1,11 +1,11 @@
-declare module './assets/vue.esm' {
+declare module '../vendor/vue.esm' {
   export * from 'vue'
 }
-declare module './assets/vue.esm.prod' {
+declare module '../vendor/vue.esm.prod' {
   export * from 'vue'
 }
 declare interface Window {
-  Vue: typeof import('./assets/vue.esm') & typeof import('./assets/vue.esm.prod')
+  Vue: typeof import('../vendor/vue.esm') & typeof import('../vendor/vue.esm.prod')
 }
 /* tool types */
 declare type Fn<T extends any[] = any[], R = any> = (...args: T) => R
