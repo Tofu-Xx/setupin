@@ -1,4 +1,4 @@
-import * as Vue from './assets/vue.esm'
+import * as Vue from './assets/vue.esm.prod'
 
 export function generate(template: string, context: Context) {
   const { importsCode, setupCode, retNames, isAsync } = context

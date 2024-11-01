@@ -7,14 +7,17 @@ export function monito(): Promise<Data> {
   return new Promise((resolve) => {
     function _finder(fn: Fn, target: Element | string) {
       const [i, type] = fn === parseScript ? [0, 'warn'] : [1, 'error']
-      if (data[i] !== void 0)
+      const arg = typeof target === 'string' ? void 0 : target
+      const res = fn(arg)
+      if (res instanceof Error)
         return
-      if (typeof target === 'string') {
-        data[i] = fn(void 0)
+      // if (data[i] !== void 0)
+      //   return
+      data[i] = res
+      if (!arg) {
+        // console.log('res', res)
+        // if (res instanceof Error)
         ;(console as any)[type](`not found ${target} in root node`)
-      }
-      else {
-        data[i] = fn(target)
       }
       if (data.every(e => e !== void 0))
         resolve(data)

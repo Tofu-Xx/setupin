@@ -1,4 +1,8 @@
-export function parseTemplate(templateEl: Tag['template'] | undefined) {
+import { once } from '../tools'
+
+export const parseTemplate = once(_parseTemplate)
+
+function _parseTemplate(templateEl: Tag['template'] | undefined) {
   const templateContent = templateEl?.innerHTML ?? '{{"not found <template>"}}'
   templateEl?.remove()
   // const body = document.body ?? document.createElement('body')
