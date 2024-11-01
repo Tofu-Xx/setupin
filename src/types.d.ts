@@ -11,6 +11,7 @@ declare interface Window {
 declare type Fn<T extends any[] = any[], R = any> = (...args: T) => R
 declare type Key = string | number | symbol
 declare type Tag = HTMLElementTagNameMap
+declare type Result<O, E> = import('./result/class').Result<O, E>
 /* types */
 declare interface Context {
   template: string

@@ -1,4 +1,4 @@
-export class Result<T, E> {
+class Result<T, E> {
   constructor(
     private readonly tag: 'Ok' | 'Err',
     private readonly val: T | E,
@@ -29,10 +29,10 @@ export class Result<T, E> {
   }
 }
 
-// function Ok<T, E>(val: T) {
-//   return new Result<T, E>('Ok', val)
-// }
+export function Ok<T, E>(val: T) {
+  return new Result<T, E>('Ok', val)
+}
 
-// function Err<T, E>(val: E) {
-//   return new Result<T, E>('Err', val)
-// }
+export function Err<T, E>(val: E) {
+  return new Result<T, E>('Err', val)
+}
