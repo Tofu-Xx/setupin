@@ -33,7 +33,7 @@
     "build": "vite build",
     "watch": "chokidar 'src/*' -c 'vite build'",
     "release": "bumpp --no-push && nr build && pnpm publish",
-    "upvue": "zsh ./script/upvue.zsh",
+    "iv": "zsh ./script/install_vue.zsh",
     "up": "taze major -I",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
