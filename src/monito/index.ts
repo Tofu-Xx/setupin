@@ -3,23 +3,19 @@ import { parseTemplate } from './parseTemplate'
 
 type Data = [ReturnType<typeof parseScript>, ReturnType<typeof parseTemplate>]
 export function monito(): Promise<Data> {
-  const data: Data = [void 0, void 0] as unknown as Data
+  const data: Data = [null, null] as unknown as Data
   return new Promise((resolve) => {
     function _finder(fn: Fn, target: Element | string) {
       const [i, type] = fn === parseScript ? [0, 'warn'] : [1, 'error']
-      const arg = typeof target === 'string' ? void 0 : target
+      const arg = typeof target === 'string' ? null : target
       const res = fn(arg)
       if (res instanceof Error)
         return
-      // if (data[i] !== void 0)
-      //   return
       data[i] = res
       if (!arg) {
-        // console.log('res', res)
-        // if (res instanceof Error)
         ;(console as any)[type](`not found ${target} in root node`)
       }
-      if (data.every(e => e !== void 0))
+      if (data.every(e => e !== null))
         resolve(data)
     }
     const observer = new MutationObserver((mutations) => {

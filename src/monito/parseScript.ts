@@ -1,8 +1,7 @@
 import { ast } from '../ast'
 import { once } from '../tools'
 
-export const parseScript = once(_parseScript)
-function _parseScript(scriptEl: Tag['script'] | undefined) {
+function _parseScript(scriptEl: Option<Tag['script']>) {
   const scriptContent = scriptEl?.textContent ?? ''
   if (scriptEl) {
     scriptEl.textContent = ''
@@ -22,3 +21,5 @@ function _parseScript(scriptEl: Tag['script'] | undefined) {
     } as Context,
   }
 }
+
+export const parseScript = once(_parseScript)
