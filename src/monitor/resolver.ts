@@ -1,24 +1,20 @@
 import type { Result } from '../result'
 import { doByS, root } from '../root_tag'
+import { Carrier } from '../root_tag/carrier'
 
-(window as any).doms = new Map()
+const domCarrier = new Carrier<ROOT_TAG, string>()
+
 export const resolver = (() => {
   const data = [null, null]
   return function (tag: ROOT_TAG, resolve: Fn, target?: Element) {
     const { doBy, idx, lose } = root[tag]
-    if ((window as any).doms.has(tag)) {
-      return
+    if (domCarrier.newly(tag, target?.innerHTML ?? '')) {
+      data[idx] = doBy(target)
+      if (!target) {
+        lose()
+      }
+      if (data.every(e => e !== null))
+        resolve(data)
     }
-    ((window as any).doms as Map<ROOT_TAG, string>).set(tag, target?.innerHTML ?? '')
-    // const { ok, isErr } = doBy(target)
-    // if (isErr)
-    //   return
-    // data[idx] = ok as any
-    data[idx] = doBy(target)
-    if (!target) {
-      lose()
-    }
-    if (data.every(e => e !== null))
-      resolve(data)
   }
 })()

@@ -6,6 +6,7 @@ declare module '../vendor/vue.esm.prod' {
 }
 declare interface Window {
   Vue: typeof import('../vendor/vue.esm') & typeof import('../vendor/vue.esm.prod')
+  Doms: Map<ROOT_TAG, string>
 }
 /* tool types */
 declare type Fn<T extends any[] = any[], R = any> = (...args: T) => R
