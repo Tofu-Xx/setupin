@@ -1,4 +1,4 @@
-import { ast } from '../../ast'
+import { ast } from '@/ast'
 
 export type DoneByS = ReturnType<typeof doByS>
 export function doByS(scriptEl: Maybe<Tag['script']>) {

@@ -1,8 +1,8 @@
-import type { Bus } from '../doms/bus'
-import type { OnPrior } from '../tools'
-import { SCRIPT_TAG, TEMPLATE_TAG } from '../doms/root'
-import { Err, Ok } from '../result'
-import { when } from '../tools'
+import type { Bus } from '@/doms/bus'
+import type { OnPrior } from '@/tools'
+import { SCRIPT_TAG, TEMPLATE_TAG } from '@/doms/root'
+import { Err, Ok } from '@/result'
+import { when } from '@/tools'
 import { resolver } from './resolver'
 
 export const onPrior: OnPrior<Bus> = ({ node, resolve }) => {

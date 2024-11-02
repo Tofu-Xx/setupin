@@ -1,7 +1,7 @@
-import { SCRIPT_TAG, TEMPLATE_TAG } from './doms/root'
-import { generate } from './generate'
-import { onAfter, onPrior } from './monitor'
-import { monito } from './tools'
+import { SCRIPT_TAG, TEMPLATE_TAG } from '@/doms/root'
+import { generate } from '@/generate'
+import { onAfter, onPrior } from '@/monitor'
+import { monito } from '@/tools'
 
 const origin = monito(onPrior, onAfter)
 

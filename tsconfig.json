@@ -5,6 +5,10 @@
     "lib": ["DOM", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "paths": {
+      "@/*": ["./src/*"],
+      "vendor:*": ["./vendor/*"]
+    },
     "resolveJsonModule": true,
     "allowJs": true,
     "strict": true,
