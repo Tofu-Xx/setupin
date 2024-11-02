@@ -1,6 +1,6 @@
 import type { OnAfter } from '../tools'
 import type { Data } from './onPrior'
-import { SCRIPT_TAG, TEMPLATE_TAG } from '../root_tag'
+import { SCRIPT_TAG, TEMPLATE_TAG } from '../doms'
 import { resolver } from './resolver'
 
 export const onAfter: OnAfter<Data> = ({ resolve }) => {

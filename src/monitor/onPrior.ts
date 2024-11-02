@@ -1,8 +1,8 @@
-import type { DoneByS } from '../root_tag/script'
-import type { DoneByT } from '../root_tag/template'
+import type { DoneByS } from '../doms/script'
+import type { DoneByT } from '../doms/template'
 import type { OnPrior } from '../tools/monito'
+import { SCRIPT_TAG, TEMPLATE_TAG } from '../doms'
 import { Err, Ok } from '../result'
-import { SCRIPT_TAG, TEMPLATE_TAG } from '../root_tag'
 import { when } from '../tools'
 
 import { resolver } from './resolver'
