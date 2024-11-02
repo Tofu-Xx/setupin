@@ -1,7 +1,7 @@
 import { ast } from '../ast'
 import { once } from '../tools'
 
-function _doByS(scriptEl: Option<Tag['script']>) {
+export function doByS(scriptEl: Option<Tag['script']>) {
   const scriptContent = scriptEl?.textContent ?? ''
   if (scriptEl) {
     scriptEl.textContent = ''
@@ -22,5 +22,5 @@ function _doByS(scriptEl: Option<Tag['script']>) {
   }
 }
 
-export const doByS = once(_doByS)
-export type DoneByS = ReturnType<typeof _doByS>
+// export const doByS = once(_doByS)
+export type DoneByS = ReturnType<typeof doByS>

@@ -5,8 +5,10 @@ export function once<T extends Fn>(fn: T): Fn<Parameters<T>, Result<ReturnType<T
   let called = false
   return function (...args) {
     if (called)
+      // return
       return new Err(`${fn.name} called more than once`)
     called = true
+    // return fn(...args)
     return new Ok(fn(...args))
   }
 }
