@@ -1,41 +1,30 @@
-class Result<O, E> {
-  private constructor(
-    private readonly tag: 'Ok' | 'Err',
-    private readonly val: O | E,
-  ) {}
-
-  public static Ok<O>(val: O) {
-    return new Result<O, never>('Ok', val)
+class Result<O = any, E = any> {
+  readonly ok?: O
+  readonly err?: E
+  public readonly isOk: boolean
+  public readonly isErr: boolean
+  constructor(readonly kind: 'ok' | 'err', val: O | E) {
+    this.isOk = this.kind === 'ok'
+    this.isErr = this.kind === 'err'
+    this[kind] = val as any
   }
 
-  public static Err<E>(val: E) {
-    return new Result<never, E>('Err', val)
+  public isOkAnd(f: (val: O) => boolean) {
+    return this.isOk && f(this.ok!)
   }
 
-  public is_ok() {
-    return this.tag === 'Ok'
-  }
-
-  public is_ok_and(f: (val: O) => boolean) {
-    return this.tag === 'Ok' && f(this.val as O)
-  }
-
-  public is_err() {
-    return this.tag === 'Err'
-  }
-
-  public is_err_and(f: (val: E) => boolean) {
-    return this.tag === 'Err' && f(this.val as E)
-  }
-
-  public ok() {
-    return this.is_ok() ? this.val as O : null
-  }
-
-  public err() {
-    return this.is_err() ? this.val as E : null
+  public isErrAnd(f: (val: E) => boolean) {
+    return this.isErr && f(this.err!)
   }
 }
-
-export const { Ok, Err } = Result
 export type { Result }
+export class Ok<O = any> extends Result {
+  constructor(val: O) {
+    super('ok', val)
+  }
+}
+export class Err<E = any> extends Result {
+  constructor(val: E) {
+    super('err', val)
+  }
+}

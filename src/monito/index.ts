@@ -1,3 +1,4 @@
+import type { Result } from '../result'
 import { parseScript } from './parseScript'
 import { parseTemplate } from './parseTemplate'
 
@@ -5,13 +6,13 @@ type Data = [ReturnType<typeof parseScript>, ReturnType<typeof parseTemplate>]
 export function monito(): Promise<Data> {
   const data: Data = [null, null] as unknown as Data
   return new Promise((resolve) => {
-    function _finder(fn: Fn, target: Element | string) {
+    function _finder(fn: Fn<any, Result>, target: Element | string) {
       const [i, type] = fn === parseScript ? [0, 'warn'] : [1, 'error']
       const arg = typeof target === 'string' ? null : target
-      const res = fn(arg)
-      if (res instanceof Error)
+      const { ok, isErr } = fn(arg)
+      if (isErr)
         return
-      data[i] = res
+      data[i] = ok
       if (!arg) {
         ;(console as any)[type](`not found ${target} in root node`)
       }
