@@ -1,5 +1,4 @@
-// import { once } from '../tools'
-
+export type DoneByT = ReturnType<typeof doByT>
 export function doByT(templateEl: Maybe<Tag['template']>) {
   const templateContent = templateEl?.innerHTML ?? '{{"not found <template>"}}'
   templateEl?.remove()
@@ -8,6 +7,3 @@ export function doByT(templateEl: Maybe<Tag['template']>) {
   // document.head.parentNode?.insertBefore(body, document.head.nextSibling)
   return templateContent?.replace(/[`"'$\\]/g, s => `\\${s}`)
 }
-
-// export const doByT = once(_doByT)
-export type DoneByT = ReturnType<typeof doByT>

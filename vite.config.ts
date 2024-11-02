@@ -1,7 +1,7 @@
+import path from 'node:path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  envPrefix: 'VUE_',
   build: {
     lib: {
       entry: 'src/main.ts',
@@ -12,4 +12,5 @@ export default defineConfig({
     target: 'esnext',
     minify: false,
   },
+  envPrefix: 'VUE_',
 })

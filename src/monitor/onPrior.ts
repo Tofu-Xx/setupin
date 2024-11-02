@@ -1,13 +1,11 @@
-import type { Carrier } from '../doms/carrier'
-import type { DoneByS } from '../doms/script'
-import type { DoneByT } from '../doms/template'
-import type { OnPrior } from '../tools/monito'
-import { SCRIPT_TAG, TEMPLATE_TAG } from '../doms'
+import type { Bus } from '../doms/bus'
+import type { OnPrior } from '../tools'
+import { SCRIPT_TAG, TEMPLATE_TAG } from '../doms/root'
 import { Err, Ok } from '../result'
 import { when } from '../tools'
 import { resolver } from './resolver'
 
-export const onPrior: OnPrior<Carrier> = ({ node, resolve }) => {
+export const onPrior: OnPrior<Bus> = ({ node, resolve }) => {
   const verdict = _verdictFactory(node)
   verdict(TEMPLATE_TAG).ok && resolver(TEMPLATE_TAG, resolve, node as Element)
   when(verdict(SCRIPT_TAG).ok)({

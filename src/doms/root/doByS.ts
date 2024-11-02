@@ -1,6 +1,6 @@
-import { ast } from '../ast'
-import { once } from '../tools'
+import { ast } from '../../ast'
 
+export type DoneByS = ReturnType<typeof doByS>
 export function doByS(scriptEl: Maybe<Tag['script']>) {
   const scriptContent = scriptEl?.textContent ?? ''
   if (scriptEl) {
@@ -21,6 +21,3 @@ export function doByS(scriptEl: Maybe<Tag['script']>) {
     } as Context,
   }
 }
-
-// export const doByS = once(_doByS)
-export type DoneByS = ReturnType<typeof doByS>

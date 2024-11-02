@@ -1,14 +1,13 @@
-import { doByS, doByT, SCRIPT_TAG, TEMPLATE_TAG } from './doms'
+import { SCRIPT_TAG, TEMPLATE_TAG } from './doms/root'
 import { generate } from './generate'
-import { onAfter } from './monitor/onAfter'
-import { onPrior } from './monitor/onPrior'
+import { onAfter, onPrior } from './monitor'
 import { monito } from './tools'
 
-const monitored = monito(onPrior, onAfter)
+const origin = monito(onPrior, onAfter)
 
 ;(async () => {
-  const carrier = await monitored
-  const { scriptEl, context } = carrier.get(SCRIPT_TAG)
-  const templateContent = carrier.get(TEMPLATE_TAG)
+  const terminal = await origin
+  const { scriptEl, context } = terminal[SCRIPT_TAG]
+  const templateContent = terminal[TEMPLATE_TAG]
   scriptEl.textContent = generate(templateContent, context)
 })()
