@@ -1,7 +1,7 @@
 import { ast } from '../ast'
 import { once } from '../tools'
 
-export function doByS(scriptEl: Option<Tag['script']>) {
+export function doByS(scriptEl: Maybe<Tag['script']>) {
   const scriptContent = scriptEl?.textContent ?? ''
   if (scriptEl) {
     scriptEl.textContent = ''

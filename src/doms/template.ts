@@ -1,6 +1,6 @@
 // import { once } from '../tools'
 
-export function doByT(templateEl: Option<Tag['template']>) {
+export function doByT(templateEl: Maybe<Tag['template']>) {
   const templateContent = templateEl?.innerHTML ?? '{{"not found <template>"}}'
   templateEl?.remove()
   // const body = document.body ?? document.createElement('body')

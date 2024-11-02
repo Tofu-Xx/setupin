@@ -1,4 +1,4 @@
-class Carrier<K, V> extends Map<K, V> {
+class ExMap<K, V> extends Map<K, V> {
   newly(tag: K, content: V) {
     if (this.has(tag)) {
       return false
@@ -8,4 +8,5 @@ class Carrier<K, V> extends Map<K, V> {
   }
 }
 
-export const carrier = new Carrier<ROOT_TAG, string>()
+export const carrier = new ExMap<ROOT_TAG, Maybe<Element>>()
+export type Carrier = typeof carrier
