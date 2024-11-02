@@ -1,8 +1,11 @@
 import type { Result } from '../result'
+import type { ParsedScript } from './parseScript'
+import type { ParsedTemplate } from './parseTemplate'
+
 import { parseScript } from './parseScript'
 import { parseTemplate } from './parseTemplate'
 
-type Data = [ReturnType<typeof parseScript>, ReturnType<typeof parseTemplate>]
+type Data = [ParsedScript, ParsedTemplate]
 export function monito(): Promise<Data> {
   const data: Data = [null, null] as unknown as Data
   return new Promise((resolve) => {

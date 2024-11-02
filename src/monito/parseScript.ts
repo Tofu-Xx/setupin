@@ -23,3 +23,4 @@ function _parseScript(scriptEl: Option<Tag['script']>) {
 }
 
 export const parseScript = once(_parseScript)
+export type ParsedScript = ReturnType<typeof _parseScript>

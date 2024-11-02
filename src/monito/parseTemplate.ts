@@ -10,3 +10,5 @@ function _parseTemplate(templateEl: Option<Tag['template']>) {
   // document.head.parentNode?.insertBefore(body, document.head.nextSibling)
   return templateContent?.replace(/[`"'$\\]/g, s => `\\${s}`)
 }
+
+export type ParsedTemplate = ReturnType<typeof _parseTemplate>
