@@ -4,7 +4,7 @@ export default defineConfig({
   envPrefix: 'VUE_',
   build: {
     lib: {
-      entry: 'src/index.ts',
+      entry: 'src/main.ts',
       formats: ['iife'],
       name: 'Vue',
       fileName: () => 'main.js',
