@@ -1,7 +1,8 @@
-import type { Result } from '../result'
 import type { ParsedScript } from './parseScript'
 import type { ParsedTemplate } from './parseTemplate'
+import { Err, Ok, type Result } from '../result'
 
+import { when } from '../tools'
 import { parseScript } from './parseScript'
 import { parseTemplate } from './parseTemplate'
 
@@ -25,19 +26,11 @@ export function monito(): Promise<Data> {
     const observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
         mutation.addedNodes.forEach((node) => {
-          if (!(node instanceof Element))
-            return
-          if (node.tagName === 'TEMPLATE' && node.parentNode === document.head) {
-            _finder(parseTemplate, node)
-          }
-          if (node.tagName === 'SCRIPT' && node.hasAttribute('setup')) {
-            if (node.parentNode === document.head) {
-              _finder(parseScript, node)
-            }
-            else {
-              node.textContent = '/* Resolved to the wrong location */'
-            }
-          }
+          isElSite(node, 'template').ok && _finder(parseTemplate, node as Element)
+          when(node, isElSite(node, 'script', 'setup').ok)({
+            true: (n: Element) => _finder(parseScript, n),
+            false: (n: Element) => (n).textContent = '/* Resolved to the wrong location */',
+          })
         })
       }
     })
@@ -51,4 +44,21 @@ export function monito(): Promise<Data> {
       observer.disconnect()
     })
   })
+}
+// interface NodeInfo {
+//   tagName: string
+//   attrNames: string[]
+//   parentTagName: string
+// }
+// function getNodeInfo(node: Node): Option<NodeInfo> {
+//   }
+
+function isElSite(node: Node, tagName: string, attrName?: string) {
+  if (!(node instanceof Element))
+    return new Err(`${node} is not element`)
+  const isTagName = tagName === node.localName
+  const isAttrName = attrName ? node.getAttributeNames().includes(attrName) : true
+  if (isTagName && isAttrName)
+    return new Ok(node.parentElement === document.head)
+  return new Err(`${tagName} ${attrName ? `with ${attrName}` : ''} not found`)
 }
