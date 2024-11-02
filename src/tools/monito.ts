@@ -1,19 +1,20 @@
-import type { ParsedScript } from './parseScript'
-import type { ParsedTemplate } from './parseTemplate'
+import type { DoneByS } from '../doBy/script'
+import type { DoneByT } from '../doBy/template'
 
-interface Supply {
+interface Supply<T> {
   node: Node
   observer: MutationObserver
-  resolve: (value: Data | PromiseLike<Data>) => void
+  resolve: (value: T | PromiseLike<T>) => void
   reject: (reason?: any) => void
 }
-export type Data = [ParsedScript, ParsedTemplate]
-export function monito(monitor: Fn<[Supply]>, loaded?: Fn<[Omit<Supply, 'node'>]>): Promise<Data> {
+export type OnPrior<T> = Fn<[Supply<T>]>
+export type OnAfter<T> = Fn<[Omit<Supply<T>, 'node'>]>
+export function monito<T>(onPrior: OnPrior<T>, onAfter?: OnAfter<T>): Promise<T> {
   return new Promise((resolve, reject) => {
     const observer = new MutationObserver((mutations, observer) => {
       for (const mutation of mutations) {
         mutation.addedNodes.forEach((node) => {
-          monitor({ node, observer, resolve, reject })
+          onPrior({ node, observer, resolve, reject })
         })
       }
     })
@@ -22,7 +23,7 @@ export function monito(monitor: Fn<[Supply]>, loaded?: Fn<[Omit<Supply, 'node'>]
       subtree: true,
     })
     document.addEventListener('DOMContentLoaded', () => {
-      loaded?.({ observer, resolve, reject })
+      onAfter?.({ observer, resolve, reject })
     })
   })
 }

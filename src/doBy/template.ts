@@ -1,8 +1,6 @@
 import { once } from '../tools'
 
-export const parseTemplate = once(_parseTemplate)
-
-function _parseTemplate(templateEl: Option<Tag['template']>) {
+function _doByT(templateEl: Option<Tag['template']>) {
   const templateContent = templateEl?.innerHTML ?? '{{"not found <template>"}}'
   templateEl?.remove()
   // const body = document.body ?? document.createElement('body')
@@ -11,4 +9,5 @@ function _parseTemplate(templateEl: Option<Tag['template']>) {
   return templateContent?.replace(/[`"'$\\]/g, s => `\\${s}`)
 }
 
-export type ParsedTemplate = ReturnType<typeof _parseTemplate>
+export const doByT = once(_doByT)
+export type DoneByT = ReturnType<typeof _doByT>
