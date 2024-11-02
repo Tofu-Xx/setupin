@@ -1,20 +1,20 @@
-import type { RootTags } from '@/doms/rootTags'
+import type { Carrier } from '@/doms/carrier'
 import type { OnAfter } from '@/tools'
-import { root, SCRIPT_TAG, TEMPLATE_TAG } from '@/doms/root'
+import { behavior, TAG_SCRIPT, TAG_TEMPLATE } from '@/doms/data'
 
-export const onAfter: OnAfter<RootTags> = ({ discovery }) => {
-  if (discovery[SCRIPT_TAG].count === 0) {
-    root[SCRIPT_TAG].lose()
-    discovery[SCRIPT_TAG].parsed = root[SCRIPT_TAG].doBy()
+export const onAfter: OnAfter<Carrier> = ({ discovery }) => {
+  if (discovery[TAG_SCRIPT].count === 0) {
+    behavior[TAG_SCRIPT].lose()
+    discovery[TAG_SCRIPT].parsed = behavior[TAG_SCRIPT].parse()
   }
-  if (discovery[TEMPLATE_TAG].count === 0) {
-    root[TEMPLATE_TAG].lose()
-    discovery[TEMPLATE_TAG].parsed = root[TEMPLATE_TAG].doBy()
+  if (discovery[TAG_TEMPLATE].count === 0) {
+    behavior[TAG_TEMPLATE].lose()
+    discovery[TAG_TEMPLATE].parsed = behavior[TAG_TEMPLATE].parse()
   }
-  if (discovery[SCRIPT_TAG].count > 1) {
-    root[SCRIPT_TAG].excess()
+  if (discovery[TAG_SCRIPT].count > 1) {
+    behavior[TAG_SCRIPT].excess()
   }
-  if (discovery[TEMPLATE_TAG].count > 1) {
-    root[TEMPLATE_TAG].excess()
+  if (discovery[TAG_TEMPLATE].count > 1) {
+    behavior[TAG_TEMPLATE].excess()
   }
 }
