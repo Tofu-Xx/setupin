@@ -3,13 +3,14 @@ import type { OnPrior } from '@/tools'
 import { SCRIPT_TAG, TEMPLATE_TAG } from '@/doms/root'
 import { Err, Ok } from '@/result'
 import { when } from '@/tools'
-import { resolver } from './resolver'
+import { resolverFactory } from './resolverFactory'
 
 export const onPrior: OnPrior<Bus> = ({ node, resolve }) => {
+  const rslv = resolverFactory(resolve)
   const verdict = _verdictFactory(node)
-  verdict(TEMPLATE_TAG).ok && resolver(TEMPLATE_TAG, resolve, node as Element)
+  verdict(TEMPLATE_TAG).ok && rslv(TEMPLATE_TAG, node as Element)
   when(verdict(SCRIPT_TAG).ok)({
-    true: () => resolver(SCRIPT_TAG, resolve, node as Element),
+    true: () => rslv(SCRIPT_TAG, node as Element),
     false: () => (node.textContent = '/* Resolved to the wrong location */'),
   })
 }
