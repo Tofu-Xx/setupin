@@ -1,2 +1,2 @@
-export * from './monito'
+export * from './discover'
 export * from './when'

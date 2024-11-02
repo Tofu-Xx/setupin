@@ -1,5 +1,5 @@
-export type DoneByT = ReturnType<typeof doByT>
-export function doByT(templateEl: Maybe<Tag['template']>) {
+export type DoneByTemplate = ReturnType<typeof doByTemplate>
+export function doByTemplate(templateEl?: Maybe<Tag['template']>) {
   const templateContent = templateEl?.innerHTML ?? '{{"not found <template>"}}'
   templateEl?.remove()
   // const body = document.body ?? document.createElement('body')

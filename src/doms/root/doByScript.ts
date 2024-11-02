@@ -1,7 +1,7 @@
 import { ast } from '@/ast'
 
-export type DoneByS = ReturnType<typeof doByS>
-export function doByS(scriptEl: Maybe<Tag['script']>) {
+export type DoneByScript = ReturnType<typeof doByScript>
+export function doByScript(scriptEl?: Maybe<Tag['script']>) {
   const scriptContent = scriptEl?.textContent ?? ''
   if (scriptEl) {
     scriptEl.textContent = ''
