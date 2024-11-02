@@ -1,7 +1,6 @@
-import type { ROOT_TAGS } from '../doBy'
 import { Err, Ok } from '../result'
 
-export function verdict(aimTag: ROOT_TAGS, node: Node) {
+export function verdict(aimTag: ROOT_TAG, node: Node) {
   if (!(node instanceof Element))
     return new Err(`${node} is not element`)
   const parse = new DOMParser()
@@ -12,5 +11,5 @@ export function verdict(aimTag: ROOT_TAGS, node: Node) {
   const hasAttr = aimAttrs.every(attr => nodeAttrs.includes(attr))
   if (isTag && hasAttr)
     return new Ok(node.parentElement === document.head)
-  return new Err(`${aimTag} not found`)
+  return new Err(`${node} is not ${aimTag}`)
 }

@@ -21,3 +21,4 @@ declare interface Context {
   retNames: string[]
   isAsync: boolean
 }
+declare type ROOT_TAG = '<script setup>' | '<template>'
