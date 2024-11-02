@@ -1,5 +1,5 @@
+import { generate } from '@/doms/generate'
 import { SCRIPT_TAG, TEMPLATE_TAG } from '@/doms/root'
-import { generate } from '@/generate'
 import { onAfter, onPrior } from '@/monitor'
 import { monito } from '@/tools'
 
