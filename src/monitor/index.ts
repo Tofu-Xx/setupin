@@ -14,8 +14,7 @@ export const onPrior: OnPrior<Data> = ({ node, resolve }) => {
     false: (n: Element) => (n).textContent = '/* Resolved to the wrong location */',
   })
 }
-export const onAfter: OnAfter<Data> = ({ observer, resolve }) => {
+export const onAfter: OnAfter<Data> = ({ resolve }) => {
   finder(doByS, '<script setup>', resolve)
   finder(doByT, '<template>', resolve)
-  observer.disconnect()
 }

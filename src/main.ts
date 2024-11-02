@@ -1,6 +1,6 @@
 import { generate } from './generate'
 import { onAfter, onPrior } from './monitor'
-import { monito } from './tools/monito'
+import { monito } from './tools'
 
 const monitored = monito(onPrior, onAfter)
 
