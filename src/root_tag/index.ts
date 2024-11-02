@@ -7,6 +7,7 @@ export * from './template'
 export const SCRIPT_TAG: ROOT_TAG = '<script setup>'
 export const TEMPLATE_TAG: ROOT_TAG = '<template>'
 
+// export const doms = new Set()
 export const root = {
   [SCRIPT_TAG]: {
     idx: 0,
@@ -21,3 +22,4 @@ export const root = {
     doBy: doByT,
   },
 }
+// window.doms = doms
