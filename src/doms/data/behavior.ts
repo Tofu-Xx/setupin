@@ -1,16 +1,18 @@
+import type { tags } from './tags'
 import { parseScript } from '../parse/parseScript'
 import { parseTemplate } from '../parse/parseTemplate'
-import { TAG_SCRIPT, TAG_TEMPLATE } from './tags'
+import { tagScript, tagTemplate } from './tags'
+
+function createBehavior(tag: typeof tags[number]) {
+  const { str, parse, logType: { lose, excess } } = tag
+  return {
+    lose: () => lose(`not found ${str} in top level for document`),
+    excess: () => excess(`only one ${str} is allowed in top level for document`),
+    parse,
+  }
+}
 
 export const behavior = {
-  [TAG_SCRIPT]: {
-    lose: () => console.warn(`not found ${TAG_SCRIPT} in top level for document`),
-    excess: () => console.warn(`only one ${TAG_SCRIPT} is allowed in top level for document`),
-    parse: parseScript,
-  },
-  [TAG_TEMPLATE]: {
-    lose: () => console.error(`not found ${TAG_TEMPLATE} in top level for document`),
-    excess: () => console.warn(`only one ${TAG_TEMPLATE} is allowed in top level for document`),
-    parse: parseTemplate,
-  },
+  [tagScript.str]: createBehavior(tagScript),
+  [tagTemplate.str]: createBehavior(tagTemplate),
 }
