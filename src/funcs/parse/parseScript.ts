@@ -1,16 +1,17 @@
 import { ast } from '@/funcs/ast'
+import { when } from '@/tools'
 
 export type ParsedScript = ReturnType<typeof parseScript>
 export function parseScript(scriptEl?: Maybe<Tag['script']>) {
   const scriptContent = scriptEl?.textContent ?? ''
-  if (scriptEl) {
-    scriptEl.textContent = ''
-  }
-  else {
-    scriptEl = document.createElement('script')
-    document.head.appendChild(scriptEl)
-  }
-  scriptEl.type = 'module'
+  when(scriptEl?.tagName ?? 0)({
+    0: () => {
+      scriptEl = document.createElement('script')
+      document.head.appendChild(scriptEl)
+    },
+    SCRIPT: () => scriptEl!.textContent = '',
+  })
+  scriptEl!.type = 'module'
   const { extractImport, getGlobalVars, isAsyncModule } = ast(scriptContent)
   return {
     scriptEl,
