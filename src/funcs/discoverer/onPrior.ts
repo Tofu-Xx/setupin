@@ -3,23 +3,22 @@ import { behavior, tags, tagScript } from '@/data'
 import { carrier } from '@/store'
 import { isElMatch } from '@/tools/isElMatch'
 
-enum STATE { WITHOUT, RELATE, CORRECT }
+enum state { WITHOUT, RELATE, CORRECT }
+const { WITHOUT, RELATE, CORRECT } = state
 export const onPrior: OnPrior<typeof carrier> = ({ node, discovery }) => {
   Object.assign(discovery, carrier)
-  function _getState(tag: typeof tags[number]['str']): STATE {
-    if (!isElMatch(node, tag)) return STATE.WITHOUT
-    if (node.parentElement === document.head) return STATE.CORRECT
-    else return STATE.RELATE
+  function _getState(tag: typeof tags[number]['str']): state {
+    if (!isElMatch(node, tag)) return WITHOUT
+    if (node.parentElement === document.head) return CORRECT
+    else return RELATE
   }
   for (const { str } of tags) {
-    if (_getState(str) !== STATE.CORRECT) continue
-    let count = 0
+    if (_getState(str) !== CORRECT) continue
     const { parse } = behavior[str]
-    count++
-    if (count !== 1) continue
+    discovery[str].count++
+    if (discovery[str].count !== 1) continue
     discovery[str].parsed = parse(node as any)
-    discovery[str].count = count
   }
-  if (_getState(tagScript.str) === STATE.RELATE)
+  if (_getState(tagScript.str) === RELATE)
     node.innerHTML = '/* Resolved to the wrong location */'
 }

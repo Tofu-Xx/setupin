@@ -8,6 +8,5 @@ export default antfu({
   rules: {
     'no-new-func': 'off',
     'antfu/if-newline': 'off',
-    'no-console': 'off',
   },
 })
