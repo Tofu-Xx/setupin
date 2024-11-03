@@ -5,7 +5,7 @@ export function isElMatch(el: Element, targetHtml: string): boolean {
     const isTag = aimEl?.tagName === el.tagName
     const nodeAttrs = el.getAttributeNames()
     const aimAttrs = aimEl?.getAttributeNames() ?? []
-    const hasAttr = aimAttrs?.every(attr => nodeAttrs.includes(attr))
+    const hasAttr = new Set(aimAttrs).isSubsetOf(new Set(nodeAttrs))
     return isTag && hasAttr
   }
   catch {
