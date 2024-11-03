@@ -7,7 +7,7 @@
     "moduleResolution": "Bundler",
     "paths": {
       "@/*": ["./src/*"],
-      "vendor:*": ["./vendor/*"]
+      "vendor:*": ["./vendor/*.esm", "./vendor/*.esm.prod"]
     },
     "resolveJsonModule": true,
     "allowJs": true,

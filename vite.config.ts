@@ -10,7 +10,7 @@ export default defineConfig({
       },
       {
         find: /^vendor:(.*)$/,
-        replacement: path.resolve(__dirname, 'vendor', '$1'),
+        replacement: path.resolve(__dirname, 'vendor', '$1.esm.prod'),
       },
     ],
   },

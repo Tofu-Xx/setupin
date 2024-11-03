@@ -1,6 +1,4 @@
 import type { tags } from './tags'
-import { parseScript } from '../funcs/parse/parseScript'
-import { parseTemplate } from '../funcs/parse/parseTemplate'
 import { tagScript, tagTemplate } from './tags'
 
 function createBehavior(tag: typeof tags[number]) {
