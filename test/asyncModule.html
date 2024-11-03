@@ -1,25 +1,25 @@
-<body></body>
 <script type="module">
   import { createApp, ref, onMounted } from 'https://unpkg.com/vue/dist/vue.esm-browser.js'
 
   const AsyncComp = {
-    template: '<button> 0 </button>',
+    template: document.body.innerHTML,
     async setup() {
-      onMounted(() => {
-        console.log('yes')
-      })
+      const count = ref(0)
       const { default: confetti } = await import('https://esm.sh/canvas-confetti')
       confetti()
-      return {}
+      return { count }
     },
   }
 
   createApp({
     components: { AsyncComp },
     template: `
-    <Suspense>
-        <AsyncComp />
-    </Suspense>
-  `,
+      <Suspense>
+          <AsyncComp />
+      </Suspense>
+    `,
   }).mount(document.body)
 </script>
+<body>
+  <button @click="count++">{{ count }}</button>
+</body>

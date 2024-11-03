@@ -1,5 +1,5 @@
-import { ast } from '../ast'
 import { when } from '../../tools'
+import { ast } from '../ast'
 
 export type ParsedScript = ReturnType<typeof parseScript>
 export function parseScript(scriptEl?: Maybe<Tag['script']>) {
