@@ -8,5 +8,5 @@ import { discover } from '@/tools'
   const discovery = await discover<typeof carrier>(onPrior, onAfter)
   const { scriptEl, context } = discovery[tagScript.str].parsed!
   document.body.innerHTML = discovery[tagTemplate.str].parsed!
-  scriptEl.innerHTML = generate(context)
+  scriptEl!.innerHTML = generate(context)
 })()
