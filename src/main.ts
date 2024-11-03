@@ -6,6 +6,6 @@ import { discover } from './tools'
 
 (async () => {
   const discovery = await discover<typeof carrier>(onPrior, onAfter)
-  const { scriptEl, context } = discovery[tagScript.str].parsed!
-  scriptEl!.innerHTML = generate(discovery[tagTemplate.str].parsed!, context)
+  // const context =
+  generate(discovery[tagTemplate.str].parsed!, discovery[tagScript.str].parsed!)
 })()

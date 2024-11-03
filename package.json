@@ -31,7 +31,8 @@
   ],
   "scripts": {
     "build": "vite build",
-    "watch": "chokidar 'src/*' -c 'vite build'",
+    "watch": "vite build --watch",
+    "dev": "vite dev",
     "release": "bumpp --no-push && nr build && pnpm publish",
     "iv": "zsh ./script/install_vue.zsh",
     "up": "taze major -I",
