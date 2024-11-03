@@ -1,8 +1,7 @@
-import type { Carrier } from '@/doms/carrier'
 import type { OnAfter } from '@/tools'
 import { behavior, TAGS } from '@/doms/data'
 
-export const onAfter: OnAfter<Carrier> = ({ discovery }) => {
+export const onAfter: OnAfter = ({ discovery }) => {
   for (const tag of TAGS) {
     const { count } = discovery[tag]
     const { lose, excess, parse } = behavior[tag]

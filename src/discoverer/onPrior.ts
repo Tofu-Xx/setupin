@@ -1,11 +1,10 @@
-import type { Carrier } from '@/doms/carrier'
 import type { OnPrior } from '@/tools'
 import { carrier } from '@/doms/carrier'
 import { behavior, TAG_SCRIPT, TAGS } from '@/doms/data'
 import { isElMatch } from '@/tools/isElMatch'
 
 enum STATE { WITHOUT, RELATE, CORRECT }
-export const onPrior: OnPrior<Carrier> = ({ node, discovery }) => {
+export const onPrior: OnPrior<typeof carrier> = ({ node, discovery }) => {
   Object.assign(discovery, carrier)
   function _getState(tag: ROOT_TAG): STATE {
     if (!isElMatch(node, tag)) return STATE.WITHOUT
