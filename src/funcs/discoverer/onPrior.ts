@@ -20,5 +20,5 @@ export const onPrior: OnPrior<typeof carrier> = ({ node, discovery }) => {
     discovery[str].parsed = parse(node as any)
   }
   if (_getState(tagScript.str) === RELATE)
-    node.innerHTML = '/* Resolved to the wrong location */'
+    behavior[tagScript.str].beNoHere(node)
 }
