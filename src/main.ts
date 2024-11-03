@@ -1,4 +1,4 @@
-import type { carrier } from './store/doms'
+import type { carrier } from './store/carrier'
 import { tagScript, tagTemplate } from '@/data'
 import { onAfter, onPrior } from '@/funcs/discoverer'
 import { generate } from '@/funcs/generate'

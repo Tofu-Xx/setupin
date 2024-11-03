@@ -14,9 +14,12 @@ export const onPrior: OnPrior<typeof carrier> = ({ node, discovery }) => {
   }
   for (const { str } of tags) {
     if (_getState(str) !== CORRECT) continue
-    const { parse } = behavior[str]
+    const { parse, beNoHere } = behavior[str]
     discovery[str].count++
-    if (discovery[str].count !== 1) continue
+    if (discovery[str].count !== 1) {
+      beNoHere(node)
+      continue
+    }
     discovery[str].parsed = parse(node as any)
   }
   if (_getState(tagScript.str) === RELATE)

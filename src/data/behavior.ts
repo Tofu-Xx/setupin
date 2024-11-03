@@ -14,4 +14,4 @@ function createBehavior(tag: typeof tags[number]) {
 export const behavior = {
   [tagScript.str]: createBehavior(tagScript),
   [tagTemplate.str]: createBehavior(tagTemplate),
-}
+} as const

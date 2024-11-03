@@ -1,1 +1,1 @@
-export * from './doms'
+export * from './carrier'
