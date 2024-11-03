@@ -22,9 +22,13 @@
     "sfc"
   ],
   "exports": {
-    "./*": "./dist/*"
+    "./*": {
+      "import": "./dist/*",
+      "types": "./dist/*.d.ts"
+    }
   },
   "main": "dist/main.js",
+  "types": "dist/main.d.ts",
   "files": [
     "dist",
     "public"

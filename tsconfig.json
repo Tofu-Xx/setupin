@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["DOM", "ESNext"],
@@ -7,7 +6,6 @@
     "moduleResolution": "Bundler",
     "paths": {
       "@/*": ["./src/*"],
-      "vendor:*": ["./vendor/*.esm", "./vendor/*.esm.prod"]
     },
     "resolveJsonModule": true,
     "allowJs": true,
