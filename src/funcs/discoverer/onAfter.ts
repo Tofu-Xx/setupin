@@ -9,8 +9,6 @@ export const onAfter: OnAfter = ({ discovery }) => {
       lose()
       discovery[str].parsed = parse()
     }
-    if (count > 1) {
-      excess()
-    }
+    count > 1 && excess()
   }
 }
