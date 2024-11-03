@@ -1,5 +1,5 @@
-import type { OnAfter } from '@/tools'
-import { behavior, tags } from '@/data'
+import type { OnAfter } from '../../tools'
+import { behavior, tags } from '../../data'
 
 export const onAfter: OnAfter = ({ discovery }) => {
   for (const { str } of tags) {

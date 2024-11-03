@@ -1,5 +1,5 @@
 import type { ArrayPattern, AssignmentPattern, FunctionDeclaration, Identifier, LVal, ObjectPattern, ObjectProperty, Pattern, RestElement, Statement, VariableDeclaration } from '@babel/types'
-import { when } from '@/tools'
+import { when } from '../../tools'
 
 export function getGlobalVars(astBody: Statement[]): string[] {
   return astBody.flatMap(node => when(node, node.type)({
