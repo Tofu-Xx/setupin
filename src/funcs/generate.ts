@@ -1,3 +1,4 @@
+import type { Context } from './parse'
 import * as Vue from 'vendor:vue'
 
 export function generate(templateCode: string, context: Context) {
