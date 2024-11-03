@@ -1,38 +1,37 @@
 import type { Carrier } from '@/doms/carrier'
 import type { OnPrior } from '@/tools'
 import { carrier } from '@/doms/carrier'
-import { behavior, TAG_SCRIPT, TAG_TEMPLATE } from '@/doms/data'
+import { behavior, TAG_SCRIPT, TAG_TEMPLATE, TAGS } from '@/doms/data'
 import { isElMatch } from '@/tools/isElMatch'
 
-enum TAG_TYPE {
+enum STATE {
   WITHOUT,
   RELATE,
   CORRECT,
 }
 export const onPrior: OnPrior<Carrier> = ({ node, discovery }) => {
   Object.assign(discovery, carrier)
-  function _isRoot(tag: ROOT_TAG): TAG_TYPE {
+  function _getState(tag: ROOT_TAG): STATE {
     if (!isElMatch(node, tag))
-      return TAG_TYPE.WITHOUT
+      return STATE.WITHOUT
     if (node.parentElement === document.head)
-      return TAG_TYPE.CORRECT
+      return STATE.CORRECT
     else
-      return TAG_TYPE.RELATE
+      return STATE.RELATE
   }
-  if (_isRoot(TAG_TEMPLATE) === TAG_TYPE.CORRECT) {
-    if (!discovery[TAG_TEMPLATE].count) {
-      discovery[TAG_TEMPLATE].parsed = behavior[TAG_TEMPLATE].parse(node as Tag['template'])
-      discovery[TAG_TEMPLATE].count = 0
+  for (const tag of TAGS) {
+    if (_getState(tag) !== STATE.CORRECT) continue
+    let count = 0
+    const { parse } = behavior[tag]
+    if (_getState(tag) === STATE.CORRECT) {
+      if (!count) {
+        discovery[tag].parsed = parse(node as any)
+        count = 0
+      }
+      count++
     }
-    discovery[TAG_TEMPLATE].count++
+    discovery[tag].count = count
   }
-  if (_isRoot(TAG_SCRIPT) === TAG_TYPE.CORRECT) {
-    if (!discovery[TAG_SCRIPT].count) {
-      discovery[TAG_SCRIPT].parsed = behavior[TAG_SCRIPT].parse(node as Tag['script'])
-      discovery[TAG_SCRIPT].count = 0
-    }
-    discovery[TAG_SCRIPT].count++
-  }
-  if (_isRoot(TAG_SCRIPT) === TAG_TYPE.RELATE)
+  if (_getState(TAG_SCRIPT) === STATE.RELATE)
     node.innerHTML = '/* Resolved to the wrong location */'
 }
