@@ -1,0 +1,26 @@
+<head>
+  <script src="https://unpkg.com/style-plus"></script>
+  <!-- <script src="https://unpkg.com/setupin"></script> -->
+  <script src="../dist/main.js"></script>
+</head>
+
+<script setup>
+  const count = ref(0)
+</script>
+
+<template>
+  <button
+    @click="count++"
+    style="
+      & {
+        font-size: 3em;
+      }
+    "
+  >
+    {{ count }}
+  </button>
+</template>
+
+<style>
+  @import 'https://unpkg.com/@tofukit/resetcss';
+</style>
