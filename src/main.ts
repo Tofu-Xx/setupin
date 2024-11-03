@@ -1,7 +1,7 @@
-import type { carrier } from './doms/carrier'
-import { onAfter, onPrior } from '@/discoverer'
-import { tagScript, tagTemplate } from '@/doms/data'
-import { generate } from '@/doms/generate'
+import type { carrier } from './store/doms'
+import { tagScript, tagTemplate } from '@/data'
+import { onAfter, onPrior } from '@/funcs/discoverer'
+import { generate } from '@/funcs/generate'
 import { discover } from '@/tools'
 
 const origin = discover<typeof carrier>(onPrior, onAfter)

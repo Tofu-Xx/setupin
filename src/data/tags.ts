@@ -1,5 +1,5 @@
-import { parseScript } from '../parse/parseScript'
-import { parseTemplate } from '../parse/parseTemplate'
+import { parseScript } from '../funcs/parse/parseScript'
+import { parseTemplate } from '../funcs/parse/parseTemplate'
 
 function newTag<S extends string, P>(str: S, parse: Fn<any, P>, logType: { lose: Fn, excess: Fn }) {
   return { str, parse, logType }

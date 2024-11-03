@@ -9,7 +9,7 @@ export function generate(template: string, context: Context) {
   const suspenseComp = `{components:{c:${appComp}},template:'<Suspense><c/></Suspense>'}`
   const createApp = `createApp(${isAsync ? suspenseComp : appComp}).mount(document.body);`
   const autoImport = `const { ${Object.keys(window.Vue = Vue)} } = Vue;`
-  const siteClear = 'document.body.textContent = "";'
+  const siteClear = 'document.body.innerHTML = "";'
   return importsCode
     + autoImport
     + siteClear

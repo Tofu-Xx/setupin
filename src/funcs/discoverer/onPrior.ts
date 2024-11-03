@@ -1,7 +1,6 @@
-import type { tagTemplate } from '@/doms/data'
 import type { OnPrior } from '@/tools'
-import { carrier } from '@/doms/carrier'
-import { behavior, tags, tagScript } from '@/doms/data'
+import { behavior, tags, tagScript } from '@/data'
+import { carrier } from '@/store'
 import { isElMatch } from '@/tools/isElMatch'
 
 enum STATE { WITHOUT, RELATE, CORRECT }
