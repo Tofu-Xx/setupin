@@ -22,14 +22,10 @@
     "sfc"
   ],
   "exports": {
-    "./main.prod.js": {
-      "import": "./dist/production/main.js"
-    },
-    "./main.js": {
-      "import": "./dist/development/main.js"
-    }
+    "./main.js": "./dist/development/main.js",
+    "./main.prod.js": "./dist/production/main.js"
   },
-  "main": "dist/main.js",
+  "main": "dist/development/main.js",
   "files": [
     "dist",
     "public"
