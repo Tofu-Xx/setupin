@@ -36,10 +36,6 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
     "@antfu/ni": "^0.23.0",
