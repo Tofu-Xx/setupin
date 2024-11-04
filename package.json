@@ -21,19 +21,13 @@
     "html",
     "sfc"
   ],
-  "exports": {
-    "./main.js": "./dist/development/main.js",
-    "./main.prod.js": "./dist/production/main.js"
-  },
-  "main": "dist/development/main.js",
+  "main": "dist/main.js",
   "files": [
     "dist",
-    "public"
+    "doc"
   ],
   "scripts": {
-    "build:dev": "vite build --mode development",
-    "build:prod": "vite build --mode production",
-    "build": "nr build:dev && nr build:prod",
+    "build": "zsh ./script/build.zsh",
     "watch": "vite build --watch",
     "dev": "vite dev",
     "release": "bumpp --no-push && nr build && pnpm publish",

@@ -2,7 +2,7 @@
   <a href="./README.md">English</a> | <b>简体中文</b>
 </p>
 
-<p align="center"><img src="./public/svgs/logo.svg"></p>
+<p align="center"><img src="./doc/logo.svg"></p>
 
 <p align="center">
   <a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin?color=orange"></a>
@@ -23,8 +23,8 @@
 ## 🤯 setupin.html _vs_ setup.vue
 
 <p align="center">
-  <img src="./public/svgs/setup.vue.svg" width="49%">
-  <img src="./public/svgs/setupin.html.svg" width="49%">
+  <img src="./doc/setup.vue.svg" width="49%">
+  <img src="./doc/setupin.html.svg" width="49%">
 </p>
 
 怎么样, 它们很像吧。
