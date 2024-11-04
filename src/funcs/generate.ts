@@ -9,6 +9,6 @@ export function generate(templateCode: ParsedTemplate, context: ParsedScript) {
   const appComp = `{template:document.body.innerHTML,${async} setup(){${setupCode}return{${retNames}}}}`
   const suspenseComp = `{components:{c:${appComp}},template:'<Suspense><c/></Suspense>'}`
   const createApp = `createApp(${isAsync ? suspenseComp : appComp}).mount(document.body);`
-  const autoImport = `const {createApp,${[...new Set(setupCode.match(demandRex))] ?? ''}}=Vue;`
+  const autoImport = `const {createApp,${[...new Set(setupCode.match(demandRex))]}}=Vue;`
   scriptEl!.innerHTML = importsCode + autoImport + createApp
 }

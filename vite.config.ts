@@ -1,20 +1,21 @@
-import path from 'node:path'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   resolve: {
     alias: [
       {
         find: '@',
-        replacement: path.resolve(__dirname, 'src'),
+        replacement: resolve(__dirname, 'src'),
       },
       {
         find: /^vendor:(.*)$/,
-        replacement: path.resolve(__dirname, 'vendor', '$1.esm.prod'),
+        replacement: resolve(__dirname, 'vendor', `$1.esm${mode === 'production' ? '.prod' : ''}`),
       },
     ],
   },
   build: {
+    outDir: `dist/${mode}`,
     lib: {
       entry: 'src/main.ts',
       formats: ['iife'],
@@ -24,5 +25,4 @@ export default defineConfig({
     target: 'esnext',
     minify: false,
   },
-  envPrefix: 'VUE_',
-})
+}))

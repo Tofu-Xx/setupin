@@ -22,19 +22,22 @@
     "sfc"
   ],
   "exports": {
-    "./*": {
-      "import": "./dist/*",
-      "types": "./dist/*.d.ts"
+    "./main.prod.js": {
+      "import": "./dist/production/main.js"
+    },
+    "./main.js": {
+      "import": "./dist/development/main.js"
     }
   },
   "main": "dist/main.js",
-  "types": "dist/main.d.ts",
   "files": [
     "dist",
     "public"
   ],
   "scripts": {
-    "build": "vite build",
+    "build:dev": "vite build --mode development",
+    "build:prod": "vite build --mode production",
+    "build": "nr build:dev && nr build:prod",
     "watch": "vite build --watch",
     "dev": "vite dev",
     "release": "bumpp --no-push && nr build && pnpm publish",
