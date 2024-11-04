@@ -1,5 +1,5 @@
 import type { ExpressionStatement, Statement, VariableDeclaration } from '@babel/types'
-import { when } from '../../tools'
+import { when } from '@/util'
 
 export function isAsyncModule(astBody: Statement[]) {
   return astBody.some(node => when(node, node.type)({

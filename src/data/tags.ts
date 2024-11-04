@@ -1,5 +1,5 @@
-import { parseScript } from '../funcs/parse/parseScript'
-import { parseTemplate } from '../funcs/parse/parseTemplate'
+import { parseScript } from '@/funcs/parse'
+import { parseTemplate } from '@/funcs/parse'
 
 function newTag<S extends string, P>(str: S, parse: Fn<any, P>, logType: { lose: Fn, excess: Fn }, annotation: string) {
   return { str, parse, logType, beNoHere: annotation.replace(/%s/g, `${str} is not supposed to be here`) }

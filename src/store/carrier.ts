@@ -1,6 +1,6 @@
-import type { ParsedScript, ParsedTemplate } from '../funcs/parse'
+import type { ParsedScript, ParsedTemplate } from '@/funcs/parse'
 
-import { tagScript, tagTemplate } from '../data'
+import { tagScript, tagTemplate } from '@/data'
 
 function newCarrier<P>(count: number, parsed: P) {
   return { count, parsed }

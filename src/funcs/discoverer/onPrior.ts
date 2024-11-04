@@ -1,7 +1,7 @@
-import type { OnPrior } from '../../tools'
-import { behavior, tags, tagScript } from '../../data'
-import { carrier } from '../../store'
-import { isElMatch } from '../../tools'
+import type { OnPrior } from '@/util'
+import { behavior, tags, tagScript } from '@/data'
+import { carrier } from '@/store'
+import { isElMatch } from '@/util'
 
 enum state { WITHOUT, RELATE, CORRECT }
 const { WITHOUT, RELATE, CORRECT } = state
