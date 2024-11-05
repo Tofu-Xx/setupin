@@ -23,8 +23,7 @@
   ],
   "main": "dist/main.js",
   "files": [
-    "dist",
-    "doc"
+    "dist"
   ],
   "scripts": {
     "build": "zsh ./script/build.zsh",
