@@ -6,5 +6,6 @@ import { generate } from './funcs/generate'
 
 (async () => {
   const discovery = await discover<typeof carrier>(onPrior, onAfter)
-  generate(discovery[tagTemplate.str].parsed!, discovery[tagScript.str].parsed!)
+  document.body.innerHTML = discovery[tagTemplate.str].parsed!
+  generate(discovery[tagScript.str].parsed!)
 })()

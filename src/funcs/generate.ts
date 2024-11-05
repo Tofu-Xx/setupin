@@ -2,8 +2,7 @@ import type { ParsedScript, ParsedTemplate } from './parse'
 import asciiLogoRaw from '@/asset/ascii-logo.txt?raw'
 import * as Vue from 'vendor:vue'
 
-export function generate(templateCode: ParsedTemplate, context: ParsedScript) {
-  document.body.innerHTML = templateCode
+export function generate(context: ParsedScript) {
   const asciiLogo = import.meta.env.MODE === 'development' ? asciiLogoRaw : ''
   const demandRex = new RegExp(`\\b${Object.keys(window.Vue = Vue).join('\\b|\\b')}\\b`, 'g')
   const { scriptEl, importsCode, setupCode, retNames, isAsync } = context
