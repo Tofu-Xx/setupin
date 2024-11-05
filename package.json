@@ -1,7 +1,7 @@
 {
   "name": "setupin",
   "type": "module",
-  "version": "2.5.0-beta.2",
+  "version": "2.5.0",
   "packageManager": "pnpm@9.12.3",
   "description": "Vue SFC? HTML! <script setup> in html",
   "author": "tofu-xx <tofu-xx@foxmail.com>",
