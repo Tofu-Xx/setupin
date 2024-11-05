@@ -29,20 +29,33 @@
 
 How about that? Aren't they similar
 
-## 😝 playground
+## 🤓 Characteristics
+
+[x] auto on-demand import
+[x] supports esm syntax
+[x] [top-level await](https://vuejs.org/api/sfc-script-setup.html#top-level-await)
+[ ] [sfc css features](https://vuejs.org/api/sfc-css-features.html)
+[ ] vue3 macro functions
+
+## 😝 Playground
 
 try it on
 [stackblitz](https://stackblitz.com/edit/setupin?file=index.html)
 !
 
-## 🥰 CDN
+## 🥰 Usage
 
+**The default is the dev version**
 ```html
 <script src="https://unpkg.com/setupin"></script>
 ```
 
-**or**
-
+**dev**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/setupin"></script>
+<script src="https://unpkg.com/setupin/dist/main.js"></script>
+```
+
+**prod**
+```html
+<script src="https://unpkg.com/setupin/dist/main.prod.js"></script>
 ```

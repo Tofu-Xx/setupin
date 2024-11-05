@@ -29,6 +29,14 @@
 
 怎么样, 它们很像吧。
 
+## 🤓 特性
+
+[x] 自动按需导入
+[x] 支持 esm 语法
+[x] [顶层 await](https://cn.vuejs.org/api/sfc-script-setup.html#top-level-await)
+[ ] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
+[ ] vue3 宏函数
+
 ## 😝 演练场
 
 在 [stackblitz](https://stackblitz.com/edit/setupin?file=index.html)
@@ -36,12 +44,17 @@
 
 ## 🥰 CDN
 
+**默认为dev版本**
 ```html
 <script src="https://unpkg.com/setupin"></script>
 ```
 
-**or**
-
+**dev**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/setupin"></script>
+<script src="https://unpkg.com/setupin/dist/main.js"></script>
+```
+
+**prod**
+```html
+<script src="https://unpkg.com/setupin/dist/main.prod.js"></script>
 ```
