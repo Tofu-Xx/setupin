@@ -3,9 +3,9 @@ import { behavior, tags, tagScript } from '@/data'
 import { carrier } from '@/store'
 import { isElMatch } from '@/util'
 
-enum state { WITHOUT, RELATE, CORRECT }
-const { WITHOUT, RELATE, CORRECT } = state
 export const onPrior: OnPrior<typeof carrier> = ({ node, discovery }) => {
+  enum state { WITHOUT, RELATE, CORRECT }
+  const { WITHOUT, RELATE, CORRECT } = state
   Object.assign(discovery, carrier)
   function _getState(tag: typeof tags[number]['str']): state {
     if (!isElMatch(node, tag)) return WITHOUT
