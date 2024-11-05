@@ -31,11 +31,11 @@
 
 ## 🤓 特性
 
-[x] 自动按需导入
-[x] 支持 esm 语法
-[x] [顶层 await](https://cn.vuejs.org/api/sfc-script-setup.html#top-level-await)
-[ ] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
-[ ] vue3 宏函数
+- [x] 自动按需导入
+- [x] 支持 esm 语法
+- [x] [顶层 await](https://cn.vuejs.org/api/sfc-script-setup.html#top-level-await)
+- [ ] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
+- [ ] vue3 宏函数
 
 ## 😝 演练场
 
@@ -44,17 +44,13 @@
 
 ## 🥰 CDN
 
-**默认为dev版本**
 ```html
+<!-- 默认是dev版本 -->
 <script src="https://unpkg.com/setupin"></script>
-```
 
-**dev**
-```html
+<!-- dev -->
 <script src="https://unpkg.com/setupin/dist/main.js"></script>
-```
 
-**prod**
-```html
+<!-- prod -->
 <script src="https://unpkg.com/setupin/dist/main.prod.js"></script>
 ```
