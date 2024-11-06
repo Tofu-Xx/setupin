@@ -1,5 +1,4 @@
 import { resolve } from 'node:path'
-import alias from '@rollup/plugin-alias'
 import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
@@ -12,7 +11,7 @@ export default defineBuildConfig({
   }],
   alias: {
     '@': resolve(__dirname, 'src'),
-    '^vendor:(.*)$': resolve(__dirname, 'vendor', '$1.esm'),
+    '@vendor': resolve(__dirname, 'vendor'),
   },
   rollup: {
     // emitCJS: false, // 是否输出 CommonJS 格式
