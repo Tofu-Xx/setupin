@@ -1,4 +1,4 @@
-declare module 'vendor:vue' {
+declare module 'vendor:vue.esm' {
   export * from 'vue'
 }
 declare interface Window {

@@ -1,8 +1,8 @@
-import type { carrier } from '@/store/carrier'
-import { tagScript, tagTemplate } from '@/data'
-import { onAfter, onPrior } from '@/funcs/discoverer'
+import type { carrier } from '@/store/index'
+import { tagScript, tagTemplate } from '@/data/index'
+import { onAfter, onPrior } from '@/funcs/discoverer/index'
 import { generate } from '@/funcs/generate'
-import { discover } from '@/util'
+import { discover } from '@/util/index'
 
 (async () => {
   const discovery = await discover<typeof carrier>(onPrior, onAfter)
