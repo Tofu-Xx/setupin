@@ -17,7 +17,7 @@ export default defineBuildConfig({
     // emitCJS: false, // 是否输出 CommonJS 格式
     output: {
       format: 'iife', // 指定输出格式为 iife
-      name: 'MyGlobalLib', // 全局变量名
+      name: 'Vue', // 全局变量名
       entryFileNames: '[name].js', // 输出文件名
       // globals: {
       //   vue: 'Vue', // 例如，如果依赖 vue，可以将其映射为 Vue 的全局变量
