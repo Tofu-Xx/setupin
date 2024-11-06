@@ -7,6 +7,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@vue": ["./vendor/vue.esm.js", "./vendor/vue.runtime.esm.js"]
+      // "@ascii-logo": ["./public/ascii-logo.txt"]
     },
     "resolveJsonModule": true,
     "allowJs": true,
