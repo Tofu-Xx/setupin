@@ -1,8 +1,5 @@
-declare module 'vendor:vue.esm' {
-  export * from 'vue'
-}
 declare interface Window {
-  Vue: typeof import('vendor:vue')
+  Vue: any
 }
 declare type Fn<T extends any[] = any[], R = any> = (...args: T) => R
 declare type Key = string | number | symbol

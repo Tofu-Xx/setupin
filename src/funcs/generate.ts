@@ -1,7 +1,7 @@
 import type { ParsedScript } from './parse'
 // import asciiLogoRaw from '@/asset/ascii-logo.txt?raw'
 // import * as Vue from 'vendor:vue'
-import * as Vue from '../../vendor/vue.esm'
+import * as Vue from '@vendor/vue.esm'
 
 export function generate(context: Omit<ParsedScript, 'scriptEl'>) {
   // const asciiLogo = import.meta.env.MODE === 'development' ? asciiLogoRaw : ''
