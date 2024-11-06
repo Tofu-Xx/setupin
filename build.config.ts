@@ -14,7 +14,6 @@ function base() {
     }],
     alias: {
       '@': resolve(__dirname, 'src'),
-      '@vendor': resolve(__dirname, 'vendor'),
     },
     rollup: {
     // emitCJS: false, // 是否输出 CommonJS 格式
@@ -39,6 +38,7 @@ function base() {
 export default defineBuildConfig([{
   preset: base(),
   replace: { __IS_PROD__: String(false) },
+  alias: { '@vue': resolve(__dirname, 'vendor/vue.esm.js') },
   rollup: {
     output: {
       entryFileNames: '[name].js',
@@ -47,6 +47,7 @@ export default defineBuildConfig([{
 }, {
   preset: base(),
   replace: { __IS_PROD__: String(true) },
+  alias: { '@vue': resolve(__dirname, 'vendor/vue.esm.prod.js') },
   rollup: {
     output: {
       entryFileNames: '[name].prod.js',
