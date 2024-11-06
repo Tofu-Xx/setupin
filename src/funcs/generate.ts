@@ -1,5 +1,5 @@
 import type { ParsedScript } from './parse'
-import logo from '@/asset/ascii_logo.txt'
+import logo from '@ascii-logo'
 import * as Vue from '@vue'
 
 export function generate(context: Omit<ParsedScript, 'scriptEl'>) {

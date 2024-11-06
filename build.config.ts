@@ -14,6 +14,7 @@ function base() {
     }],
     alias: {
       '@': resolve(__dirname, 'src'),
+      '@ascii-logo': resolve(__dirname, 'public/ascii-logo.txt'),
     },
     rollup: {
     // emitCJS: false, // 是否输出 CommonJS 格式
