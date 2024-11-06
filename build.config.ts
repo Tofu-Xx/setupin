@@ -3,6 +3,7 @@ import alias from '@rollup/plugin-alias'
 import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
+  failOnWarn: false,
   // clean: true,
   // declaration: true,
   entries: [{
@@ -24,7 +25,7 @@ export default defineBuildConfig({
       // },
     },
     esbuild: {
-      // minify: true, // 是否压缩代码
+      minify: true, // 是否压缩代码
       // target: 'es2015', // 指定 esbuild 编译目标
       // sourcemap: true, // 是否生成 sourcemap
     },
