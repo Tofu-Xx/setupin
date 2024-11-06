@@ -1,7 +1,7 @@
-import type { OnPrior } from '@/util/index'
-import { behavior, tags, tagScript } from '@/data/index'
-import { carrier } from '@/store/index'
-import { isElMatch } from '@/util/index'
+import type { OnPrior } from '@/util'
+import { behavior, tags, tagScript } from '@/data'
+import { carrier } from '@/store'
+import { isElMatch } from '@/util'
 
 export const onPrior: OnPrior<typeof carrier> = ({ node, discovery }) => {
   enum state { WITHOUT, RELATE, CORRECT }
