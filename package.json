@@ -29,11 +29,7 @@
     "release": "bumpp --no-push && nr build && pnpm publish",
     "build": "unbuild",
     "dev": "unbuild --stub",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "iv": "zsh ./script/install_vue.zsh",
-    "up": "taze major -I",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "up": "taze major -I"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -49,6 +45,7 @@
     "eslint": "^9.14.0",
     "eslint-plugin-format": "^0.1.2",
     "taze": "^0.18.0",
-    "unbuild": "^2.0.0"
+    "unbuild": "^2.0.0",
+    "vue": "^3.5.12"
   }
 }
