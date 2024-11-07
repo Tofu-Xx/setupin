@@ -1,12 +1,9 @@
 import { resolve } from 'node:path'
 import { defineBuildConfig, definePreset } from 'unbuild'
 
-// process.env.NODE_ENV = 'production'
-// const prod = process.env.NODE_ENV === 'production'
 function base() {
   return definePreset({
     failOnWarn: false,
-    // declaration: true,
     entries: [{
       input: 'src/main.ts',
       name: 'main',
@@ -16,18 +13,13 @@ function base() {
       '@ascii-logo': resolve(__dirname, 'public/ascii-logo.txt'),
     },
     rollup: {
-    // emitCJS: false, // 是否输出 CommonJS 格式
       output: {
         format: 'iife', // 指定输出格式为 iife
         name: 'Vue', // 全局变量名
-      // entryFileNames: '[name].prod.js', // 输出文件名
-      // globals: {
-      //   vue: 'Vue', // 例如，如果依赖 vue，可以将其映射为 Vue 的全局变量
-      // },
       },
       esbuild: {
-        minify: true, // 是否压缩代码
-        sourcemap: true, // 是否生成 sourcemap
+        // minify: true, // 是否压缩代码
+        // sourcemap: true, // 是否生成 sourcemap
       },
     },
 
@@ -37,7 +29,7 @@ function base() {
 export default defineBuildConfig([{
   preset: base(),
   replace: { __IS_PROD__: String(false) },
-  alias: { '@vue': 'vue/dist/vue.esm-browser.js' },
+  // alias: { '@vue': 'vue/dist/vue.esm-browser.js' },
   rollup: {
     output: {
       entryFileNames: '[name].js',
@@ -46,7 +38,7 @@ export default defineBuildConfig([{
 }, {
   preset: base(),
   replace: { __IS_PROD__: String(true) },
-  alias: { '@vue': 'vue/dist/vue.esm-browser.prod.js' },
+  // alias: { '@vue': 'vue/dist/vue.esm-browser.prod.js' },
   rollup: {
     output: {
       entryFileNames: '[name].prod.js',
