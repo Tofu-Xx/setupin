@@ -4,7 +4,8 @@ import { onAfter, onPrior } from '@/funcs/discoverer'
 import { generate } from '@/funcs/generate'
 import { discover } from '@/util'
 
-export * from '@vendor/vue.esm'
+export * from '@vue'
+
 (async () => {
   const discovery = await discover<typeof carrier>(onPrior, onAfter)
   document.body.innerHTML = discovery[tagTemplate.str].parsed!

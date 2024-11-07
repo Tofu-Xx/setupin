@@ -6,9 +6,9 @@ export const onAfter: OnAfter = ({ discovery }) => {
     const { count } = discovery[str]
     const { lose, excess, parse } = behavior[str]
     if (count === 0) {
-      lose()
+      lose(`not found ${str} in top level for document`)
       discovery[str].parsed = parse()
     }
-    count > 1 && excess()
+    count > 1 && excess(`only one ${str} is allowed in top level for document`)
   }
 }

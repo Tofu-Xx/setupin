@@ -1,7 +1,7 @@
 {
   "name": "setupin",
   "type": "module",
-  "version": "2.5.1",
+  "version": "2.6.1",
   "packageManager": "pnpm@9.12.3",
   "description": "Vue SFC? HTML! <script setup> in html",
   "author": "tofu-xx <tofu-xx@foxmail.com>",
@@ -22,18 +22,15 @@
     "sfc"
   ],
   "main": "dist/main.js",
+  "types": "dist/main.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "release": "bumpp --no-push && nr build && pnpm publish",
-    "build": "unbuild",
     "dev": "unbuild --stub",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "iv": "zsh ./script/install_vue.zsh",
-    "up": "taze major -I",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "build": "unbuild",
+    "release": "bumpp --no-push && nr build && pnpm publish",
+    "up": "taze major -I"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
