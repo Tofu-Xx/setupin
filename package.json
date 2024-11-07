@@ -27,9 +27,9 @@
     "dist"
   ],
   "scripts": {
-    "release": "bumpp --no-push && nr build && pnpm publish",
-    "build": "unbuild",
     "dev": "unbuild --stub",
+    "build": "unbuild",
+    "release": "bumpp --no-push && nr build && pnpm publish",
     "up": "taze major -I"
   },
   "publishConfig": {

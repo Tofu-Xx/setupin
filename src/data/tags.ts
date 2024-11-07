@@ -1,7 +1,7 @@
 import { parseScript, parseTemplate } from '@/funcs/parse'
 
 function newTag<S extends string, P>(str: S, parse: Fn<any, P>, logType: { lose: Fn, excess: Fn }, annotation: string) {
-  return { str, parse, logType, beNoHere: annotation.replace(/%s/g, `${str} is not supposed to be here`) }
+  return { str, parse, logType: __IS_PROD__ ? { lose: () => {}, excess: () => {} } : logType, beNoHere: annotation.replace(/%s/g, `${str} is not supposed to be here`) }
 }
 export const tagScript = newTag('<script setup>', parseScript, { lose: console.warn, excess: console.warn }, '/* %s */')
 export const tagTemplate = newTag('<template>', parseTemplate, { lose: console.error, excess: console.warn }, '<!-- %s -->')
