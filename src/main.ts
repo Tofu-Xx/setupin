@@ -5,6 +5,7 @@ import { generate } from '@/funcs/generate'
 import { discover } from '@/util'
 
 export * from '@vue'
+
 (async () => {
   const discovery = await discover<typeof carrier>(onPrior, onAfter)
   document.body.innerHTML = discovery[tagTemplate.str].parsed!

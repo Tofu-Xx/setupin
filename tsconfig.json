@@ -5,9 +5,7 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {
-      "@/*": ["./src/*"],
-      "@vue": ["./vendor/vue.esm.js", "./vendor/vue.runtime.esm.js"]
-      // "@ascii-logo": ["./public/ascii-logo.txt"]
+      "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "allowJs": true,
@@ -17,5 +15,8 @@
     "esModuleInterop": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
-  }
+  },
+  "include": [
+    "./src/**/*"
+  ]
 }

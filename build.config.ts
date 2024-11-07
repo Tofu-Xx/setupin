@@ -6,7 +6,6 @@ import { defineBuildConfig, definePreset } from 'unbuild'
 function base() {
   return definePreset({
     failOnWarn: false,
-    // clean: true,
     // declaration: true,
     entries: [{
       input: 'src/main.ts',
@@ -28,8 +27,7 @@ function base() {
       },
       esbuild: {
         minify: true, // 是否压缩代码
-      // target: 'es2015', // 指定 esbuild 编译目标
-      // sourcemap: true, // 是否生成 sourcemap
+        sourcemap: true, // 是否生成 sourcemap
       },
     },
 
