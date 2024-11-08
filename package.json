@@ -23,6 +23,11 @@
   ],
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
+  "typesVersions": {
+    "*":{
+      "*": ["types/*", "types/main.d.ts"]
+    }
+  },
   "files": [
     "dist"
   ],
