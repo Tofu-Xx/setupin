@@ -1,11 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/mean,compodoc,composer
-# Edit at https://www.toptal.com/developers/gitignore?templates=mean,compodoc,composer
-
-### Compodoc ###
-# gitignore template for the Compodoc, UI guide for front apps
-# website: https://compodoc.app/
-
-documentation/
+# Created by https://www.toptal.com/developers/gitignore/api/mean,composer,yeoman,nette
+# Edit at https://www.toptal.com/developers/gitignore?templates=mean,composer,yeoman,nette
 
 ### Composer ###
 composer.phar
@@ -180,4 +174,16 @@ e2e/*.map
 # System Files
 .DS_Store/
 
-# End of https://www.toptal.com/developers/gitignore/api/mean,compodoc,composer
+### Nette ###
+# Nette - http://nette.org
+# Ignore /log and /temp directories content but commit .htaccess settings
+/log/*
+!/log/.htaccess
+/temp/*
+!/temp/.htaccess
+
+### Yeoman ###
+
+build/
+
+# End of https://www.toptal.com/developers/gitignore/api/mean,composer,yeoman,nette
