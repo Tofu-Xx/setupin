@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      vue:
+        specifier: ^3.5.12
+        version: 3.5.12(typescript@5.6.2)
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^3.8.0
@@ -26,15 +30,15 @@ importers:
       eslint-plugin-format:
         specifier: ^0.1.2
         version: 0.1.2(eslint@9.14.0(jiti@2.4.0))
+      esno:
+        specifier: ^4.8.0
+        version: 4.8.0
       taze:
         specifier: ^0.18.0
         version: 0.18.0
       unbuild:
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.6.2)
-      vue:
-        specifier: ^3.5.12
-        version: 3.5.12(typescript@5.6.2)
 
 packages:
 
@@ -1491,6 +1495,10 @@ packages:
     peerDependenciesMeta:
       jiti:
         optional: true
+
+  esno@4.8.0:
+    resolution: {integrity: sha512-acMtooReAQGzLU0zcuEDHa8S62meh5aIyi8jboYxyvAePdmuWx2Mpwmt0xjwO0bs9/SXf+dvXJ0QJoDWw814Iw==}
+    hasBin: true
 
   espree@10.2.0:
     resolution: {integrity: sha512-upbkBJbckcCNBDBDXEbuhjbP68n+scUd3k/U2EkyM9nw+I/jPiL4cLF/Al06CF96wRltFda16sxDFrxsI1v0/g==}
@@ -4284,6 +4292,10 @@ snapshots:
       jiti: 2.4.0
     transitivePeerDependencies:
       - supports-color
+
+  esno@4.8.0:
+    dependencies:
+      tsx: 4.19.1
 
   espree@10.2.0:
     dependencies:
