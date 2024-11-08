@@ -45,7 +45,6 @@ const base = definePreset({
   // devDependencies: [], // 开发依赖
   // externals: [], // 外部依赖
   // hooks: {}, // 自定义插件
-  
 })
 
 export default defineBuildConfig([{
