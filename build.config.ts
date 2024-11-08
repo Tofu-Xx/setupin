@@ -14,6 +14,7 @@ function base() {
       '@ascii-logo': resolve(__dirname, 'public/ascii-logo.txt'),
     },
     rollup: {
+      inlineDependencies: true,
       output: {
         format: 'iife',
         name: 'Vue',
