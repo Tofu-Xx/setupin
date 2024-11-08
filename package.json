@@ -1,33 +1,31 @@
 {
-  "name": "ph-reponame",
+  "name": "setupin",
   "type": "module",
-  "version": "0.0.1",
-  "packageManager": "pnpm@9.12.3",
-  "description": "",
-  "author": "ph-name <ph-email>",
+  "version": "2.6.1",
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
+  "description": "Vue SFC? HTML! <script setup> in html",
+  "author": "tofu-xx <tofu-xx@foxmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/ph-name",
-  "homepage": "https://github.com/ph-name/ph-reponame#readme",
+  "homepage": "https://github.com/tofu-xx/setupin#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ph-name/ph-reponame.git"
+    "url": "git+https://github.com/tofu-xx/setupin.git"
   },
-  "bugs": "https://github.com/ph-name/ph-reponame/issues",
-  "keywords": [],
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./main.d.ts",
-      "import": "./main.js",
-      "require": "./main.cjs"
-    }
+  "bugs": {
+    "url": "https://github.com/tofu-xx/setupin/issues"
   },
-  "main": "main.js",
-  "module": "main.js",
-  "types": "main.d.ts",
-  "files": [
-    "main.js"
+  "keywords": [
+    "setup-script",
+    "vue-cdn",
+    "vue3",
+    "html",
+    "sfc"
   ],
+  "sideEffects": false,
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": ["dist"],
   "scripts": {
     "start": "esno src/main.ts",
     "build": "vite build",
