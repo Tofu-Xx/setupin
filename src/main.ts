@@ -1,4 +1,8 @@
 import { compileScript, compileStyle, compileTemplate, parse } from 'vue/compiler-sfc'
+
+import a from './demo.vue'
+
+console.log(a)
 // import script from './demo.vue?vue&type=script'
 // import { render } from './demo.vue?vue&type=template&id=xxxxxx'
 // import './demo.vue?vue&type=style&index=0&id=xxxxxx'
