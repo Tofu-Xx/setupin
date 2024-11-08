@@ -1,4 +1,4 @@
-import { compileScript, compileStyle, compileTemplate, parse } from 'vue/compiler-sfc'
+import { compileScript, compileStyle, compileTemplate, parse } from '@vue/compiler-sfc'
 import { source } from './source'
 
 const id = 'setupin'
