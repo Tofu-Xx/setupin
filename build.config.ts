@@ -19,7 +19,7 @@ function base() {
       },
       esbuild: {
         // minify: true, // 是否压缩代码
-        // sourcemap: true, // 是否生成 sourcemap
+        sourcemap: true, // 是否生成 sourcemap
       },
     },
 
