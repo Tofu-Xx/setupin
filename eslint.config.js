@@ -7,7 +7,6 @@ export default antfu({
   markdown: true,
   rules: {
     'format/prettier': 'off',
-    'antfu/if-newline': 'off',
     'no-console': 'off',
   },
 })
