@@ -30,7 +30,8 @@
     "start": "esno src/main.ts",
     "build": "vite build",
     "watch": "vite build --watch",
-    "release": "bumpp -no-push && nr build && pnpm publish",
+    "tag": "bumpp -no-push",
+    "release": "nr tag && nr build && pnpm publish",
     "up": "taze major -I",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
