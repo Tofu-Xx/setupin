@@ -1,22 +1,26 @@
-import { resolve } from 'node:path'
-import Vue from '@vitejs/plugin-vue'
+import path from 'node:path'
+import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  plugins: [vue()],
   resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src'),
-    },
+    alias: [
+      {
+        find: '@',
+        replacement: path.resolve(__dirname, 'src'),
+      },
+    ],
   },
-  plugins: [
-    Vue(),
-  ],
   build: {
     lib: {
-      entry: '/src/main.ts',
-      name: 'null',
+      entry: './src/main.ts',
+      name: 'ph_reponame',
       formats: ['iife'],
-      fileName: 'main.js',
+      fileName: () => 'main.js',
     },
+    target: 'esnext',
+    minify: false,
+    sourcemap: true,
   },
 })
