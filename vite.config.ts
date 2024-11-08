@@ -1,9 +1,7 @@
 import path from 'node:path'
-// import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  // plugins: [vue()],
   publicDir: false,
   resolve: {
     alias: [
@@ -20,8 +18,20 @@ export default defineConfig({
       formats: ['iife'],
       fileName: () => 'main.js',
     },
+    rollupOptions: {
+      output: {
+        generatedCode: {
+          arrowFunctions: true,
+          constBindings: true,
+        },
+      },
+    },
     target: 'esnext',
-    minify: false,
-    sourcemap: true,
+    // chatset: 'utf-8',
+    // minify: false,
+    // sourcemap: true,
+  },
+  esbuild: {
+    charset: 'ascii',
   },
 })
