@@ -1,9 +1,10 @@
 import { compileScript, compileStyle, compileTemplate, parse } from 'vue/compiler-sfc'
 
 export function compiler(source: string) {
+  const filename = 'setupin'
   const id = 'setupin'
-  const filename = 'App.vue'
   const parsed = parse(source, { filename })
+  console.log(parsed)
   const SFCScriptBlock = compileScript(parsed.descriptor, { id })
   const SFCTemplateCompileResults = compileTemplate({
     id,
@@ -18,9 +19,9 @@ export function compiler(source: string) {
       scoped: style.scoped,
     })
   })
-  console.log(SFCScriptBlock.content)
-  console.log(SFCTemplateCompileResults.code)
-  console.log(SFCStyleCompileResultsList.map(style => style.code).join('\n'))
+  console.log(SFCScriptBlock)
+  console.log(SFCTemplateCompileResults)
+  console.log(SFCStyleCompileResultsList)
 }
 // export default SFCScriptBlock.content
 //   + SFCTemplateCompileResults.code

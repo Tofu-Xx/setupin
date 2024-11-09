@@ -1,6 +1,6 @@
 import { compiler } from './compiler'
 import { getSource } from './getSource'
-import { watchRoot } from './util';
+import { watchRoot } from './utils';
 
 (async () => {
   const sources = await watchRoot(getSource)
