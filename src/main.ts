@@ -1,5 +1,7 @@
+import * as compilerSfc from 'vue/compiler-sfc'
 import { compiler } from './compiler'
 import { getSource } from './getSource'
+
 import { watchRoot } from './utils';
 
 (async () => {
@@ -7,3 +9,5 @@ import { watchRoot } from './utils';
   console.log(sources.join('\n'))
   compiler(sources.join('\n'))
 })()
+
+console.log(compilerSfc)
