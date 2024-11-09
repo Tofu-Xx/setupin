@@ -5,8 +5,9 @@
 <p align="center"><img src="./public/logo.svg"></p>
 
 <p align="center">
+  <a href="https://stackblitz.com/edit/setupin"><img src="https://img.shields.io/badge/stackBlitz-blue"></a>
   <a href="https://npmjs.com/package/setupin"><img src="https://img.shields.io/npm/v/setupin?color=orange"></a>
-  <a href="https://stackblitz.com/edit/setupin"><img src="https://img.shields.io/badge/Open%20in%20StackBlitz-blue"></a>
+  <a href="https://bundlephobia.com/package/setupin"><img src="https://img.shields.io/bundlephobia/minzip/setupin"></a>
 </p>
 
 ## 😏 Why setupin
