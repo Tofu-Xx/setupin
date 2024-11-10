@@ -1,13 +1,9 @@
-export interface CreateDomOptions {
-  name: string
-  inner?: string
-}
-export function createDom({ name, inner }: CreateDomOptions) {
+export function createDom(row: string, inner?: string) {
   const container = document.createElement('div')
-  container.insertAdjacentHTML('afterbegin', name)
+  container.insertAdjacentHTML('afterbegin', row)
   const sample = container.firstElementChild!
   const dom = document.createElement(sample.tagName)
-  dom.innerHTML = inner ?? ''
+  dom.innerHTML = inner ?? sample.innerHTML
   for (const n of sample.getAttributeNames()) {
     dom.setAttribute(n, sample.getAttribute(n) ?? '')
   }
