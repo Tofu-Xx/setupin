@@ -4,10 +4,11 @@
 </head>
 
 <script setup>
-  const msg = ref('setupin')
-  const iptRef = useTemplateRef('ipt')
+  import { ref, onMounted, useTemplateRef } from 'vue';
+  const msg = ref('setupin');
+  const iptRef = useTemplateRef('ipt');
   onMounted(() => {
-    iptRef.value.focus()
+    iptRef.value.focus();
   })
 </script>
 

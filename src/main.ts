@@ -7,20 +7,36 @@ import { watchRoot } from './utils';
   const sources = await watchRoot(getSource)
   const { sfcScriptBlock, sfcStyleCompileResultsList, sfcTemplateCompileResults } = compiler(sources.join('\n'))
 
-  console.log(sfcScriptBlock)
-  // console.log(sfcStyleCompileResultsList)
-  // console.log(sfcTemplateCompileResults)
-  /* template */
-  document.body.innerHTML = sfcTemplateCompileResults.source
-  /* style */
   const styleCode = sfcStyleCompileResultsList.map(style => style.code).join('\n')
-  const styleEl = document.createElement('style')
-  styleEl.innerHTML = styleCode
-  document.head.appendChild(styleEl)
-  /* script */
-  // const s = new MagicString(sfcScriptBlock.content)
-  // s.replace('export default', 'const AppComp =')
-  // console.log(s.toString())
-  // const a = rewriteDefault(sfcScriptBlock.content, 'AppComp', [])
-  // console.log(a)
+
+  const s = new MagicString(sfcScriptBlock.content)
+  s
+    .replace('export default', 'const AppComp =')
+    .prependLeft(sfcScriptBlock.content.indexOf('Object.defineProperty(__returned__'), '//')
+  const scriptCode = s.toString()
+  /* template */
+  const t = new MagicString(sfcTemplateCompileResults.code)
+  t.replace('export function render', 'AppComp.render = function')
+  const templateCode = t.toString()
+
+  const generatedCode = `
+    <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue/dist/vue.runtime.esm-browser.js"
+      }
+    }
+    </script>
+    <script data-setupin type="module">
+      ${scriptCode}
+      ${templateCode}
+      import { createApp } from 'vue';
+      createApp(AppComp).mount(document.body)
+    </script>
+    <style data-setupin>
+      ${styleCode}
+    </style>
+`
+  document.head.insertAdjacentHTML('beforeend', generatedCode)
+  // console.log(generatedCode)
 })()
