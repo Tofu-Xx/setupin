@@ -4,12 +4,9 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   publicDir: false,
   resolve: {
-    alias: [
-      {
-        find: '@',
-        replacement: path.resolve(__dirname, 'src'),
-      },
-    ],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   build: {
     lib: {

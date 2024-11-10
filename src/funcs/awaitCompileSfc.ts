@@ -1,6 +1,6 @@
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
 import { compilerSfc } from '@/compilerSfc'
-import { watchRoot } from '../utils'
+import { watchRoot } from '@/utils'
 
 export async function awaitCompileSfc(handler: Fn<[SFCStyleCompileResults[], SFCScriptBlock, SFCTemplateCompileResults]>) {
   const sources = await watchRoot((node, data) => {
