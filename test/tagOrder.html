@@ -8,6 +8,7 @@
 </template>
 
 <script setup>
+  import { ref, onMounted } from 'vue'
   const msg = ref('setupin')
   const iptRef = useTemplateRef('ipt')
   onMounted(() => {

@@ -5,6 +5,7 @@
 </head>
 
 <script setup>
+  import { onMounted } from 'vue'
   await import('https://unpkg.com/jquery');
   console.log($)
   const { default: dayjs } = await import('https://esm.sh/dayjs');

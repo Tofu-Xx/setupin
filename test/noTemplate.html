@@ -9,6 +9,7 @@
 </body>
 
 <script setup>
+  import { ref, onMounted } from 'vue'
   const value = ref('')
   const iptRef = useTemplateRef('ipt')
   onMounted(() => {

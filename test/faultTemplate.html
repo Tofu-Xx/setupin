@@ -5,6 +5,7 @@
 </head>
 
 <script setup>
+  import { ref, watch, watchEffect } from 'vue'
   const strobe = ref(false)
   const color = ref('white')
   watchEffect(() => {

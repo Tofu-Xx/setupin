@@ -5,6 +5,7 @@
 </head>
 
 <script setup>
+  import { ref } from 'vue'
   const count = ref(0)
 </script>
 
@@ -14,6 +15,11 @@
     style="
       & {
         font-size: 3em;
+        background-color:teal;
+        color: white;
+        &:hover{
+          background-color: darkcyan;
+        }
       }
     "
   >
