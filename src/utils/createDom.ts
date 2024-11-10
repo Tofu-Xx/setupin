@@ -1,4 +1,4 @@
-interface CreateDomOptions {
+export interface CreateDomOptions {
   name: string
   inner?: string
 }

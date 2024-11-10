@@ -1,8 +1,9 @@
+import { RepoName } from '@/data'
 import { compileScript, compileStyle, compileTemplate, parse } from 'vue/compiler-sfc'
 
-export function compiler(source: string) {
-  const filename = 'setupin'
-  const id = 'setupin'
+const filename = `${RepoName}.vue`
+const id = RepoName
+export function compilerSfc(source: string) {
   const sfcParseResult = parse(source, { filename })
   const sfcScriptBlock = compileScript(sfcParseResult.descriptor, { id })
   const sfcTemplateCompileResults = compileTemplate({
