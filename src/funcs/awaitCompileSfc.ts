@@ -10,6 +10,9 @@ export async function awaitCompileSfc(handler: Fn<[SFCStyleCompileResults[], SFC
         ? (node.onload = node.remove)
         : node.remove()
     }
+    else {
+      console.log('unknown node', node)
+    }
   })
   const { sfcScriptBlock, sfcTemplateCompileResults, sfcStyleCompileResultsList } = compilerSfc(sources.join('\n'))
   handler(sfcStyleCompileResultsList, sfcScriptBlock, sfcTemplateCompileResults)

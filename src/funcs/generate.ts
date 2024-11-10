@@ -1,6 +1,6 @@
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
 import { AppVarName } from '@/data'
-import { MagicString } from '@vue/compiler-sfc'
+import { MagicString, rewriteDefault } from '@vue/compiler-sfc'
 
 export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileResults[]) {
   return sfcStyleCompileResultsList.map(style => style.code).join('\n')
@@ -16,9 +16,10 @@ export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompi
 }
 
 function _scriptTransform(sfcScriptBlock: SFCScriptBlock) {
+  // rewriteDefault(sfcScriptBlock.content, AppVarName, ['topLevelAwait', 'typescript'])
   const s = new MagicString(sfcScriptBlock.content)
   s.replace('export default', `const ${AppVarName} =`)
-  s.prependLeft(sfcScriptBlock.content.indexOf('Object.defineProperty(__returned__'), '// ')
+  s.replace('Object.defineProperty(__returned__', '// ')
   return s.toString()
 }
 
