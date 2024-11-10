@@ -1,20 +1,16 @@
 import { compiler } from './compiler'
+import { ImportsJSON, SetupinAttrName } from './data'
 import { generateEsmCode } from './generateEsmCode'
 import { getSource } from './getSource'
 import { scriptTransform, styleTransform, templateTransform } from './transform'
 import { watchRoot } from './utils'
 import { createDom } from './utils/createDom'
 
-const importMapEl = createDom('<script data-setupin type="importmap">')
-importMapEl.innerHTML = JSON.stringify({
-  imports: {
-    vue: 'https://unpkg.com/vue/dist/vue.runtime.esm-browser.js',
-  },
-})
+const importMapEl = createDom(`<script ${SetupinAttrName} type="importmap">`, ImportsJSON)
 document.head.appendChild(importMapEl)
-const scriptEl = createDom('<script data-setupin type="module">')
+const scriptEl = createDom(`<script ${SetupinAttrName} type="module">`)
 document.head.appendChild(scriptEl)
-const styleEl = createDom('<style data-setupin>')
+const styleEl = createDom(`<style ${SetupinAttrName}>`)
 document.head.appendChild(styleEl)
 ;
 (async () => {
