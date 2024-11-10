@@ -1,4 +1,4 @@
-import { MagicString } from 'vue/compiler-sfc'
+import { MagicString, rewriteDefault, walk, walkIdentifiers } from 'vue/compiler-sfc'
 import { compiler } from './compiler'
 import { getSource } from './getSource'
 import { watchRoot } from './utils';
@@ -6,7 +6,8 @@ import { watchRoot } from './utils';
 (async () => {
   const sources = await watchRoot(getSource)
   const { sfcScriptBlock, sfcStyleCompileResultsList, sfcTemplateCompileResults } = compiler(sources.join('\n'))
-  // console.log(sfcScriptBlock)
+
+  console.log(sfcScriptBlock)
   // console.log(sfcStyleCompileResultsList)
   // console.log(sfcTemplateCompileResults)
   /* template */
@@ -17,7 +18,9 @@ import { watchRoot } from './utils';
   styleEl.innerHTML = styleCode
   document.head.appendChild(styleEl)
   /* script */
-  const s = new MagicString(sfcScriptBlock.content)
-  s.replace('export default', 'const App =')
-  console.log(s.toString())
+  // const s = new MagicString(sfcScriptBlock.content)
+  // s.replace('export default', 'const AppComp =')
+  // console.log(s.toString())
+  // const a = rewriteDefault(sfcScriptBlock.content, 'AppComp', [])
+  // console.log(a)
 })()

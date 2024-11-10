@@ -38,15 +38,14 @@ export function render(_ctx, _cache) {
 <script type="importmap">
   {
     "imports": {
-      "vue": "https://unpkg.com/vue/dist/vue.esm-browser.prod.js"
+      "vue": "https://unpkg.com/vue/dist/vue.runtime.esm-browser.js"
     }
   }
 </script>
 <script type="module">
-  import { vModelText as _vModelText, createElementVNode as _createElementVNode, withDirectives as _withDirectives, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
-  import { createApp } from 'vue';
   import { ref, useTemplateRef, onMounted } from 'vue';
-  createApp({
+
+  const AppComp = {
     __name: 'App',
     setup(__props, { expose: __expose }) {
       __expose();
@@ -57,26 +56,36 @@ export function render(_ctx, _cache) {
         iptRef.value.focus();
       });
 
-      // const __returned__ = { msg, iptRef };
+      const __returned__ = { msg, iptRef };
       // Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true });
-      // return __returned__;
-      const _cache = [];
-      return function render(/* _ctx, _cache */) {
-        return (_openBlock(), _createElementBlock(_Fragment, null, [
-          _withDirectives(_createElementVNode("input", {
-            type: "text",
-            ref: "ipt",
-            "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => ((/* _ctx. */msg.value) = $event))
-          }, null, 512 /* NEED_PATCH */), [
-            [_vModelText, /* _ctx. */msg.value]
-          ]),
-          _createElementVNode("h1", null, _toDisplayString(/* _ctx. */msg.value), 1 /* TEXT */)
-        ], 64 /* STABLE_FRAGMENT */));
-      };
+      return __returned__;
     }
 
-  }).mount(document.body)
+  };
+
+  import { vModelText as _vModelText, createElementVNode as _createElementVNode, withDirectives as _withDirectives, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+
+  AppComp.render = function (_ctx, _cache) {
+    return (_openBlock(), _createElementBlock(_Fragment, null, [
+      _withDirectives(_createElementVNode("input", {
+        type: "text",
+        ref: "ipt",
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => ((_ctx.msg) = $event))
+      }, null, 512 /* NEED_PATCH */), [
+        [_vModelText, _ctx.msg]
+      ]),
+      _createElementVNode("h1", null, _toDisplayString(_ctx.msg), 1 /* TEXT */)
+    ], 64 /* STABLE_FRAGMENT */));
+  };
+
+  import { createApp } from 'vue';
+  createApp(AppComp).mount('#app')
 </script>
+
 <style>
   @import "https://unpkg.com/@tofukit/resetcss";
 </style>
+
+<body>
+  <div id="app"></div>
+</body>
