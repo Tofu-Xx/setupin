@@ -1,6 +1,8 @@
-export function getSource(node: Element, data: string[]) {
-  if (/^(?:script|style|template)$/.test(node.localName)) {
+export function getSource(node: HTMLElement, data: string[]) {
+  if (/^(?:script|template|style)$/.test(node.localName)) {
     data.push(node.outerHTML)
-    node.remove()
+    node.localName !== 'style'
+      ? node.remove()
+      : (node.onload = node.remove)
   }
 }

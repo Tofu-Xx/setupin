@@ -1,0 +1,24 @@
+<head>
+  <link rel="shortcut icon" href="https://i.imgur.com/YLDX3ag.jpeg">
+  <!-- <script src="https://unpkg.com/setupin"></script> -->
+   <script src="../dist/main.js"></script>
+</head>
+
+<script setup>
+  const blur = ref('0px')
+</script>
+
+<template>
+  <div @click="blur = '10px'"></div>
+</template>
+
+<style>
+  @import "https://unpkg.com/@tofukit/resetcss";
+
+  div {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    filter: blur(v-bind(blur));
+  }
+</style>

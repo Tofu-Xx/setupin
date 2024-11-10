@@ -3,15 +3,14 @@ import { compileScript, compileStyle, compileTemplate, parse } from 'vue/compile
 export function compiler(source: string) {
   const filename = 'setupin'
   const id = 'setupin'
-  const parsed = parse(source, { filename })
-  console.log(parsed)
-  const SFCScriptBlock = compileScript(parsed.descriptor, { id })
-  const SFCTemplateCompileResults = compileTemplate({
+  const sfcParseResult = parse(source, { filename })
+  const sfcScriptBlock = compileScript(sfcParseResult.descriptor, { id })
+  const sfcTemplateCompileResults = compileTemplate({
     id,
     filename,
-    source: parsed.descriptor.template?.content ?? '',
+    source: sfcParseResult.descriptor.template?.content ?? '',
   })
-  const SFCStyleCompileResultsList = parsed.descriptor.styles.map((style) => {
+  const sfcStyleCompileResultsList = sfcParseResult.descriptor.styles.map((style) => {
     return compileStyle({
       id,
       filename,
@@ -19,10 +18,9 @@ export function compiler(source: string) {
       scoped: style.scoped,
     })
   })
-  console.log(SFCScriptBlock)
-  console.log(SFCTemplateCompileResults)
-  console.log(SFCStyleCompileResultsList)
+  return {
+    sfcScriptBlock,
+    sfcTemplateCompileResults,
+    sfcStyleCompileResultsList,
+  }
 }
-// export default SFCScriptBlock.content
-//   + SFCTemplateCompileResults.code
-//   + SFCStyleCompileResultsList.map(style => style.code).join('\n')
