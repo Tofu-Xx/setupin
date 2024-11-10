@@ -1,8 +1,7 @@
 import { compiler } from './compiler'
 import { ImportsJSON, SetupinAttrName } from './data'
-import { generateEsmCode } from './generateEsmCode'
+import { generateEsmCode, generateStyleCode } from './generate'
 import { getSource } from './getSource'
-import { scriptTransform, styleTransform, templateTransform } from './transform'
 import { watchRoot } from './utils'
 import { createDom } from './utils/createDom'
 
@@ -15,10 +14,7 @@ document.head.appendChild(styleEl)
 ;
 (async () => {
   const sources = await watchRoot(getSource)
-  const { sfcScriptBlock, sfcStyleCompileResultsList, sfcTemplateCompileResults } = compiler(sources.join('\n'))
-  const styleCode = styleTransform(sfcStyleCompileResultsList)
-  styleEl.innerHTML = styleCode
-  const scriptCode = scriptTransform(sfcScriptBlock)
-  const templateCode = templateTransform(sfcTemplateCompileResults)
-  scriptEl.innerHTML = generateEsmCode(scriptCode, templateCode)
+  const { sfcStyleCompileResultsList, sfcScriptBlock, sfcTemplateCompileResults } = compiler(sources.join('\n'))
+  styleEl.innerHTML = generateStyleCode(sfcStyleCompileResultsList)
+  scriptEl.innerHTML = generateEsmCode(sfcScriptBlock, sfcTemplateCompileResults)
 })()
