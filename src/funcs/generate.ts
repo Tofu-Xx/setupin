@@ -11,7 +11,12 @@ export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompi
   return `
     ${_scriptTransform(sfcScriptBlock)}
     ${_templateTransform(sfcTemplateCompileResults)}
-    ${CREATE_APP_CODE}
+    try{
+      ${CREATE_APP_CODE}
+    }
+    catch(e){
+      console.dir(e)
+    }
   `
 }
 
