@@ -7,22 +7,6 @@ export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileRes
 }
 
 export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompileResults: SFCTemplateCompileResults) {
-  // console.log(sfcScriptBlock)
-  // console.log(babelParse('const app ={async setup() {}}'))
-  // walk(babelParse(sfcScriptBlock.content, { sourceType: 'module' }), {
-  //   enter(node: any) {
-  //     if (node?.type === 'ObjectMethod' && node.key.name === 'setup') {
-  //       console.log(node)
-  //       return true
-  //     }
-  //   },
-  // })
-  // console.log(ss)
-  // walk(sfcScriptBlock.scriptSetupAst,{
-  //   enter(node: any) {
-  //     console.log(node)
-  //   },
-  // })
   return `
     ${_scriptTransform(sfcScriptBlock)}
     ${_templateTransform(sfcTemplateCompileResults)}
@@ -35,7 +19,7 @@ function _scriptTransform(sfcScriptBlock: SFCScriptBlock) {
   // rewriteDefault(sfcScriptBlock.content, AppVarName, ['topLevelAwait', 'typescript'])
   const s = new MagicString(sfcScriptBlock.content)
   s.replace('export default', `${APP_VAR_NAME} =`)
-  s.replace('Object.defineProperty(__returned__', '// ')
+  s.replace('Object.defineProperty(__returned__,', '// ')
   return s.toString()
 }
 

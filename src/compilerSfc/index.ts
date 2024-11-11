@@ -6,8 +6,9 @@ const filename = `${REPO_NAME}.vue`
 const id = REPO_NAME
 export function compilerSfc(source: string) {
   const sfcParseResult = parse(INIT_CODE + source, { filename })
-  // console.log(sfcParseResult.descriptor)
-  // console.log(...sfcParseResult.errors)
+  sfcParseResult.errors.forEach((e) => {
+    console.warn(e)
+  })
   /* */
   const sfcScriptBlock = compileScript(sfcParseResult.descriptor, { id })
   const sfcTemplateCompileResults = compileTemplate({

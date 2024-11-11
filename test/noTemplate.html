@@ -2,20 +2,18 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
   <script src="../dist/main.js"></script>
 </head>
-
-<body>
-  <input v-model="value" type="text" ref="ipt" />
-  <h1>{{value}}</h1>
-</body>
-
 <script setup>
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, useTemplateRef } from 'vue'
   const value = ref('')
   const iptRef = useTemplateRef('ipt')
   onMounted(() => {
     iptRef.value.focus()
   })
 </script>
+
+<body>
+  <input v-model="value" type="text" ref="ipt" />
+</body>
 
 <style>
   input {
