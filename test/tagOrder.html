@@ -7,7 +7,7 @@
   <h1>{{ msg }}</h1>
 </template>
 
-<script setup lang="ts">
+<script setup>
   import { ref, onMounted, useTemplateRef } from 'vue'
   const msg = ref('setupin')
   const iptRef = useTemplateRef('ipt')

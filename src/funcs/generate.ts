@@ -1,15 +1,24 @@
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
 import { APP_VAR_NAME, CREATE_APP_CODE } from '@/data'
-import { babelParse, MagicString, rewriteDefault, walk } from '@vue/compiler-sfc'
+import { babelParse, MagicString, rewriteDefault, walk, walkIdentifiers } from '@vue/compiler-sfc'
 
 export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileResults[]) {
   return sfcStyleCompileResultsList.map(style => style.code).join('\n')
 }
 
 export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompileResults: SFCTemplateCompileResults) {
-  // console.log(sfcScriptBlock.content)
-  // console.log(babelParse(sfcScriptBlock.content), { })
-  // walk(, {
+  // console.log(sfcScriptBlock)
+  // console.log(babelParse('const app ={async setup() {}}'))
+  // walk(babelParse(sfcScriptBlock.content, { sourceType: 'module' }), {
+  //   enter(node: any) {
+  //     if (node?.type === 'ObjectMethod' && node.key.name === 'setup') {
+  //       console.log(node)
+  //       return true
+  //     }
+  //   },
+  // })
+  // console.log(ss)
+  // walk(sfcScriptBlock.scriptSetupAst,{
   //   enter(node: any) {
   //     console.log(node)
   //   },
@@ -18,6 +27,7 @@ export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompi
     ${_scriptTransform(sfcScriptBlock)}
     ${_templateTransform(sfcTemplateCompileResults)}
     ${CREATE_APP_CODE}
+    console.log(String(${APP_VAR_NAME}.setup).startsWith('async'))
   `
 }
 
