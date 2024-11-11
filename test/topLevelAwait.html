@@ -7,18 +7,15 @@
 <script setup>
   import { onMounted } from 'vue';
   await import('https://unpkg.com/jquery');
-  const { default: dayjs } = await import('https://esm.sh/dayjs');
-  const date = dayjs().format('YYYY-MM-DD HH:mm:ss');
-  import confetti from 'https://esm.sh/canvas-confetti';
+  const { default: confetti } = await import('https://esm.sh/canvas-confetti');
   onMounted(() => {
     confetti();
+    $('h1').text('成功了！！！')
   })
 </script>
 
 <template>
-  <h1 :style="{ color: 'darkblue' }">成功了！！！</h1>
-  <p>{{ date }}</p>
-  <p>{{ $ }}</p>
+  <h1 :style="{ color: 'darkblue', textAlign: 'center' }"></h1>
 </template>
 
 <style>
