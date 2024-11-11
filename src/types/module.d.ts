@@ -1,1 +1,1 @@
-declare module '@/data/ascii-logo.txt?raw'
+declare module '@/assets/ascii-logo.txt?raw'

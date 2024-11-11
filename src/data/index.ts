@@ -1,4 +1,4 @@
-import ASCII_LOGO from '@/data/ascii-logo.txt?raw'
+import ASCII_LOGO from '@/assets/ascii-logo.txt?raw'
 
 export const APP_VAR_NAME = 'APP$'
 export const REPO_NAME = 'setupin'
