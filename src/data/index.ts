@@ -8,8 +8,8 @@ export const IMPORTS_JSON = JSON.stringify({
   },
 })
 export const INIT_CODE = `
-<script ${REPO_NAME}>
-${ASCII_LOGO}
+<script>
+${__IS_DEV__ ? ASCII_LOGO : ''}
   import * as Vue from "vue";
   let ${APP_VAR_NAME} = {}
 </script>

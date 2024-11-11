@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig(({ mode }) => {
   const isDev = mode === 'development'
-  console.log(isDev)
+  const suffix = isDev ? '' : '.prod'
   return {
     publicDir: false,
     resolve: {
@@ -12,15 +12,14 @@ export default defineConfig(({ mode }) => {
       },
     },
     define: {
-      __VUE_URL__: isDev
-        ? '"https://unpkg.com/vue/dist/vue.runtime.esm-browser.js"'
-        : '"https://unpkg.com/vue/dist/vue.runtime.esm-browser.prod.js"',
+      __VUE_URL__: `"https://unpkg.com/vue/dist/vue.runtime.esm-browser${suffix}.js"`,
+      __IS_DEV__: isDev,
     },
     build: {
       lib: {
         entry: './src/main.ts',
         formats: ['iife'],
-        fileName: () => isDev ? 'main.js' : 'main.prod.js',
+        fileName: () => `main${suffix}.js`,
         name: 'nill',
       },
       target: 'es2015',
