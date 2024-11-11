@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "start": "esno src/main.ts",
-    "build": "vite build",
+    "build": "zsh scripts/build.zsh",
     "watch": "vite build --watch",
     "tag": "bumpp -no-push",
     "release": "nr tag && nr build && pnpm publish",

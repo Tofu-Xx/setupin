@@ -4,7 +4,7 @@ export const APP_VAR_NAME = 'APP$'
 export const REPO_NAME = 'setupin'
 export const IMPORTS_JSON = JSON.stringify({
   imports: {
-    vue: 'https://unpkg.com/vue/dist/vue.runtime.esm-browser.js',
+    vue: __VUE_URL__,
   },
 })
 export const INIT_CODE = `
