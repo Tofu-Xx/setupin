@@ -10,32 +10,24 @@
   <a href="https://bundlephobia.com/package/setupin"><img src="https://img.shields.io/bundlephobia/minzip/setupin"></a>
 </p>
 
-## 😏 为什么选择 setupin
+## 😏 setupin 是什么？
 
-**setupin** 允许你在 HTML 中编写 Vue 的 [\<script setup\>](https://vuejs.org/api/sfc-script-setup.html)。
+**setupin** 允许你在 HTML 中编写 Vue 的 [\<script setup\>](https://vuejs.org/api/sfc-script-setup.html)语法。
 
-1. **便于学习**
-   > 为初学者提供一个友好的环境，帮助他们轻松上手 Vue 的核心用法。
-2. **简易开发**
-   > 提供便捷的方式，助力快速开发小网页，无需繁琐的配置。
-3. **快速体验**
-   > 让用户可以快速在 HTML 中尝试 Vue 的新特性，感受其魅力。
+利用[vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc#readme)，运行时编译为esm格式的vue代码动态执行。
 
-## 🤯 setupin.html _vs_ setup.vue
+## 🤯 代码对比
 
-<p align="center">
-  <img src="./public/setup.vue.svg" width="49%">
-  <img src="./public/setupin.html.svg" width="49%">
-</p>
-
-怎么样, 它们很像吧。
+<h3 align=center>esm</h3>
+<h3 align=center>sfc</h3>
+<h3 align=center>setupin</h3>
 
 ## 🤓 特性
 
-- [x] 支持 esm import 语法
-- [x] [顶层 await](https://cn.vuejs.org/api/sfc-script-setup.html#top-level-await)
-- [x] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
-- [x] vue3 宏函数
+[x] 支持 esm import 语法
+[x] [顶层 await](https://cn.vuejs.org/api/sfc-script-setup.html#top-level-await)
+[x] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
+[x] vue3 宏函数
 
 ## 😝 演练场
 
