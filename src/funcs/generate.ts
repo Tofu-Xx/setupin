@@ -1,22 +1,23 @@
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
 import { APP_VAR_NAME, CREATE_APP_CODE } from '@/data'
-import { MagicString, rewriteDefault } from '@vue/compiler-sfc'
+import { babelParse, MagicString, rewriteDefault, walk } from '@vue/compiler-sfc'
 
 export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileResults[]) {
   return sfcStyleCompileResultsList.map(style => style.code).join('\n')
 }
 
 export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompileResults: SFCTemplateCompileResults) {
-  // console.log(sfcScriptBlock)
+  // console.log(sfcScriptBlock.content)
+  // console.log(babelParse(sfcScriptBlock.content), { })
+  // walk(, {
+  //   enter(node: any) {
+  //     console.log(node)
+  //   },
+  // })
   return `
     ${_scriptTransform(sfcScriptBlock)}
     ${_templateTransform(sfcTemplateCompileResults)}
-    try{
-      ${CREATE_APP_CODE}
-    }
-    catch(e){
-      console.dir(e)
-    }
+    ${CREATE_APP_CODE}
   `
 }
 

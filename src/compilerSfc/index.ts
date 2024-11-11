@@ -2,7 +2,6 @@ import type { SFCParseOptions } from 'vue/compiler-sfc'
 import { INIT_CODE, REPO_NAME } from '@/data'
 import { compileScript, compileStyle, compileTemplate, parse } from 'vue/compiler-sfc'
 
-
 const filename = `${REPO_NAME}.vue`
 const id = REPO_NAME
 export function compilerSfc(source: string) {

@@ -4,7 +4,8 @@
 </head>
 
 <script setup>
-  import { ref, onMounted, useTemplateRef } from 'vue';
+  // import { ref, onMounted, useTemplateRef } from 'vue';
+  const { ref, onMounted, useTemplateRef } = Vue;
   const msg = ref('setupin');
   const iptRef = useTemplateRef('ipt');
   onMounted(() => {
