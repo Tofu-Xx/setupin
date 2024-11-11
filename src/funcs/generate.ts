@@ -1,5 +1,5 @@
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
-import { AppVarName } from '@/data'
+import { APP_VAR_NAME, CREATE_APP_CODE } from '@/data'
 import { MagicString, rewriteDefault } from '@vue/compiler-sfc'
 
 export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileResults[]) {
@@ -7,24 +7,24 @@ export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileRes
 }
 
 export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompileResults: SFCTemplateCompileResults) {
+  // console.log(sfcScriptBlock)
   return `
     ${_scriptTransform(sfcScriptBlock)}
     ${_templateTransform(sfcTemplateCompileResults)}
-    import { createApp } from "vue";
-    createApp(${AppVarName}).mount(document.body)
+    ${CREATE_APP_CODE}
   `
 }
 
 function _scriptTransform(sfcScriptBlock: SFCScriptBlock) {
   // rewriteDefault(sfcScriptBlock.content, AppVarName, ['topLevelAwait', 'typescript'])
   const s = new MagicString(sfcScriptBlock.content)
-  s.replace('export default', `const ${AppVarName} =`)
+  s.replace('export default', `const ${APP_VAR_NAME} =`)
   s.replace('Object.defineProperty(__returned__', '// ')
   return s.toString()
 }
 
 function _templateTransform(sfcTemplateCompileResults: SFCTemplateCompileResults) {
   const t = new MagicString(sfcTemplateCompileResults.code)
-  t.replace('export function render', `${AppVarName}.render = function`)
+  t.replace('export function render', `${APP_VAR_NAME}.render = function`)
   return t.toString()
 }

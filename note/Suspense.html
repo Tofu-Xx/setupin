@@ -1,0 +1,90 @@
+<!--
+ createApp({ components: { c: __APP_COMPONENT__ }, template: '<Suspense><c/></Suspense>'}).mount(document.body)
+  -->
+<!--
+import { createApp, resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue"
+
+createApp({
+  components: { c: __APP_COMPONENT__ },
+  render(_ctx, _cache) {
+  const _component_c = _resolveComponent("c")
+  const _component_subpense = _resolveComponent("subpense")
+
+  return (_openBlock(), _createBlock(_component_subpense, null, {
+    default: _withCtx(() => [
+      _createVNode(_component_c)
+    ]),
+    _: 1 /* STABLE */
+  }))
+}}).mount(document.body)
+-->
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <!-- <script src="https://unpkg.com/setupin"></script> -->
+  <!-- <script src="../dist/main.js"></script> -->
+  <script data-setupin="" type="importmap">{"imports":{"vue":"https://unpkg.com/vue/dist/vue.esm-browser.js"}}</script>
+  <!-- <script data-setupin="" type="importmap">{"imports":{"vue":"https://unpkg.com/vue/dist/vue.runtime.esm-browser.js"}}</script> -->
+  <script data-setupin="" type="module">
+    import { withAsyncContext as _withAsyncContext } from 'vue';
+    import { onMounted } from 'vue';
+
+    const __APP_COMPONENT__ = {
+      __name: 'setupin',
+      async setup(__props, { expose: __expose }) {
+        __expose();
+
+        let __temp, __restore
+
+          ; (
+            ([__temp, __restore] = _withAsyncContext(() => import('https://unpkg.com/jquery'))),
+            await __temp,
+            __restore()
+          );
+        console.log($);
+        const { default: dayjs } = (
+          ([__temp, __restore] = _withAsyncContext(() => import('https://esm.sh/dayjs'))),
+          __temp = await __temp,
+          __restore(),
+          __temp
+        );
+        const date = dayjs().format('YYYY-MM-DD HH:mm:ss');
+        onMounted(() => {
+          console.log('yes');
+        });
+
+        const __returned__ = { dayjs, date, onMounted };
+        // , '__isScriptSetup', { enumerable: false, value: true })
+        return __returned__;
+      }
+
+    };
+    import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+
+    __APP_COMPONENT__.render = function (_ctx, _cache) {
+      return (_openBlock(), _createElementBlock(_Fragment, null, [
+        _cache[0] || (_cache[0] = _createElementVNode("h1", { style: { color: 'darkblue' } }, "成功了！！！", -1 /* HOISTED */)),
+        _createElementVNode("p", null, _toDisplayString(_ctx.date), 1 /* TEXT */)
+      ], 64 /* STABLE_FRAGMENT */));
+    };
+    // import { createApp } from "vue";
+    // createApp(__APP_COMPONENT__).mount(document.body)
+
+    // import { createApp} from "vue";
+    // createApp({ components: { C: __APP_COMPONENT__ }, template: '<Suspense><C/></Suspense>'}).mount(document.body)
+
+    import { createApp, h, Suspense } from "vue";
+    createApp({
+      render: () => h(Suspense, null, { default: () => h(__APP_COMPONENT__) })
+    }).mount(document.body)
+
+  </script>
+  <style data-setupin="">
+    /* @import 'https://unpkg.com/@tofukit/resetcss'; */
+  </style>
+</head>
+
+<body data-v-app=""><!----></body>
+
+</html>
