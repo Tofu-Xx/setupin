@@ -32,11 +32,10 @@
 
 ## 🤓 特性
 
-- [x] 自动按需导入
-- [x] 支持 esm 语法
+- [x] 支持 esm import 语法
 - [x] [顶层 await](https://cn.vuejs.org/api/sfc-script-setup.html#top-level-await)
-- [ ] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
-- [ ] vue3 宏函数
+- [x] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
+- [x] vue3 宏函数
 
 ## 😝 演练场
 
