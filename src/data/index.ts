@@ -15,10 +15,12 @@ ${ASCII_LOGO}
 </script>
 `
 export const CREATE_ASYNC_APP_CODE = `
-Vue.createApp({
-  render: () => h(Vue.Suspense, null, { default: () => Vue.h(${APP_VAR_NAME}) })
+const { createApp, h, Suspense } = Vue
+createApp({
+  render: () => h(Suspense, null, { default: () => h(${APP_VAR_NAME}) })
 }).mount(document.body)
 `
 export const CREATE_APP_CODE = `
-Vue.createApp(${APP_VAR_NAME}).mount(document.body)
+const { createApp } = Vue
+createApp(${APP_VAR_NAME}).mount(document.body)
 `
