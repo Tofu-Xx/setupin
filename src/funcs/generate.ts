@@ -1,6 +1,6 @@
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
 import { APP_VAR_NAME, CREATE_APP_CODE, CREATE_ASYNC_APP_CODE } from '@/data'
-import { babelParse, MagicString, rewriteDefault, walk, walkIdentifiers } from '@vue/compiler-sfc'
+import { MagicString } from '@vue/compiler-sfc'
 
 export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileResults[]) {
   return sfcStyleCompileResultsList.map(style => style.code).join('\n')
