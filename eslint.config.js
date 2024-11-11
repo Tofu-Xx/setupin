@@ -9,5 +9,6 @@ export default antfu({
   rules: {
     'format/prettier': 'off',
     'antfu/if-newline': 'off',
+    'ts/explicit-function-return-type': 'off',
   },
 })
