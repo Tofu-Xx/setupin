@@ -1,9 +1,10 @@
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
 import { compilerSfc } from '@/compilerSfc'
+import { INIT_CODE } from '@/data'
 import { watchRoot } from '@/utils'
 
 export async function awaitCompileSfc(handler: Fn<[SFCStyleCompileResults[], SFCScriptBlock, SFCTemplateCompileResults]>) {
-  const sources = await watchRoot((node, data) => {
+  const clientCodeList = await watchRoot((node, data) => {
     if (/^(?:script|template|style)$/.test(node.localName)) {
       data.push(node.outerHTML)
       node.localName === 'style'
@@ -11,6 +12,6 @@ export async function awaitCompileSfc(handler: Fn<[SFCStyleCompileResults[], SFC
         : node.remove()
     }
   })
-  const { sfcScriptBlock, sfcTemplateCompileResults, sfcStyleCompileResultsList } = compilerSfc(sources.join('\n'))
+  const { sfcScriptBlock, sfcTemplateCompileResults, sfcStyleCompileResultsList } = compilerSfc(INIT_CODE + clientCodeList.join('\n'))
   handler(sfcStyleCompileResultsList, sfcScriptBlock, sfcTemplateCompileResults)
 }
