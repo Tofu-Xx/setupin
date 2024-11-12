@@ -9,12 +9,12 @@ export function compilerSfc(source: string) {
     console.warn(e)
   })
   /* */
-  const sfcScriptBlock = compileScript(sfcParseResult.descriptor, { id })
+  const sfcScriptBlock = compileScript(sfcParseResult.descriptor, { id, isProd: !__IS_DEV__ })
   const sfcTemplateCompileResults = compileTemplate({
     id,
     filename,
     source: sfcParseResult.descriptor.template?.content ?? '',
-    scoped: false,
+    isProd: !__IS_DEV__,
   })
   const sfcStyleCompileResultsList = sfcParseResult.descriptor.styles.map((style) => {
     return compileStyle({
@@ -22,6 +22,7 @@ export function compilerSfc(source: string) {
       filename,
       source: style.content,
       scoped: style.scoped,
+      isProd: !__IS_DEV__,
     })
   })
   return {
