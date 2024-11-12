@@ -28,6 +28,7 @@ export default defineConfig(({ mode }) => {
     },
     esbuild: {
       charset: 'ascii',
+      drop: isDev ? [] : ['debugger', 'console'],
     },
   }
 })
