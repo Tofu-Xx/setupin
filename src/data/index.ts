@@ -7,16 +7,15 @@ export const INIT_CODE = `
   <script>
     ${__IS_DEV__ ? ASCII_LOGO : ''}
     import * as Vue from "vue";
-    let ${APP_VAR_NAME} = {}
+    let ${APP_VAR_NAME} = Object.create(null);
   </script>
-`
+` as const
 export const CREATE_APP_CODE = `
-  const { createApp } = Vue
-  createApp(${APP_VAR_NAME}).mount(document.body)
-`
+  Vue.createApp(${APP_VAR_NAME}).mount(document.body)
+` as const
 export const CREATE_ASYNC_APP_CODE = `
-  const { createApp, h, Suspense } = Vue
-  createApp({
+  const { h, Suspense } = Vue
+  Vue.createApp({
     render: () => h(Suspense, null, { default: () => h(${APP_VAR_NAME}) })
   }).mount(document.body)
-`
+` as const

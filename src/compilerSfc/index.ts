@@ -14,6 +14,7 @@ export function compilerSfc(source: string) {
     id,
     filename,
     source: sfcParseResult.descriptor.template?.content ?? '',
+    scoped: false,
   })
   const sfcStyleCompileResultsList = sfcParseResult.descriptor.styles.map((style) => {
     return compileStyle({
