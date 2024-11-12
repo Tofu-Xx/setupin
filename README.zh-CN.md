@@ -12,22 +12,35 @@
 
 ## 😏 setupin 是什么？
 
-**setupin** 允许你在 HTML 中编写 Vue 的 [\<script setup\>](https://vuejs.org/api/sfc-script-setup.html)语法。
+**setupin** 允许你在 HTML 中编写 Vue 的 [\<script setup\>](https://cn.vuejs.org/api/sfc-script-setup.html)语法。
 
-利用[vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc#readme)，运行时编译为esm格式的vue代码动态执行。
+利用[vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc#readme)，在运行时编译为esm格式的vue代码，并动态执行。
 
 ## 🤯 代码对比
 
-<h3 align=center>esm</h3>
-<h3 align=center>sfc</h3>
-<h3 align=center>setupin</h3>
+![esm](./public/esm.html.png)
+![setup](./public/setup.vue.png)
+![setupin](./public/setupin.html.png)
+
+除了\<head>之外和\<script setup>写法一致
 
 ## 🤓 特性
 
-[x] 支持 esm import 语法
-[x] [顶层 await](https://cn.vuejs.org/api/sfc-script-setup.html#top-level-await)
-[x] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
-[x] vue3 宏函数
+- [x] [顶层 await](https://cn.vuejs.org/api/sfc-script-setup.html#top-level-await)
+- [x] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
+- [x] vue3 宏函数
+- [ ] [组件](https://cn.vuejs.org/guide/essentials/component-basics.html)
+
+## 🤔 为什么选择 setupin
+
+1. **便于学习**
+  为初学者提供一个友好的环境，帮助他们轻松上手 Vue 的核心用法。
+
+2. **简易开发**
+  提供便捷的方式，助力快速开发小网页，无需繁琐的配置。
+
+3. **快速体验**
+  让用户可以快速在 HTML 中尝试 Vue 的新特性，感受其魅力。
 
 ## 😝 演练场
 

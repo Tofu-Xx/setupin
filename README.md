@@ -10,32 +10,35 @@
   <a href="https://bundlephobia.com/package/setupin"><img src="https://img.shields.io/bundlephobia/minzip/setupin"></a>
 </p>
 
-## 😏 Why setupin
+## 😏 What is a setupin?
 
 **setupin** allows you to write Vue's [\<script **setup**\>](https://vuejs.org/api/sfc-script-setup.html)**in** HTML.
 
-1. **Easy to learn**
-   > Offer a friendly environment for beginners to easily grasp the core usage of Vue.
-2. **Simple development**
-   > Provide a convenient way to rapidly develop small webpage without complex configurations.
-3. **Quick experience**
-   > Allow users to quickly experiment with Vue's new features in HTML and feel its charm.
+Using the [vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc#readme), which compiled at runtime for esm vue code format, and dynamic execution.
 
-## 🤯 setupin.html _vs_ setup.vue
+## 🤯 Code comparison
 
-<p align="center">
-  <img src="./public/setup.vue.svg" width="49%">
-  <img src="./public/setupin.html.svg" width="49%">
-</p>
+![esm](./public/esm.html.png)
+![setup](./public/setup.vue.png)
+![setupin](./public/setupin.html.png)
 
-How about that? Aren't they similar
+Consistent with \<script setup> except \<head>
 
 ## 🤓 Characteristics
 
-- [x] supports esm import syntax
 - [x] [top-level await](https://vuejs.org/api/sfc-script-setup.html#top-level-await)
 - [x] [sfc css features](https://vuejs.org/api/sfc-css-features.html)
 - [x] vue3 macro functions
+- [ ] [组件](https://vuejs.org/guide/essentials/component-basics.html)
+
+## 🤔 Why setupin
+
+1. **Easy to learn**
+  Offer a friendly environment for beginners to easily grasp the core usage of Vue.
+2. **Simple development**
+  Provide a convenient way to rapidly develop small webpage without complex configurations.
+3. **Quick experience**
+  Allow users to quickly experiment with Vue's new features in HTML and feel its charm.
 
 ## 😝 Playground
 
