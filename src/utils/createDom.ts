@@ -1,5 +1,5 @@
 export function createDom(row: string, inner?: string) {
-  const container = document.createElement('div')
+  const container = document.createElement('body')
   container.insertAdjacentHTML('afterbegin', row)
   const sample = container.firstElementChild!
   const dom = document.createElement(sample.tagName)
@@ -8,8 +8,6 @@ export function createDom(row: string, inner?: string) {
     dom.setAttribute(n, sample.getAttribute(n) ?? '')
   }
   return {
-    mount(el: Element) {
-      el.appendChild(dom)
-    },
+    mount: (el: Element) => el.appendChild(dom),
   }
 }
