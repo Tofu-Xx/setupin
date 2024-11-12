@@ -12,24 +12,101 @@
 
 ## 😏 setupin 是什么？
 
-**setupin** 允许你在 HTML 中编写 Vue 的 [\<script setup\>](https://cn.vuejs.org/api/sfc-script-setup.html)语法。
+**setupin** 允许你在 HTML 中编写 Vue 的 [\<script setup>](https://cn.vuejs.org/api/sfc-script-setup.html)语法。
 
 利用[vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc#readme)，在运行时编译为esm格式的vue代码，并动态执行。
 
 ## 🤯 代码对比
 
-![esm](./public/esm.html.png)
-![setup](./public/setup.vue.png)
-![setupin](./public/setupin.html.png)
+<h4 align=center>esm.html</h4>
+写法略微复杂
 
-除了\<head>之外和\<script setup>写法一致
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>esm</title>
+  <style>
+    button {
+      font-size: larger;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="count++">{{ count }}</button>
+  </div>
+
+  <script type="module">
+    import { createApp, defineComponent, ref } from 'https://unpkg.com/vue/dist/vue.esm-browser.js';
+    const App = defineComponent(() => {
+      const count = ref(0);
+      return {
+        count
+      };
+    });
+    createApp(App).mount('#app')
+  </script>
+</body>
+</html>
+```
+
+<h4 align=center>setup.vue</h4>
+无法直接在浏览器运行
+
+```html
+<script setup>
+  import { ref } from 'vue'
+  const count = ref(0)
+</script>
+
+<template>
+  <button @click="count++">{{ count }}</button>
+</template>
+
+<style>
+  button {
+    font-size: larger;
+  }
+</style>
+```
+
+<h4 align=center>setupin.html</h4>
+合二为一
+
+```html
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>setupin</title>
+  <script src="https://unpkg.com/setupin"></script>
+</head>
+
+<script setup>
+  import { ref } from 'vue'
+  const count = ref(0)
+</script>
+
+<template>
+  <button @click="count++">{{ count }}</button>
+</template>
+
+<style>
+  button {
+    font-size: larger;
+  }
+</style>
+```
+
+除了\<head>之外和[\<script setup>](https://cn.vuejs.org/api/sfc-script-setup.html)写法完全一致
 
 ## 🤓 特性
 
 - [x] [顶层 await](https://cn.vuejs.org/api/sfc-script-setup.html#top-level-await)
 - [x] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
-- [x] vue3 宏函数
-- [ ] [组件](https://cn.vuejs.org/guide/essentials/component-basics.html)
+- [ ] 拆分 [组件](https://cn.vuejs.org/guide/essentials/component-basics.html)
 
 ## 🤔 为什么选择 setupin
 

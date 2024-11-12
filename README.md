@@ -12,24 +12,100 @@
 
 ## 😏 What is a setupin?
 
-**setupin** allows you to write Vue's [\<script **setup**\>](https://vuejs.org/api/sfc-script-setup.html)**in** HTML.
+**setupin** allows you to write Vue's [\<script **setup**>](https://vuejs.org/api/sfc-script-setup.html)**in** HTML.
 
 Using the [vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc#readme), which compiled at runtime for esm vue code format, and dynamic execution.
 
 ## 🤯 Code comparison
 
-![esm](./public/esm.html.png)
-![setup](./public/setup.vue.png)
-![setupin](./public/setupin.html.png)
+<h4 align=center>esm.html</h4>
+It's a little more complicated
 
-Consistent with \<script setup> except \<head>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>esm</title>
+  <style>
+    button {
+      font-size: larger;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="count++">{{ count }}</button>
+  </div>
 
+  <script type="module">
+    import { createApp, defineComponent, ref } from 'https://unpkg.com/vue/dist/vue.esm-browser.js';
+    const App = defineComponent(() => {
+      const count = ref(0);
+      return {
+        count
+      };
+    });
+    createApp(App).mount('#app')
+  </script>
+</body>
+</html>
+```
+
+<h4 align=center>setup.vue</h4>
+Cannot run directly in the browser
+
+```html
+<script setup>
+  import { ref } from 'vue'
+  const count = ref(0)
+</script>
+
+<template>
+  <button @click="count++">{{ count }}</button>
+</template>
+
+<style>
+  button {
+    font-size: larger;
+  }
+</style>
+```
+
+<h4 align=center>setupin.html</h4>
+unit as one
+
+```html
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>setupin</title>
+  <script src="https://unpkg.com/setupin"></script>
+</head>
+
+<script setup>
+  import { ref } from 'vue'
+  const count = ref(0)
+</script>
+
+<template>
+  <button @click="count++">{{ count }}</button>
+</template>
+
+<style>
+  button {
+    font-size: larger;
+  }
+</style>
+```
+
+It's exactly the same as [\<script setup>](https://vuejs.org/api/sfc-script-setup.html) except for the \<head>
 ## 🤓 Characteristics
 
 - [x] [top-level await](https://vuejs.org/api/sfc-script-setup.html#top-level-await)
 - [x] [sfc css features](https://vuejs.org/api/sfc-css-features.html)
-- [x] vue3 macro functions
-- [ ] [组件](https://vuejs.org/guide/essentials/component-basics.html)
+- [ ] Split [component](https://vuejs.org/guide/essentials/component-basics.html)
 
 ## 🤔 Why setupin
 
