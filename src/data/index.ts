@@ -11,11 +11,13 @@ export const INIT_CODE = `
   </script>
 ` as const
 export const CREATE_APP_CODE = `
-  Vue.createApp(${APP_VAR_NAME}).mount(document.body)
-` as const
-export const CREATE_ASYNC_APP_CODE = `
-  const { h, Suspense } = Vue
-  Vue.createApp({
-    render: () => h(Suspense, null, { default: () => h(${APP_VAR_NAME}) })
-  }).mount(document.body)
+  Vue.createApp(Vue.defineComponent(
+    String(${APP_VAR_NAME}.setup).startsWith('async')
+    ? () => () => 
+      Vue.h(Vue.Suspense, null, { 
+        default:  Vue.h(${APP_VAR_NAME}),
+        fallback:  Vue.h('div', 'Loading...'),
+      })
+    : ${APP_VAR_NAME}
+  )).mount(document.body)
 ` as const

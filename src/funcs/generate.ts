@@ -1,5 +1,5 @@
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
-import { APP_VAR_NAME, CREATE_APP_CODE, CREATE_ASYNC_APP_CODE } from '@/data'
+import { APP_VAR_NAME, CREATE_APP_CODE } from '@/data'
 import { MagicString } from '@vue/compiler-sfc'
 
 export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileResults[]) {
@@ -10,8 +10,7 @@ export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompi
   return `
     ${_scriptTransform(sfcScriptBlock)}
     ${_templateTransform(sfcTemplateCompileResults)}
-    if(String(${APP_VAR_NAME}.setup).startsWith('async')){${CREATE_ASYNC_APP_CODE}}
-    else{${CREATE_APP_CODE}}
+    ${CREATE_APP_CODE}
   `
 }
 
