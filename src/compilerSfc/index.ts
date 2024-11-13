@@ -4,7 +4,6 @@ import { compileScript, compileStyle, compileTemplate, parse } from 'vue/compile
 const filename = `${REPO_NAME}.vue`
 const id = REPO_NAME
 export function compilerSfc(source: string) {
-  console.log(source)
   const sfcParseResult = parse(source, { filename })
   sfcParseResult.errors.forEach((e) => {
     console.warn(e)
