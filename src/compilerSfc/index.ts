@@ -2,14 +2,15 @@ import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults 
 import { REPO_NAME } from '@/data'
 import { compileScript, compileStyle, compileTemplate, parse } from '@vue/compiler-sfc'
 
-const filename = `${REPO_NAME}.vue`
-const id = REPO_NAME
+export type SFCAppBlock = SFCScriptBlock & { isScoped?: boolean }
 export interface CompiledSFC {
   sfcStyleCompileResultsList: SFCStyleCompileResults[]
-  sfcScriptBlock: SFCScriptBlock
+  sfcAppBlock: SFCAppBlock
   sfcTemplateCompileResults: SFCTemplateCompileResults
 }
 export function compilerSfc(source: string): CompiledSFC {
+  const id = REPO_NAME
+  const filename = `${REPO_NAME}.vue`
   const sfcParseResult = parse(source, { filename })
   sfcParseResult.errors.forEach((e) => {
     console.warn(e)
@@ -28,12 +29,12 @@ export function compilerSfc(source: string): CompiledSFC {
     })
     return sfcStyleCompileResults
   })
-  // const hasScoped = sfcParseResult.descriptor.styles.some(s => s.scoped)
   /* script */
-  const sfcScriptBlock = compileScript(sfcParseResult.descriptor, {
+  const sfcAppBlock: SFCAppBlock = compileScript(sfcParseResult.descriptor, {
     id,
     isProd: !__IS_DEV__,
   })
+  sfcAppBlock.isScoped = sfcParseResult.descriptor.styles.some(s => s.scoped)
   /* template */
   const sfcTemplateCompileResults = compileTemplate({
     id,
@@ -46,7 +47,7 @@ export function compilerSfc(source: string): CompiledSFC {
   })
   return {
     sfcStyleCompileResultsList,
-    sfcScriptBlock,
+    sfcAppBlock,
     sfcTemplateCompileResults,
   }
 }

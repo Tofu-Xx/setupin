@@ -3,9 +3,9 @@ import { generateCssCode } from './generateCssCode'
 import { generateEsmCode } from './generateEsmCode'
 
 export function generator(compiledSfc: CompiledSFC) {
-  const { sfcScriptBlock, sfcStyleCompileResultsList, sfcTemplateCompileResults } = compiledSfc
+  const { sfcAppBlock, sfcStyleCompileResultsList, sfcTemplateCompileResults } = compiledSfc
   return {
-    esmCode: generateEsmCode(sfcScriptBlock, sfcTemplateCompileResults),
+    esmCode: generateEsmCode(sfcAppBlock, sfcTemplateCompileResults),
     cssCode: generateCssCode(sfcStyleCompileResultsList),
   }
 }

@@ -1,5 +1,4 @@
 import type { CompiledSFC } from '@/compilerSfc'
-import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
 import { compilerSfc } from '@/compilerSfc'
 import { watchRoot } from '@/utils'
 
