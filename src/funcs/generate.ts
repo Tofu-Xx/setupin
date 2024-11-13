@@ -1,5 +1,5 @@
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
-import { APP_VAR_NAME, CREATE_APP_CODE } from '@/data'
+import { APP_VAR_NAME, CREATE_APP_CODE, INIT_CODE } from '@/data'
 import { MagicString } from '@vue/compiler-sfc'
 
 export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileResults[]) {
@@ -8,6 +8,7 @@ export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileRes
 
 export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompileResults: SFCTemplateCompileResults) {
   return `
+    ${INIT_CODE}
     ${_scriptTransform(sfcScriptBlock)}
     ${_templateTransform(sfcTemplateCompileResults)}
     ${CREATE_APP_CODE}
