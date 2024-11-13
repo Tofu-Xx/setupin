@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     define: {
-      __VUE_URL__: `"https://unpkg.com/vue/dist/vue.runtime.esm-browser${suffix}.js"`,
+      __VUE_URL__: `"https://unpkg.com/vue@latest/dist/vue.runtime.esm-browser${suffix}.js"`,
       __IS_DEV__: isDev,
     },
     build: {
