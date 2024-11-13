@@ -1,10 +1,5 @@
-import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
-import { APP_VAR_NAME, CREATE_APP_CODE, INIT_CODE } from '@/data'
-import { MagicString } from '@vue/compiler-sfc'
-
-export function generateStyleCode(sfcStyleCompileResultsList: SFCStyleCompileResults[]) {
-  return sfcStyleCompileResultsList.map(style => style.code).join('\n')
-}
+import { APP_VAR_NAME, CREATE_APP_CODE, INIT_CODE, REPO_NAME } from '@/data'
+import { MagicString, type SFCScriptBlock, type SFCTemplateCompileResults } from '@vue/compiler-sfc'
 
 export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompileResults: SFCTemplateCompileResults) {
   return `
@@ -16,7 +11,8 @@ export function generateEsmCode(sfcScriptBlock: SFCScriptBlock, sfcTemplateCompi
   function _scriptTransform(sfcScriptBlock: SFCScriptBlock) {
     const s = new MagicString(sfcScriptBlock.content)
     s.replace('export default', `${APP_VAR_NAME} =`)
-    s.replace('Object.defineProperty(__returned__,', '// ')
+    s.prependLeft(sfcScriptBlock.content.indexOf('__name'), `__scopeId: "data-v-${REPO_NAME}",`)
+    s.replace(/Object\.defineProperty\(__returned__.*/, '')
     return s.toString()
   }
 

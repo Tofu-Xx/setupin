@@ -1,8 +1,9 @@
+import type { CompiledSFC } from '@/compilerSfc'
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
 import { compilerSfc } from '@/compilerSfc'
 import { watchRoot } from '@/utils'
 
-export async function awaitCompileSfc(handler: Fn<[SFCStyleCompileResults[], SFCScriptBlock, SFCTemplateCompileResults]>) {
+export async function awaitCompileSfc(handler: Fn<[CompiledSFC]>) {
   const clientCodeList = await watchRoot<string>((node, clientCodeList) => {
     if (!/^(?:script|template|style)$/.test(node.localName))
       return
@@ -14,8 +15,6 @@ export async function awaitCompileSfc(handler: Fn<[SFCStyleCompileResults[], SFC
       : node.remove()
   })
   const hasScript = clientCodeList.some(code => code.slice(1, 7) === 'script')
-  if (!hasScript)
-    clientCodeList.push('<script>/* empty script */</script>')
-  const { sfcScriptBlock, sfcTemplateCompileResults, sfcStyleCompileResultsList } = compilerSfc(clientCodeList.join('\n'))
-  handler(sfcStyleCompileResultsList, sfcScriptBlock, sfcTemplateCompileResults)
+  hasScript || clientCodeList.push('<script>/* empty script */</script>')
+  handler(compilerSfc(clientCodeList.join('\n')))
 }

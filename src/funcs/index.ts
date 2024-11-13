@@ -1,2 +1,2 @@
 export * from './awaitCompileSfc'
-export * from './generate'
+export * from './generator'
