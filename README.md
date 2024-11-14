@@ -101,10 +101,12 @@ unit as one
 ```
 
 It's exactly the same as [\<script setup>](https://vuejs.org/api/sfc-script-setup.html) except for the \<head>
+
 ## 🤓 Characteristics
 
 - [x] [top-level await](https://vuejs.org/api/sfc-script-setup.html#top-level-await)
 - [x] [sfc css features](https://vuejs.org/api/sfc-css-features.html)
+- [x] [Options API](https://vuejs.org/guide/introduction.html#options-api)
 - [ ] Split [component](https://vuejs.org/guide/essentials/component-basics.html)
 
 ## 🤔 Why setupin

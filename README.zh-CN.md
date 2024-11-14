@@ -106,6 +106,7 @@
 
 - [x] [顶层 await](https://cn.vuejs.org/api/sfc-script-setup.html#top-level-await)
 - [x] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
+- [x] [选项式](https://cn.vuejs.org/guide/introduction.html#options-api)
 - [ ] 拆分 [组件](https://cn.vuejs.org/guide/essentials/component-basics.html)
 
 ## 🤔 为什么选择 setupin
