@@ -1,6 +1,8 @@
 import type { SFCScriptBlock, SFCStyleCompileResults, SFCTemplateCompileResults } from '@vue/compiler-sfc'
 
-export type SFCAppBlock = SFCScriptBlock & { isScoped?: boolean }
+export interface SFCAppBlock extends SFCScriptBlock {
+  isScoped?: boolean
+}
 export interface CompiledSFC {
   sfcStyleCompileResultsList: SFCStyleCompileResults[]
   sfcAppBlock: SFCAppBlock
