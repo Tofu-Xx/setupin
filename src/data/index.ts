@@ -5,8 +5,8 @@ export const REPO_NAME = 'setupin'
 export const IMPORTS_CODE = JSON.stringify({ imports: { vue: __VUE_URL__ } })
 export const INIT_CODE = `
   ${__IS_DEV__ ? ASCII_LOGO : ''}
-  import * as Vue from "vue";
-  let ${APP_VAR_NAME} = Object.create(null);
+  import * as Vue from "vue"
+  let ${APP_VAR_NAME} = {}
 ` as const
 export const CREATE_APP_CODE = `
   Vue.createApp(Vue.defineComponent(
