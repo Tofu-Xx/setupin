@@ -6,13 +6,13 @@ export function generateEsmCode(sfcAppBlock: SFCAppBlock, sfcTemplateCompileResu
   return `
     ${INIT_CODE}
     ${_scriptTransform(sfcAppBlock)}
+    ${sfcAppBlock.isScoped ? `${APP_VAR_NAME}.__scopeId= "data-v-${REPO_NAME}"` : ''}
     ${_templateTransform(sfcTemplateCompileResults)}
     ${CREATE_APP_CODE}
   `
   function _scriptTransform(sfcAppBlock: SFCAppBlock) {
     const s = new MagicString(sfcAppBlock.content)
     s.replace('export default', `${APP_VAR_NAME} =`)
-    sfcAppBlock.isScoped && s.prependLeft(sfcAppBlock.content.indexOf('__name'), `__scopeId: "data-v-${REPO_NAME}",`)
     s.replace(/Object\.defineProperty\(__returned__.*/, '')
     return s.toString()
   }
