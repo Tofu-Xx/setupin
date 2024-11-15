@@ -1,4 +1,4 @@
-import type { CompiledSFC } from "@/compilerSfc/CompiledSFC";
+import type { CompiledSFC } from '@/compilerSfc/types'
 import { generateCssCode } from './generateCssCode'
 import { generateEsmCode } from './generateEsmCode'
 
