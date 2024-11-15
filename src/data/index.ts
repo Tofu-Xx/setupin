@@ -11,15 +11,15 @@ export const IMPORTS_TAG_CODE = `
 // ${__IS_DEV__ ? ASCII_LOGO : ''}
 export const INIT_CODE = `
   ${ASCII_LOGO}
-  import * as Vue from "vue"
   let ${APP_VAR_NAME} = {}
 ` as const
 export const CREATE_APP_CODE = `
-  Vue.createApp(Vue.defineComponent(
+  import { createApp as _createApp, defineComponent as _defineComponent, h as _h, Suspense as _Suspense } from 'vue'
+  _createApp(_defineComponent(
     String(${APP_VAR_NAME}.setup).startsWith('async')
-    ? () => () => Vue.h(Vue.Suspense, null, { 
-      default: Vue.h(${APP_VAR_NAME}),
-      fallback: Vue.h('div', 'Loading...'),
+    ? () => () => _h(_Suspense, null, { 
+      default: _h(${APP_VAR_NAME}),
+      fallback: _h('div', 'Loading...'),
     })
     : ${APP_VAR_NAME}
   )).mount(document.body)
