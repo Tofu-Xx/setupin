@@ -1,4 +1,4 @@
-import type { CompiledSFC } from '@/compilerSfc'
+import type { CompiledSFC } from '@/compilerSfc/types'
 import { compilerSfc } from '@/compilerSfc'
 import { watchRoot } from '@/utils'
 

@@ -1,4 +1,4 @@
-import type { SFCAppBlock } from '@/compilerSfc'
+import type { SFCAppBlock } from '@/compilerSfc/types'
 import { APP_VAR_NAME, CREATE_APP_CODE, INIT_CODE, REPO_NAME } from '@/data'
 import { MagicString, type SFCTemplateCompileResults } from '@vue/compiler-sfc'
 
