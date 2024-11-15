@@ -12,6 +12,6 @@ export async function awaitCompileSfc(handler: Fn<[CompiledSFC]>) {
       : node.remove()
   })
   const hasScript = clientCodeList.some(code => code.slice(1, 7) === 'script')
-  hasScript || clientCodeList.push('<script>/* empty script */</script>')
+  hasScript || clientCodeList.unshift('<script>/* empty script */</script>')
   handler(compilerSfc(clientCodeList.join('\n')))
 }
