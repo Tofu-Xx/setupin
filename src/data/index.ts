@@ -8,8 +8,9 @@ export const IMPORTS_TAG_CODE = `
   ${JSON.stringify({ imports: { vue: __VUE_URL__ } })}
 </script>
 ` as const
+// ${__IS_DEV__ ? ASCII_LOGO : ''}
 export const INIT_CODE = `
-  ${__IS_DEV__ ? ASCII_LOGO : ''}
+  ${ASCII_LOGO}
   import * as Vue from "vue"
   let ${APP_VAR_NAME} = {}
 ` as const

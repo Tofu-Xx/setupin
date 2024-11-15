@@ -3,9 +3,9 @@ import { awaitCompileSfc, generator } from '@/funcs'
 import { createDom } from '@/utils'
 
 awaitCompileSfc((compiledSfc) => {
-  const _toHead = (...args: [string, string?]) => createDom(...args)?.mount(document.head)
+  const site = document[__IS_DEV__ ? 'head' : 'body']
   const { cssCode, esmCode } = generator(compiledSfc)
-  _toHead(IMPORTS_TAG_CODE)
-  _toHead(`<script ${REPO_NAME} type="module">`, esmCode)
-  _toHead(cssCode && `<style ${REPO_NAME}>`, cssCode)
+  createDom(IMPORTS_TAG_CODE)?.mount(site)
+  createDom(`<script ${REPO_NAME} type="module">`, esmCode)?.mount(site)
+  createDom(cssCode && `<style ${REPO_NAME}>`, cssCode)?.mount(document.head)
 })
