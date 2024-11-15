@@ -1,17 +1,13 @@
-import type { CompiledSFC } from '@/compilerSfc/types'
-import { compilerSfc } from '@/compilerSfc'
 import { watchRoot } from '@/utils'
 
-export async function awaitCompileSfc(handler: Fn<[CompiledSFC]>) {
-  const clientCodeList = await watchRoot<string>((node, clientCodeList) => {
+export async function awaitClientCode(handler: Fn<[string]>) {
+  const sfcCode = await watchRoot<string>((node, carrier) => {
     if (!/^(?:script|template|style)$/.test(node.localName)) return
     if (node.hasAttribute('src')) return
-    clientCodeList.push(node.outerHTML)
+    carrier.push(node.outerHTML)
     node.localName === 'style'
       ? (node.onload = node.remove)
       : node.remove()
   })
-  const hasScript = clientCodeList.some(code => code.slice(1, 7) === 'script')
-  hasScript || clientCodeList.unshift('<script>/* empty script */</script>')
-  handler(compilerSfc(clientCodeList.join('\n')))
+  handler(sfcCode.join('\n'))
 }
