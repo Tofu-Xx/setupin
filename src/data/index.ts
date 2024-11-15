@@ -2,7 +2,12 @@ import ASCII_LOGO from '@/assets/ascii-logo.txt?raw'
 
 export const APP_VAR_NAME = 'APP$'
 export const REPO_NAME = 'setupin'
-export const IMPORTS_CODE = JSON.stringify({ imports: { vue: __VUE_URL__ } })
+/* code */
+export const IMPORTS_TAG_CODE = `
+<script ${REPO_NAME} type="importmap">
+  ${JSON.stringify({ imports: { vue: __VUE_URL__ } })}
+</script>
+` as const
 export const INIT_CODE = `
   ${__IS_DEV__ ? ASCII_LOGO : ''}
   import * as Vue from "vue"
