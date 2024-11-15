@@ -10,5 +10,7 @@ export default antfu({
   rules: {
     'format/prettier': 'off',
     'ts/explicit-function-return-type': 'off',
+    'antfu/if-newline': 'off',
+    'antfu/curly': 'off',
   },
 })

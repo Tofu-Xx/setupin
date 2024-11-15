@@ -4,10 +4,8 @@ import { watchRoot } from '@/utils'
 
 export async function awaitCompileSfc(handler: Fn<[CompiledSFC]>) {
   const clientCodeList = await watchRoot<string>((node, clientCodeList) => {
-    if (!/^(?:script|template|style)$/.test(node.localName))
-      return
-    if (node.hasAttribute('src'))
-      return
+    if (!/^(?:script|template|style)$/.test(node.localName)) return
+    if (node.hasAttribute('src')) return
     clientCodeList.push(node.outerHTML)
     node.localName === 'style'
       ? (node.onload = node.remove)
