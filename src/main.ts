@@ -1,6 +1,6 @@
 import { useXxx2x } from 'sfc2esm'
+import { awaitClientCode } from './awaitCompileSfc'
 import { ASCII_LOGO, IMPORTS_TAG_CODE, REPO_NAME } from './data'
-import { awaitClientCode } from './funcs'
 import { createDom } from './utils'
 
 awaitClientCode((sfcCode) => {
