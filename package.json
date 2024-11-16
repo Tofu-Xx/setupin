@@ -50,6 +50,6 @@
     "vite": "^5.4.11"
   },
   "dependencies": {
-    "sfc2esm": "^0.0.7"
+    "sfc2esm": "^0.0.9"
   }
 }

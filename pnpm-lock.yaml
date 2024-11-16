@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       sfc2esm:
-        specifier: ^0.0.7
-        version: 0.0.7
+        specifier: ^0.0.9
+        version: 0.0.9
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^3.9.1
@@ -1935,8 +1935,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  sfc2esm@0.0.7:
-    resolution: {integrity: sha512-NswxXTopbS50J79prnscl2skVjzItjIlqO6pXJLdwvNHobhl5G7cLpLjO9OEFriTrzJlxCyyaDuOI8xCoTXHPg==}
+  sfc2esm@0.0.9:
+    resolution: {integrity: sha512-qLc1kphMkewvAV78m05IvDzSGCf2TRJCEwuesRlhs3d4k6W0l3DoihUh/WknFeYlztnvrKhLG8vvICgCMwLUEg==}
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -4242,7 +4242,7 @@ snapshots:
 
   semver@7.6.3: {}
 
-  sfc2esm@0.0.7:
+  sfc2esm@0.0.9:
     dependencies:
       '@vue/compiler-sfc': 3.5.13
 

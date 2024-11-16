@@ -1,7 +1,7 @@
-import { ASCII_LOGO, IMPORTS_TAG_CODE, REPO_NAME } from '@/data'
-import { awaitClientCode } from '@/funcs'
-import { createDom } from '@/utils'
 import { useXxx2x } from 'sfc2esm'
+import { ASCII_LOGO, IMPORTS_TAG_CODE, REPO_NAME } from './data'
+import { awaitClientCode } from './funcs'
+import { createDom } from './utils'
 
 awaitClientCode((sfcCode) => {
   const site = document[__IS_DEV__ ? 'head' : 'body']
