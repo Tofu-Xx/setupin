@@ -14,7 +14,7 @@
 
 **setupin** 允许你在 HTML 中编写 Vue 的 [\<script setup>](https://cn.vuejs.org/api/sfc-script-setup.html)语法。
 
-利用[sfc2esm](https://github.com/Tofu-Xx/sfc2esm)，在运行时编译为esm格式的vue代码，并动态执行。
+利用[sfc2esm](../../../sfc2esm)，在运行时编译为esm格式的vue代码，并动态执行。
 
 ## 🤯 代码对比
 
