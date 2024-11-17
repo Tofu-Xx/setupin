@@ -14,7 +14,7 @@
 
 **setupin** allows you to write Vue's [\<script **setup**>](https://vuejs.org/api/sfc-script-setup.html)**in** HTML.
 
-Using the [vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc#readme), which compiled at runtime for esm vue code format, and dynamic execution.
+Using the [@vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc#readme), which compiled at runtime for esm vue code format, and dynamic execution.
 
 ## 🤯 Code comparison
 
