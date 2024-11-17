@@ -12,7 +12,7 @@
 
 ## 😏 setupin 是什么？
 
-**setupin** 允许你在 HTML 中编写 Vue 的 [\<script setup>](https://cn.vuejs.org/api/sfc-script-setup.html)语法。
+**setupin** 允许你在 HTML 中使用 [Vue SFC](https://cn.vuejs.org/api/sfc-spec) 语法。
 
 利用[sfc2esm](../../../sfc2esm)，在运行时编译为esm格式的vue代码，并动态执行。
 
@@ -100,7 +100,7 @@
 </style>
 ```
 
-除了\<head>之外和[\<script setup>](https://cn.vuejs.org/api/sfc-script-setup.html)写法完全一致
+除了\<head>之外和Vue SFC写法完全一致
 
 ## 🤓 特性
 
@@ -108,6 +108,9 @@
 - [x] [CSS 功能](https://cn.vuejs.org/api/sfc-css-features)
 - [x] [选项式](https://cn.vuejs.org/guide/introduction.html#options-api)
 - [ ] 拆分 [组件](https://cn.vuejs.org/guide/essentials/component-basics.html)
+- [ ] [自定义块](https://cn.vuejs.org/api/sfc-spec#custom-blocks)
+- [ ] [预处理器](https://cn.vuejs.org/api/sfc-spec#pre-processors)
+- [ ] [src 导入](https://cn.vuejs.org/api/sfc-spec#src-imports)
 
 ## 🤔 为什么选择 setupin
 

@@ -12,7 +12,7 @@
 
 ## 😏 What is a setupin?
 
-**setupin** allows you to write Vue's [\<script **setup**>](https://vuejs.org/api/sfc-script-setup.html)**in** HTML.
+**setupin** allows you to use [Vue SFC](https://vuejs.org/api/sfc-spec) syntax in HTML.
 
 Using the [sfc2esm](../../../sfc2esm), which compiled at runtime for esm vue code format, and dynamic execution.
 
@@ -100,7 +100,7 @@ unit as one
 </style>
 ```
 
-It's exactly the same as [\<script setup>](https://vuejs.org/api/sfc-script-setup.html) except for the \<head>
+It's exactly the same as Vue SFC except for the \<head>
 
 ## 🤓 Characteristics
 
@@ -108,6 +108,9 @@ It's exactly the same as [\<script setup>](https://vuejs.org/api/sfc-script-setu
 - [x] [sfc css features](https://vuejs.org/api/sfc-css-features.html)
 - [x] [Options API](https://vuejs.org/guide/introduction.html#options-api)
 - [ ] Split [component](https://vuejs.org/guide/essentials/component-basics.html)
+- [ ] [custom-blocks](https://vuejs.org/api/sfc-spec#custom-blocks)
+- [ ] [pre-processors](https://vuejs.org/api/sfc-spec#pre-processors)
+- [ ] [导入src-imports](https://vuejs.org/api/sfc-spec#src-imports)
 
 ## 🤔 Why setupin
 
