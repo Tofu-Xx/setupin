@@ -107,10 +107,6 @@ It's exactly the same as Vue SFC except for the \<head>
 - [x] [top-level await](https://vuejs.org/api/sfc-script-setup.html#top-level-await)
 - [x] [sfc css features](https://vuejs.org/api/sfc-css-features.html)
 - [x] [Options API](https://vuejs.org/guide/introduction.html#options-api)
-- [ ] Split [component](https://vuejs.org/guide/essentials/component-basics.html)
-- [ ] [custom-blocks](https://vuejs.org/api/sfc-spec#custom-blocks)
-- [ ] [pre-processors](https://vuejs.org/api/sfc-spec#pre-processors)
-- [ ] [导入src-imports](https://vuejs.org/api/sfc-spec#src-imports)
 
 ## 🤔 Why setupin
 
