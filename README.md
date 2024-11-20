@@ -19,7 +19,8 @@ Using the [sfc2esm](../../../sfc2esm), which compiled at runtime for esm vue cod
 ## 🤯 Code comparison
 
 <h4 align=center>esm.html</h4>
-It's a little more complicated
+
+vue **esm** is complicated to write
 
 ```html
 <!DOCTYPE html>
@@ -54,7 +55,8 @@ It's a little more complicated
 ```
 
 <h4 align=center>setup.vue</h4>
-Cannot run directly in the browser
+
+vue **sfc** needs to be compiled
 
 ```html
 <script setup>
@@ -74,7 +76,8 @@ Cannot run directly in the browser
 ```
 
 <h4 align=center>setupin.html</h4>
-unit as one
+
+**setupin** brings it all together
 
 ```html
 <head>

@@ -19,7 +19,8 @@
 ## 🤯 代码对比
 
 <h4 align=center>esm.html</h4>
-写法略微复杂
+
+vue **esm** 写法复杂
 
 ```html
 <!DOCTYPE html>
@@ -54,7 +55,8 @@
 ```
 
 <h4 align=center>setup.vue</h4>
-无法直接在浏览器运行
+
+vue **sfc** 需要编译
 
 ```html
 <script setup>
@@ -74,7 +76,8 @@
 ```
 
 <h4 align=center>setupin.html</h4>
-合二为一
+
+**setupin** 将其合二为一
 
 ```html
 <head>
