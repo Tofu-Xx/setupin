@@ -2,7 +2,7 @@
   "name": "setupin",
   "type": "module",
   "version": "3.2.0",
-  "packageManager": "pnpm@9.14.1",
+  "packageManager": "pnpm@9.14.2",
   "description": "Vue SFC? HTML! <script setup> in html",
   "author": "tofu-xx <tofu-xx@foxmail.com>",
   "license": "MIT",
