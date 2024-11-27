@@ -40,14 +40,14 @@
     "access": "public"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.9.2",
+    "@antfu/eslint-config": "^3.10.0",
     "@antfu/ni": "^0.23.1",
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.10.0",
     "bumpp": "^9.8.1",
     "eslint": "^9.15.0",
     "eslint-plugin-format": "^0.1.2",
     "taze": "^0.18.0",
-    "vite": "^5.4.11"
+    "vite": "^6.0.0"
   },
   "dependencies": {
     "sfc2esm": "^0.0.9"
