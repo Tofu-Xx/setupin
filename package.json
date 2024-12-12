@@ -2,7 +2,7 @@
   "name": "setupin",
   "type": "module",
   "version": "3.2.0",
-  "packageManager": "pnpm@9.14.2",
+  "packageManager": "pnpm@9.15.0",
   "description": "Vue SFC? HTML! <script setup> in html",
   "author": "tofu-xx <tofu-xx@foxmail.com>",
   "license": "MIT",
@@ -43,13 +43,13 @@
     "sfc2esm": "^0.0.9"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.10.0",
+    "@antfu/eslint-config": "^3.11.2",
     "@antfu/ni": "^0.23.1",
-    "@types/node": "^22.10.0",
-    "bumpp": "^9.8.1",
-    "eslint": "^9.15.0",
-    "eslint-plugin-format": "^0.1.2",
+    "@types/node": "^22.10.2",
+    "bumpp": "^9.9.0",
+    "eslint": "^9.16.0",
+    "eslint-plugin-format": "^0.1.3",
     "taze": "^0.18.0",
-    "vite": "^6.0.0"
+    "vite": "^6.0.3"
   }
 }
